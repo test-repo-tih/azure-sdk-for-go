@@ -1,0 +1,10 @@
+# https://github.com/wei/pull#advanced-setup-with-config
+version: "1"
+rules:
+  - base: master
+    upstream: Azure:master
+    mergeMethod: rebase
+  - base: latest
+    upstream: Azure:latest
+    mergeMethod: rebase
+label: "AutoPull"
