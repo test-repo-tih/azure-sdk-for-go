@@ -104,7 +104,7 @@ func (client CommentsClient) ListByCase(ctx context.Context, resourceGroupName s
 // ListByCasePreparer prepares the ListByCase request.
 func (client CommentsClient) ListByCasePreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string, filter string, orderby string, top *int32, skipToken string) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseId": autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
