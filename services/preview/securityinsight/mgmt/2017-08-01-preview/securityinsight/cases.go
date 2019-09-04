@@ -105,7 +105,7 @@ func (client CasesClient) CreateOrUpdate(ctx context.Context, resourceGroupName 
 // CreateOrUpdatePreparer prepares the CreateOrUpdate request.
 func (client CasesClient) CreateOrUpdatePreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string, caseParameter Case) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseId": autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
@@ -203,7 +203,7 @@ func (client CasesClient) Delete(ctx context.Context, resourceGroupName string, 
 // DeletePreparer prepares the Delete request.
 func (client CasesClient) DeletePreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseId": autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
@@ -298,7 +298,7 @@ func (client CasesClient) Get(ctx context.Context, resourceGroupName string, ope
 // GetPreparer prepares the Get request.
 func (client CasesClient) GetPreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseId": autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
@@ -395,8 +395,8 @@ func (client CasesClient) GetComment(ctx context.Context, resourceGroupName stri
 // GetCommentPreparer prepares the GetComment request.
 func (client CasesClient) GetCommentPreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string, caseCommentID string) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseCommentId":                       autorest.Encode("path", caseCommentID),
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseCommentId": autorest.Encode("path", caseCommentID),
+		"caseId":        autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
