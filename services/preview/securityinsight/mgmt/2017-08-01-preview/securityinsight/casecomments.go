@@ -105,8 +105,8 @@ func (client CaseCommentsClient) CreateComment(ctx context.Context, resourceGrou
 // CreateCommentPreparer prepares the CreateComment request.
 func (client CaseCommentsClient) CreateCommentPreparer(ctx context.Context, resourceGroupName string, operationalInsightsResourceProvider string, workspaceName string, caseID string, caseCommentID string, caseComment CaseComment) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"caseCommentId":                       autorest.Encode("path", caseCommentID),
-		"caseId":                              autorest.Encode("path", caseID),
+		"caseCommentId": autorest.Encode("path", caseCommentID),
+		"caseId":        autorest.Encode("path", caseID),
 		"operationalInsightsResourceProvider": autorest.Encode("path", operationalInsightsResourceProvider),
 		"resourceGroupName":                   autorest.Encode("path", resourceGroupName),
 		"subscriptionId":                      autorest.Encode("path", client.SubscriptionID),
