@@ -4,8 +4,8 @@
     "after_scripts": [
       "dep ensure",
       "go generate ./profiles/generate.go",
-      "gofmt -w ./profiles/",
-      "gofmt -w ./services/"
+      "gofmt -w -l ./profiles/",
+      "gofmt -w -l ./services/"
     ],
     "autorest_options": {
       "use": "@microsoft.azure/autorest.go@~2.1.136",
