@@ -48,17 +48,17 @@ func PossibleAggregationsKindValues() []AggregationsKind {
 type AlertRuleKind string
 
 const (
-	// Filter ...
-	Filter AlertRuleKind = "Filter"
 	// Fusion ...
 	Fusion AlertRuleKind = "Fusion"
+	// MicrosoftSecurityIncidentCreation ...
+	MicrosoftSecurityIncidentCreation AlertRuleKind = "MicrosoftSecurityIncidentCreation"
 	// Scheduled ...
 	Scheduled AlertRuleKind = "Scheduled"
 )
 
 // PossibleAlertRuleKindValues returns an array of possible values for the AlertRuleKind const type.
 func PossibleAlertRuleKindValues() []AlertRuleKind {
-	return []AlertRuleKind{Filter, Fusion, Scheduled}
+	return []AlertRuleKind{Fusion, MicrosoftSecurityIncidentCreation, Scheduled}
 }
 
 // AlertSeverity enumerates the values for alert severity.
@@ -119,6 +119,8 @@ const (
 	Execution AttackTactic = "Execution"
 	// Exfiltration ...
 	Exfiltration AttackTactic = "Exfiltration"
+	// Impact ...
+	Impact AttackTactic = "Impact"
 	// InitialAccess ...
 	InitialAccess AttackTactic = "InitialAccess"
 	// LateralMovement ...
@@ -131,7 +133,7 @@ const (
 
 // PossibleAttackTacticValues returns an array of possible values for the AttackTactic const type.
 func PossibleAttackTacticValues() []AttackTactic {
-	return []AttackTactic{Collection, CommandAndControl, CredentialAccess, DefenseEvasion, Discovery, Execution, Exfiltration, InitialAccess, LateralMovement, Persistence, PrivilegeEscalation}
+	return []AttackTactic{Collection, CommandAndControl, CredentialAccess, DefenseEvasion, Discovery, Execution, Exfiltration, Impact, InitialAccess, LateralMovement, Persistence, PrivilegeEscalation}
 }
 
 // CaseSeverity enumerates the values for case severity.
@@ -496,30 +498,34 @@ func PossibleKillChainIntentValues() []KillChainIntent {
 type Kind string
 
 const (
-	// KindAlertRule ...
-	KindAlertRule Kind = "AlertRule"
-	// KindScheduled ...
-	KindScheduled Kind = "Scheduled"
+	// KindAggregations ...
+	KindAggregations Kind = "Aggregations"
+	// KindCasesAggregation ...
+	KindCasesAggregation Kind = "CasesAggregation"
 )
 
 // PossibleKindValues returns an array of possible values for the Kind const type.
 func PossibleKindValues() []Kind {
-	return []Kind{KindAlertRule, KindScheduled}
+	return []Kind{KindAggregations, KindCasesAggregation}
 }
 
-// KindBasicAggregations enumerates the values for kind basic aggregations.
-type KindBasicAggregations string
+// KindBasicAlertRule enumerates the values for kind basic alert rule.
+type KindBasicAlertRule string
 
 const (
-	// KindAggregations ...
-	KindAggregations KindBasicAggregations = "Aggregations"
-	// KindCasesAggregation ...
-	KindCasesAggregation KindBasicAggregations = "CasesAggregation"
+	// KindAlertRule ...
+	KindAlertRule KindBasicAlertRule = "AlertRule"
+	// KindFusion ...
+	KindFusion KindBasicAlertRule = "Fusion"
+	// KindMicrosoftSecurityIncidentCreation ...
+	KindMicrosoftSecurityIncidentCreation KindBasicAlertRule = "MicrosoftSecurityIncidentCreation"
+	// KindScheduled ...
+	KindScheduled KindBasicAlertRule = "Scheduled"
 )
 
-// PossibleKindBasicAggregationsValues returns an array of possible values for the KindBasicAggregations const type.
-func PossibleKindBasicAggregationsValues() []KindBasicAggregations {
-	return []KindBasicAggregations{KindAggregations, KindCasesAggregation}
+// PossibleKindBasicAlertRuleValues returns an array of possible values for the KindBasicAlertRule const type.
+func PossibleKindBasicAlertRuleValues() []KindBasicAlertRule {
+	return []KindBasicAlertRule{KindAlertRule, KindFusion, KindMicrosoftSecurityIncidentCreation, KindScheduled}
 }
 
 // KindBasicAlertRuleTemplate enumerates the values for kind basic alert rule template.
@@ -528,17 +534,17 @@ type KindBasicAlertRuleTemplate string
 const (
 	// KindBasicAlertRuleTemplateKindAlertRuleTemplate ...
 	KindBasicAlertRuleTemplateKindAlertRuleTemplate KindBasicAlertRuleTemplate = "AlertRuleTemplate"
-	// KindBasicAlertRuleTemplateKindFilter ...
-	KindBasicAlertRuleTemplateKindFilter KindBasicAlertRuleTemplate = "Filter"
 	// KindBasicAlertRuleTemplateKindFusion ...
 	KindBasicAlertRuleTemplateKindFusion KindBasicAlertRuleTemplate = "Fusion"
+	// KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation ...
+	KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation KindBasicAlertRuleTemplate = "MicrosoftSecurityIncidentCreation"
 	// KindBasicAlertRuleTemplateKindScheduled ...
 	KindBasicAlertRuleTemplateKindScheduled KindBasicAlertRuleTemplate = "Scheduled"
 )
 
 // PossibleKindBasicAlertRuleTemplateValues returns an array of possible values for the KindBasicAlertRuleTemplate const type.
 func PossibleKindBasicAlertRuleTemplateValues() []KindBasicAlertRuleTemplate {
-	return []KindBasicAlertRuleTemplate{KindBasicAlertRuleTemplateKindAlertRuleTemplate, KindBasicAlertRuleTemplateKindFilter, KindBasicAlertRuleTemplateKindFusion, KindBasicAlertRuleTemplateKindScheduled}
+	return []KindBasicAlertRuleTemplate{KindBasicAlertRuleTemplateKindAlertRuleTemplate, KindBasicAlertRuleTemplateKindFusion, KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation, KindBasicAlertRuleTemplateKindScheduled}
 }
 
 // KindBasicDataConnector enumerates the values for kind basic data connector.
@@ -643,6 +649,25 @@ const (
 // PossibleLicenseStatusValues returns an array of possible values for the LicenseStatus const type.
 func PossibleLicenseStatusValues() []LicenseStatus {
 	return []LicenseStatus{LicenseStatusDisabled, LicenseStatusEnabled}
+}
+
+// MicrosoftSecurityProductName enumerates the values for microsoft security product name.
+type MicrosoftSecurityProductName string
+
+const (
+	// AzureActiveDirectoryIdentityProtection ...
+	AzureActiveDirectoryIdentityProtection MicrosoftSecurityProductName = "Azure Active Directory Identity Protection"
+	// AzureAdvancedThreatProtection ...
+	AzureAdvancedThreatProtection MicrosoftSecurityProductName = "Azure Advanced Threat Protection"
+	// AzureSecurityCenter ...
+	AzureSecurityCenter MicrosoftSecurityProductName = "Azure Security Center"
+	// MicrosoftCloudAppSecurity ...
+	MicrosoftCloudAppSecurity MicrosoftSecurityProductName = "Microsoft Cloud App Security"
+)
+
+// PossibleMicrosoftSecurityProductNameValues returns an array of possible values for the MicrosoftSecurityProductName const type.
+func PossibleMicrosoftSecurityProductNameValues() []MicrosoftSecurityProductName {
+	return []MicrosoftSecurityProductName{AzureActiveDirectoryIdentityProtection, AzureAdvancedThreatProtection, AzureSecurityCenter, MicrosoftCloudAppSecurity}
 }
 
 // OSFamily enumerates the values for os family.
@@ -792,15 +817,9 @@ func PossibleTriggerOperatorValues() []TriggerOperator {
 type AADDataConnector struct {
 	// AADDataConnectorProperties - AAD (Azure Active Directory) data connector properties.
 	*AADDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -820,13 +839,18 @@ func (adc AADDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+// AsAADDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
+	return &adc, true
+}
+
+// AsAATPDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
-// AsTIDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
+// AsASCDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
 	return nil, false
 }
 
@@ -835,28 +859,23 @@ func (adc AADDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataCo
 	return nil, false
 }
 
-// AsAADDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return &adc, true
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
 // AsMCASDataConnector is the BasicDataConnector implementation for AADDataConnector.
 func (adc AADDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
-// AsAATPDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
+// AsMDATPDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
 	return nil, false
 }
 
-// AsMDATPDataConnector is the BasicDataConnector implementation for AADDataConnector.
-func (adc AADDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+// AsOfficeDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for AADDataConnector.
+func (adc AADDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -887,33 +906,6 @@ func (adc *AADDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				adc.AADDataConnectorProperties = &aADDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				adc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				adc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				adc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -951,15 +943,9 @@ type AADDataConnectorProperties struct {
 type AATPDataConnector struct {
 	// AATPDataConnectorProperties - AATP (Azure Advanced Threat Protection) data connector properties.
 	*AATPDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -979,33 +965,8 @@ func (adc AATPDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for AATPDataConnector.
-func (adc AATPDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for AATPDataConnector.
-func (adc AATPDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for AATPDataConnector.
-func (adc AATPDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for AATPDataConnector.
 func (adc AATPDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for AATPDataConnector.
-func (adc AATPDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for AATPDataConnector.
-func (adc AATPDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -1014,8 +975,33 @@ func (adc AATPDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return &adc, true
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for AATPDataConnector.
+func (adc AATPDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for AATPDataConnector.
+func (adc AATPDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for AATPDataConnector.
+func (adc AATPDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for AATPDataConnector.
 func (adc AATPDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for AATPDataConnector.
+func (adc AATPDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for AATPDataConnector.
+func (adc AATPDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -1046,33 +1032,6 @@ func (adc *AATPDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				adc.AATPDataConnectorProperties = &aATPDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				adc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				adc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				adc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -1112,11 +1071,11 @@ type AccountEntity struct {
 	*AccountEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -1138,36 +1097,6 @@ func (ae AccountEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return &ae, true
 }
 
-// AsHostEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for AccountEntity.
 func (ae AccountEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -1178,18 +1107,38 @@ func (ae AccountEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, boo
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for AccountEntity.
-func (ae AccountEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for AccountEntity.
 func (ae AccountEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for AccountEntity.
 func (ae AccountEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -1200,6 +1149,16 @@ func (ae AccountEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for AccountEntity.
 func (ae AccountEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for AccountEntity.
+func (ae AccountEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -1245,15 +1204,6 @@ func (ae *AccountEntity) UnmarshalJSON(body []byte) error {
 				}
 				ae.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				ae.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -1262,6 +1212,15 @@ func (ae *AccountEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				ae.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				ae.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -1280,32 +1239,32 @@ func (ae *AccountEntity) UnmarshalJSON(body []byte) error {
 
 // AccountEntityProperties account entity property bag.
 type AccountEntityProperties struct {
-	// AccountName - READ-ONLY; The name of the account. This field should hold only the name without any domain added to it, i.e. administrator.
-	AccountName *string `json:"accountName,omitempty"`
-	// NtDomain - READ-ONLY; The NetBIOS domain name as it appears in the alert format – domain\username. Examples: NT AUTHORITY.
-	NtDomain *string `json:"ntDomain,omitempty"`
-	// UpnSuffix - READ-ONLY; The user principal name suffix for the account, in some cases it is also the domain name. Examples: contoso.com.
-	UpnSuffix *string `json:"upnSuffix,omitempty"`
-	// Sid - READ-ONLY; The account security identifier, e.g. S-1-5-18.
-	Sid *string `json:"sid,omitempty"`
 	// AadTenantID - READ-ONLY; The Azure Active Directory tenant id.
 	AadTenantID *string `json:"aadTenantId,omitempty"`
 	// AadUserID - READ-ONLY; The Azure Active Directory user id.
 	AadUserID *string `json:"aadUserId,omitempty"`
-	// Puid - READ-ONLY; The Azure Active Directory Passport User ID.
-	Puid *string `json:"puid,omitempty"`
-	// IsDomainJoined - READ-ONLY; Determines whether this is a domain account.
-	IsDomainJoined *bool `json:"isDomainJoined,omitempty"`
+	// AccountName - READ-ONLY; The name of the account. This field should hold only the name without any domain added to it, i.e. administrator.
+	AccountName *string `json:"accountName,omitempty"`
 	// DisplayName - READ-ONLY; The display name of the account.
 	DisplayName *string `json:"displayName,omitempty"`
-	// ObjectGUID - READ-ONLY; The objectGUID attribute is a single-value attribute that is the unique identifier for the object, assigned by active directory.
-	ObjectGUID *uuid.UUID `json:"objectGuid,omitempty"`
 	// HostEntityID - READ-ONLY; The Host entity id that contains the account in case it is a local account (not domain joined)
 	HostEntityID *string `json:"hostEntityId,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// IsDomainJoined - READ-ONLY; Determines whether this is a domain account.
+	IsDomainJoined *bool `json:"isDomainJoined,omitempty"`
+	// NtDomain - READ-ONLY; The NetBIOS domain name as it appears in the alert format – domain\username. Examples: NT AUTHORITY.
+	NtDomain *string `json:"ntDomain,omitempty"`
+	// ObjectGUID - READ-ONLY; The objectGUID attribute is a single-value attribute that is the unique identifier for the object, assigned by active directory.
+	ObjectGUID *uuid.UUID `json:"objectGuid,omitempty"`
+	// Puid - READ-ONLY; The Azure Active Directory Passport User ID.
+	Puid *string `json:"puid,omitempty"`
+	// Sid - READ-ONLY; The account security identifier, e.g. S-1-5-18.
+	Sid *string `json:"sid,omitempty"`
+	// UpnSuffix - READ-ONLY; The user principal name suffix for the account, in some cases it is also the domain name. Examples: contoso.com.
+	UpnSuffix *string `json:"upnSuffix,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for AccountEntityProperties.
@@ -1317,26 +1276,26 @@ func (aep AccountEntityProperties) MarshalJSON() ([]byte, error) {
 // Action action for alert rule.
 type Action struct {
 	autorest.Response `json:"-"`
-	// Etag - Etag of the action.
-	Etag *string `json:"etag,omitempty"`
 	// ActionProperties - Action properties
 	*ActionProperties `json:"properties,omitempty"`
+	// Etag - Etag of the azure resource
+	Etag *string `json:"etag,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for Action.
 func (a Action) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if a.Etag != nil {
-		objectMap["etag"] = a.Etag
-	}
 	if a.ActionProperties != nil {
 		objectMap["properties"] = a.ActionProperties
+	}
+	if a.Etag != nil {
+		objectMap["etag"] = a.Etag
 	}
 	return json.Marshal(objectMap)
 }
@@ -1350,15 +1309,6 @@ func (a *Action) UnmarshalJSON(body []byte) error {
 	}
 	for k, v := range m {
 		switch k {
-		case "etag":
-			if v != nil {
-				var etag string
-				err = json.Unmarshal(*v, &etag)
-				if err != nil {
-					return err
-				}
-				a.Etag = &etag
-			}
 		case "properties":
 			if v != nil {
 				var actionProperties ActionProperties
@@ -1367,6 +1317,15 @@ func (a *Action) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				a.ActionProperties = &actionProperties
+			}
+		case "etag":
+			if v != nil {
+				var etag string
+				err = json.Unmarshal(*v, &etag)
+				if err != nil {
+					return err
+				}
+				a.Etag = &etag
 			}
 		case "id":
 			if v != nil {
@@ -1377,15 +1336,6 @@ func (a *Action) UnmarshalJSON(body []byte) error {
 				}
 				a.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				a.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -1394,6 +1344,15 @@ func (a *Action) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				a.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				a.Type = &typeVar
 			}
 		}
 	}
@@ -1564,12 +1523,12 @@ type Aggregations struct {
 	autorest.Response `json:"-"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 	// Kind - Possible values include: 'KindAggregations', 'KindCasesAggregation'
-	Kind KindBasicAggregations `json:"kind,omitempty"`
+	Kind Kind `json:"kind,omitempty"`
 }
 
 func unmarshalBasicAggregations(body []byte) (BasicAggregations, error) {
@@ -1659,6 +1618,8 @@ func (am *AggregationsModel) UnmarshalJSON(body []byte) error {
 
 // BasicAlertRule alert rule.
 type BasicAlertRule interface {
+	AsFusionAlertRule() (*FusionAlertRule, bool)
+	AsMicrosoftSecurityIncidentCreationAlertRule() (*MicrosoftSecurityIncidentCreationAlertRule, bool)
 	AsScheduledAlertRule() (*ScheduledAlertRule, bool)
 	AsAlertRule() (*AlertRule, bool)
 }
@@ -1666,16 +1627,10 @@ type BasicAlertRule interface {
 // AlertRule alert rule.
 type AlertRule struct {
 	autorest.Response `json:"-"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindAlertRule', 'KindScheduled'
-	Kind Kind `json:"kind,omitempty"`
+	// Kind - Possible values include: 'KindAlertRule', 'KindFusion', 'KindMicrosoftSecurityIncidentCreation', 'KindScheduled'
+	Kind KindBasicAlertRule `json:"kind,omitempty"`
 }
 
 func unmarshalBasicAlertRule(body []byte) (BasicAlertRule, error) {
@@ -1686,6 +1641,14 @@ func unmarshalBasicAlertRule(body []byte) (BasicAlertRule, error) {
 	}
 
 	switch m["kind"] {
+	case string(KindFusion):
+		var far FusionAlertRule
+		err := json.Unmarshal(body, &far)
+		return far, err
+	case string(KindMicrosoftSecurityIncidentCreation):
+		var msicar MicrosoftSecurityIncidentCreationAlertRule
+		err := json.Unmarshal(body, &msicar)
+		return msicar, err
 	case string(KindScheduled):
 		var sar ScheduledAlertRule
 		err := json.Unmarshal(body, &sar)
@@ -1728,6 +1691,16 @@ func (ar AlertRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
+// AsFusionAlertRule is the BasicAlertRule implementation for AlertRule.
+func (ar AlertRule) AsFusionAlertRule() (*FusionAlertRule, bool) {
+	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRule is the BasicAlertRule implementation for AlertRule.
+func (ar AlertRule) AsMicrosoftSecurityIncidentCreationAlertRule() (*MicrosoftSecurityIncidentCreationAlertRule, bool) {
+	return nil, false
+}
+
 // AsScheduledAlertRule is the BasicAlertRule implementation for AlertRule.
 func (ar AlertRule) AsScheduledAlertRule() (*ScheduledAlertRule, bool) {
 	return nil, false
@@ -1745,7 +1718,7 @@ func (ar AlertRule) AsBasicAlertRule() (BasicAlertRule, bool) {
 
 // AlertRuleKind1 describes an Azure resource with kind.
 type AlertRuleKind1 struct {
-	// Kind - The kind of the alert rule. Possible values include: 'Scheduled', 'Filter', 'Fusion'
+	// Kind - The kind of the alert rule. Possible values include: 'Scheduled', 'MicrosoftSecurityIncidentCreation', 'Fusion'
 	Kind AlertRuleKind `json:"kind,omitempty"`
 }
 
@@ -1946,9 +1919,9 @@ func NewAlertRulesListPage(getNextPage func(context.Context, AlertRulesList) (Al
 
 // BasicAlertRuleTemplate alert rule template.
 type BasicAlertRuleTemplate interface {
-	AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool)
-	AsFilterAlertRuleTemplate() (*FilterAlertRuleTemplate, bool)
 	AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool)
+	AsMicrosoftSecurityIncidentCreationAlertRuleTemplate() (*MicrosoftSecurityIncidentCreationAlertRuleTemplate, bool)
+	AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool)
 	AsAlertRuleTemplate() (*AlertRuleTemplate, bool)
 }
 
@@ -1957,13 +1930,11 @@ type AlertRuleTemplate struct {
 	autorest.Response `json:"-"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
-	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindScheduled', 'KindBasicAlertRuleTemplateKindFilter', 'KindBasicAlertRuleTemplateKindFusion'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindFusion', 'KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation', 'KindBasicAlertRuleTemplateKindScheduled'
 	Kind KindBasicAlertRuleTemplate `json:"kind,omitempty"`
 }
 
@@ -1975,18 +1946,18 @@ func unmarshalBasicAlertRuleTemplate(body []byte) (BasicAlertRuleTemplate, error
 	}
 
 	switch m["kind"] {
-	case string(KindBasicAlertRuleTemplateKindScheduled):
-		var sart ScheduledAlertRuleTemplate
-		err := json.Unmarshal(body, &sart)
-		return sart, err
-	case string(KindBasicAlertRuleTemplateKindFilter):
-		var fart FilterAlertRuleTemplate
-		err := json.Unmarshal(body, &fart)
-		return fart, err
 	case string(KindBasicAlertRuleTemplateKindFusion):
 		var fart FusionAlertRuleTemplate
 		err := json.Unmarshal(body, &fart)
 		return fart, err
+	case string(KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation):
+		var msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate
+		err := json.Unmarshal(body, &msicart)
+		return msicart, err
+	case string(KindBasicAlertRuleTemplateKindScheduled):
+		var sart ScheduledAlertRuleTemplate
+		err := json.Unmarshal(body, &sart)
+		return sart, err
 	default:
 		var art AlertRuleTemplate
 		err := json.Unmarshal(body, &art)
@@ -2016,27 +1987,24 @@ func unmarshalBasicAlertRuleTemplateArray(body []byte) ([]BasicAlertRuleTemplate
 func (art AlertRuleTemplate) MarshalJSON() ([]byte, error) {
 	art.Kind = KindBasicAlertRuleTemplateKindAlertRuleTemplate
 	objectMap := make(map[string]interface{})
-	if art.Etag != nil {
-		objectMap["etag"] = art.Etag
-	}
 	if art.Kind != "" {
 		objectMap["kind"] = art.Kind
 	}
 	return json.Marshal(objectMap)
 }
 
-// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for AlertRuleTemplate.
-func (art AlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
-	return nil, false
-}
-
-// AsFilterAlertRuleTemplate is the BasicAlertRuleTemplate implementation for AlertRuleTemplate.
-func (art AlertRuleTemplate) AsFilterAlertRuleTemplate() (*FilterAlertRuleTemplate, bool) {
-	return nil, false
-}
-
 // AsFusionAlertRuleTemplate is the BasicAlertRuleTemplate implementation for AlertRuleTemplate.
 func (art AlertRuleTemplate) AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRuleTemplate is the BasicAlertRuleTemplate implementation for AlertRuleTemplate.
+func (art AlertRuleTemplate) AsMicrosoftSecurityIncidentCreationAlertRuleTemplate() (*MicrosoftSecurityIncidentCreationAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for AlertRuleTemplate.
+func (art AlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
 	return nil, false
 }
 
@@ -2065,6 +2033,24 @@ func (artm *AlertRuleTemplateModel) UnmarshalJSON(body []byte) error {
 	artm.Value = art
 
 	return nil
+}
+
+// AlertRuleTemplatePropertiesBase base alert rule template property bag.
+type AlertRuleTemplatePropertiesBase struct {
+	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
+	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
+	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
+	CreatedDateUTC *date.Time `json:"createdDateUTC,omitempty"`
+	// Description - The description of the alert rule template.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alert rule template.
+	DisplayName *string `json:"displayName,omitempty"`
+	// RequiredDataConnectors - The required data connectors for this template
+	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
+	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
+	Status TemplateStatus `json:"status,omitempty"`
+	// Tactics - The tactics of the alert rule template
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
 }
 
 // AlertRuleTemplatesList list all the alert rule templates.
@@ -2261,15 +2247,9 @@ type AlertsDataTypeOfDataConnectorAlerts struct {
 type ASCDataConnector struct {
 	// ASCDataConnectorProperties - ASC (Azure Security Center) data connector properties.
 	*ASCDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -2289,33 +2269,8 @@ func (adc ASCDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for ASCDataConnector.
-func (adc ASCDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for ASCDataConnector.
-func (adc ASCDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for ASCDataConnector.
-func (adc ASCDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for ASCDataConnector.
 func (adc ASCDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for ASCDataConnector.
-func (adc ASCDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return &adc, true
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for ASCDataConnector.
-func (adc ASCDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -2324,8 +2279,33 @@ func (adc ASCDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for ASCDataConnector.
+func (adc ASCDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return &adc, true
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for ASCDataConnector.
+func (adc ASCDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for ASCDataConnector.
+func (adc ASCDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for ASCDataConnector.
 func (adc ASCDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for ASCDataConnector.
+func (adc ASCDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for ASCDataConnector.
+func (adc ASCDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -2356,33 +2336,6 @@ func (adc *ASCDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				adc.ASCDataConnectorProperties = &aSCDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				adc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				adc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				adc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -2420,15 +2373,9 @@ type ASCDataConnectorProperties struct {
 type AwsCloudTrailDataConnector struct {
 	// AwsCloudTrailDataConnectorProperties - Amazon Web Services CloudTrail data connector properties.
 	*AwsCloudTrailDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -2448,33 +2395,8 @@ func (actdc AwsCloudTrailDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
-func (actdc AwsCloudTrailDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
-func (actdc AwsCloudTrailDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
-func (actdc AwsCloudTrailDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return &actdc, true
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
 func (actdc AwsCloudTrailDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
-func (actdc AwsCloudTrailDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
-func (actdc AwsCloudTrailDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -2483,8 +2405,33 @@ func (actdc AwsCloudTrailDataConnector) AsAATPDataConnector() (*AATPDataConnecto
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
+func (actdc AwsCloudTrailDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
+func (actdc AwsCloudTrailDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return &actdc, true
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
+func (actdc AwsCloudTrailDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
 func (actdc AwsCloudTrailDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
+func (actdc AwsCloudTrailDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for AwsCloudTrailDataConnector.
+func (actdc AwsCloudTrailDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -2515,33 +2462,6 @@ func (actdc *AwsCloudTrailDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				actdc.AwsCloudTrailDataConnectorProperties = &awsCloudTrailDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				actdc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				actdc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				actdc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -2594,11 +2514,11 @@ type AzureResourceEntity struct {
 	*AzureResourceEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -2620,36 +2540,6 @@ func (are AzureResourceEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for AzureResourceEntity.
 func (are AzureResourceEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return &are, true
@@ -2660,18 +2550,38 @@ func (are AzureResourceEntity) AsCloudApplicationEntity() (*CloudApplicationEnti
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for AzureResourceEntity.
-func (are AzureResourceEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for AzureResourceEntity.
 func (are AzureResourceEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for AzureResourceEntity.
 func (are AzureResourceEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -2682,6 +2592,16 @@ func (are AzureResourceEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) 
 
 // AsRegistryValueEntity is the BasicEntity implementation for AzureResourceEntity.
 func (are AzureResourceEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for AzureResourceEntity.
+func (are AzureResourceEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -2727,15 +2647,6 @@ func (are *AzureResourceEntity) UnmarshalJSON(body []byte) error {
 				}
 				are.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				are.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -2744,6 +2655,15 @@ func (are *AzureResourceEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				are.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				are.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -2764,10 +2684,10 @@ func (are *AzureResourceEntity) UnmarshalJSON(body []byte) error {
 type AzureResourceEntityProperties struct {
 	// ResourceID - READ-ONLY; The azure resource id of the resource
 	ResourceID *string `json:"resourceId,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for AzureResourceEntityProperties.
@@ -2776,47 +2696,29 @@ func (arep AzureResourceEntityProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// BaseAlertRuleTemplateProperties base alert rule template property bag.
-type BaseAlertRuleTemplateProperties struct {
-	// DisplayName - The display name for alert rule template.
-	DisplayName *string `json:"displayName,omitempty"`
-	// Description - The description of the alert rule template.
-	Description *string `json:"description,omitempty"`
-	// Tactics - The tactics of the alert rule template
-	Tactics *[]AttackTactic `json:"tactics,omitempty"`
-	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
-	CreatedDateUTC *string `json:"createdDateUTC,omitempty"`
-	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
-	Status TemplateStatus `json:"status,omitempty"`
-	// RequiredDataConnectors - The required data connectors for this template
-	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
-	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
-	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
-}
-
 // Bookmark represents a bookmark in Azure Security Insights.
 type Bookmark struct {
 	autorest.Response `json:"-"`
-	// Etag - Etag of the bookmark.
-	Etag *string `json:"etag,omitempty"`
 	// BookmarkProperties - Bookmark properties
 	*BookmarkProperties `json:"properties,omitempty"`
+	// Etag - Etag of the azure resource
+	Etag *string `json:"etag,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for Bookmark.
 func (b Bookmark) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if b.Etag != nil {
-		objectMap["etag"] = b.Etag
-	}
 	if b.BookmarkProperties != nil {
 		objectMap["properties"] = b.BookmarkProperties
+	}
+	if b.Etag != nil {
+		objectMap["etag"] = b.Etag
 	}
 	return json.Marshal(objectMap)
 }
@@ -2830,15 +2732,6 @@ func (b *Bookmark) UnmarshalJSON(body []byte) error {
 	}
 	for k, v := range m {
 		switch k {
-		case "etag":
-			if v != nil {
-				var etag string
-				err = json.Unmarshal(*v, &etag)
-				if err != nil {
-					return err
-				}
-				b.Etag = &etag
-			}
 		case "properties":
 			if v != nil {
 				var bookmarkProperties BookmarkProperties
@@ -2847,6 +2740,15 @@ func (b *Bookmark) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				b.BookmarkProperties = &bookmarkProperties
+			}
+		case "etag":
+			if v != nil {
+				var etag string
+				err = json.Unmarshal(*v, &etag)
+				if err != nil {
+					return err
+				}
+				b.Etag = &etag
 			}
 		case "id":
 			if v != nil {
@@ -2857,15 +2759,6 @@ func (b *Bookmark) UnmarshalJSON(body []byte) error {
 				}
 				b.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				b.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -2874,6 +2767,15 @@ func (b *Bookmark) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				b.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				b.Type = &typeVar
 			}
 		}
 	}
@@ -3029,49 +2931,49 @@ func NewBookmarkListPage(getNextPage func(context.Context, BookmarkList) (Bookma
 
 // BookmarkProperties describes bookmark properties
 type BookmarkProperties struct {
-	// DisplayName - The display name of the bookmark
-	DisplayName *string `json:"displayName,omitempty"`
-	// Updated - The last time the bookmark was updated
-	Updated *date.Time `json:"updated,omitempty"`
 	// Created - The time the bookmark was created
 	Created *date.Time `json:"created,omitempty"`
 	// CreatedBy - Describes a user that created the bookmark
 	CreatedBy *UserInfo `json:"createdBy,omitempty"`
-	// UpdatedBy - Describes a user that updated the bookmark
-	UpdatedBy *UserInfo `json:"updatedBy,omitempty"`
-	// Notes - The notes of the bookmark
-	Notes *string `json:"notes,omitempty"`
+	// DisplayName - The display name of the bookmark
+	DisplayName *string `json:"displayName,omitempty"`
 	// Labels - List of labels relevant to this bookmark
 	Labels *[]string `json:"labels,omitempty"`
+	// Notes - The notes of the bookmark
+	Notes *string `json:"notes,omitempty"`
 	// Query - The query of the bookmark.
 	Query *string `json:"query,omitempty"`
 	// QueryResult - The query result of the bookmark.
 	QueryResult *string `json:"queryResult,omitempty"`
+	// Updated - The last time the bookmark was updated
+	Updated *date.Time `json:"updated,omitempty"`
+	// UpdatedBy - Describes a user that updated the bookmark
+	UpdatedBy *UserInfo `json:"updatedBy,omitempty"`
 }
 
 // Case represents a case in Azure Security Insights.
 type Case struct {
 	autorest.Response `json:"-"`
-	// Etag - Etag of the alert rule.
-	Etag *string `json:"etag,omitempty"`
 	// CaseProperties - Case properties
 	*CaseProperties `json:"properties,omitempty"`
+	// Etag - Etag of the azure resource
+	Etag *string `json:"etag,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for Case.
 func (c Case) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if c.Etag != nil {
-		objectMap["etag"] = c.Etag
-	}
 	if c.CaseProperties != nil {
 		objectMap["properties"] = c.CaseProperties
+	}
+	if c.Etag != nil {
+		objectMap["etag"] = c.Etag
 	}
 	return json.Marshal(objectMap)
 }
@@ -3085,15 +2987,6 @@ func (c *Case) UnmarshalJSON(body []byte) error {
 	}
 	for k, v := range m {
 		switch k {
-		case "etag":
-			if v != nil {
-				var etag string
-				err = json.Unmarshal(*v, &etag)
-				if err != nil {
-					return err
-				}
-				c.Etag = &etag
-			}
 		case "properties":
 			if v != nil {
 				var caseProperties CaseProperties
@@ -3102,6 +2995,15 @@ func (c *Case) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				c.CaseProperties = &caseProperties
+			}
+		case "etag":
+			if v != nil {
+				var etag string
+				err = json.Unmarshal(*v, &etag)
+				if err != nil {
+					return err
+				}
+				c.Etag = &etag
 			}
 		case "id":
 			if v != nil {
@@ -3112,15 +3014,6 @@ func (c *Case) UnmarshalJSON(body []byte) error {
 				}
 				c.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				c.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -3129,6 +3022,15 @@ func (c *Case) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				c.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				c.Type = &typeVar
 			}
 		}
 	}
@@ -3143,10 +3045,10 @@ type CaseComment struct {
 	*CaseCommentProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for CaseComment.
@@ -3185,15 +3087,6 @@ func (cc *CaseComment) UnmarshalJSON(body []byte) error {
 				}
 				cc.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				cc.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -3202,6 +3095,15 @@ func (cc *CaseComment) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				cc.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				cc.Type = &typeVar
 			}
 		}
 	}
@@ -3357,10 +3259,10 @@ func NewCaseCommentListPage(getNextPage func(context.Context, CaseCommentList) (
 
 // CaseCommentProperties case comment property bag.
 type CaseCommentProperties struct {
-	// Message - The comment message
-	Message *string `json:"message,omitempty"`
 	// CreatedTimeUtc - READ-ONLY; The time the comment was created
 	CreatedTimeUtc *date.Time `json:"createdTimeUtc,omitempty"`
+	// Message - The comment message
+	Message *string `json:"message,omitempty"`
 	// UserInfo - READ-ONLY; Describes the user that created the comment
 	UserInfo *UserInfo `json:"userInfo,omitempty"`
 }
@@ -3513,36 +3415,36 @@ func NewCaseListPage(getNextPage func(context.Context, CaseList) (CaseList, erro
 
 // CaseProperties describes case properties
 type CaseProperties struct {
-	// LastUpdatedTimeUtc - READ-ONLY; The last time the case was updated
-	LastUpdatedTimeUtc *date.Time `json:"lastUpdatedTimeUtc,omitempty"`
-	// CreatedTimeUtc - READ-ONLY; The time the case was created
-	CreatedTimeUtc *date.Time `json:"createdTimeUtc,omitempty"`
-	// EndTimeUtc - The end time of the case
-	EndTimeUtc *date.Time `json:"endTimeUtc,omitempty"`
-	// StartTimeUtc - The start time of the case
-	StartTimeUtc *date.Time `json:"startTimeUtc,omitempty"`
-	// Labels - List of labels relevant to this case
-	Labels *[]string `json:"labels,omitempty"`
-	// Description - The description of the case
-	Description *string `json:"description,omitempty"`
-	// Title - The title of the case
-	Title *string `json:"title,omitempty"`
-	// Owner - Describes a user that the case is assigned to
-	Owner *UserInfo `json:"owner,omitempty"`
-	// Severity - The severity of the case. Possible values include: 'CaseSeverityCritical', 'CaseSeverityHigh', 'CaseSeverityMedium', 'CaseSeverityLow', 'CaseSeverityInformational'
-	Severity CaseSeverity `json:"severity,omitempty"`
-	// Status - The status of the case. Possible values include: 'CaseStatusDraft', 'CaseStatusNew', 'CaseStatusInProgress', 'CaseStatusClosed'
-	Status CaseStatus `json:"status,omitempty"`
+	// CaseNumber - READ-ONLY; a sequential number
+	CaseNumber *int32 `json:"caseNumber,omitempty"`
 	// CloseReason - The reason the case was closed. Possible values include: 'Resolved', 'Dismissed', 'TruePositive', 'FalsePositive', 'Other'
 	CloseReason CloseReason `json:"closeReason,omitempty"`
 	// ClosedReasonText - the case close reason details
 	ClosedReasonText *string `json:"closedReasonText,omitempty"`
-	// RelatedAlertIds - READ-ONLY; List of related alert identifiers
-	RelatedAlertIds *[]string `json:"relatedAlertIds,omitempty"`
-	// CaseNumber - READ-ONLY; a sequential number
-	CaseNumber *int32 `json:"caseNumber,omitempty"`
+	// CreatedTimeUtc - READ-ONLY; The time the case was created
+	CreatedTimeUtc *date.Time `json:"createdTimeUtc,omitempty"`
+	// Description - The description of the case
+	Description *string `json:"description,omitempty"`
+	// EndTimeUtc - The end time of the case
+	EndTimeUtc *date.Time `json:"endTimeUtc,omitempty"`
+	// Labels - List of labels relevant to this case
+	Labels *[]string `json:"labels,omitempty"`
 	// LastComment - READ-ONLY; the last comment in the case
 	LastComment *string `json:"lastComment,omitempty"`
+	// LastUpdatedTimeUtc - READ-ONLY; The last time the case was updated
+	LastUpdatedTimeUtc *date.Time `json:"lastUpdatedTimeUtc,omitempty"`
+	// Owner - Describes a user that the case is assigned to
+	Owner *UserInfo `json:"owner,omitempty"`
+	// RelatedAlertIds - READ-ONLY; List of related alert identifiers
+	RelatedAlertIds *[]string `json:"relatedAlertIds,omitempty"`
+	// Severity - The severity of the case. Possible values include: 'CaseSeverityCritical', 'CaseSeverityHigh', 'CaseSeverityMedium', 'CaseSeverityLow', 'CaseSeverityInformational'
+	Severity CaseSeverity `json:"severity,omitempty"`
+	// StartTimeUtc - The start time of the case
+	StartTimeUtc *date.Time `json:"startTimeUtc,omitempty"`
+	// Status - The status of the case. Possible values include: 'CaseStatusDraft', 'CaseStatusNew', 'CaseStatusInProgress', 'CaseStatusClosed'
+	Status CaseStatus `json:"status,omitempty"`
+	// Title - The title of the case
+	Title *string `json:"title,omitempty"`
 	// TotalComments - READ-ONLY; the number of total comments in the case
 	TotalComments *int32 `json:"totalComments,omitempty"`
 }
@@ -3553,12 +3455,12 @@ type CasesAggregation struct {
 	*CasesAggregationProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 	// Kind - Possible values include: 'KindAggregations', 'KindCasesAggregation'
-	Kind KindBasicAggregations `json:"kind,omitempty"`
+	Kind Kind `json:"kind,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for CasesAggregation.
@@ -3616,15 +3518,6 @@ func (ca *CasesAggregation) UnmarshalJSON(body []byte) error {
 				}
 				ca.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				ca.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -3634,9 +3527,18 @@ func (ca *CasesAggregation) UnmarshalJSON(body []byte) error {
 				}
 				ca.Name = &name
 			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				ca.Type = &typeVar
+			}
 		case "kind":
 			if v != nil {
-				var kind KindBasicAggregations
+				var kind Kind
 				err = json.Unmarshal(*v, &kind)
 				if err != nil {
 					return err
@@ -3655,24 +3557,24 @@ type CasesAggregationBySeverityProperties struct {
 	TotalCriticalSeverity *int32 `json:"totalCriticalSeverity,omitempty"`
 	// TotalHighSeverity - READ-ONLY; Total amount of open cases with severity High
 	TotalHighSeverity *int32 `json:"totalHighSeverity,omitempty"`
-	// TotalMediumSeverity - READ-ONLY; Total amount of open cases with severity medium
-	TotalMediumSeverity *int32 `json:"totalMediumSeverity,omitempty"`
-	// TotalLowSeverity - READ-ONLY; Total amount of open cases with severity Low
-	TotalLowSeverity *int32 `json:"totalLowSeverity,omitempty"`
 	// TotalInformationalSeverity - READ-ONLY; Total amount of open cases with severity Informational
 	TotalInformationalSeverity *int32 `json:"totalInformationalSeverity,omitempty"`
+	// TotalLowSeverity - READ-ONLY; Total amount of open cases with severity Low
+	TotalLowSeverity *int32 `json:"totalLowSeverity,omitempty"`
+	// TotalMediumSeverity - READ-ONLY; Total amount of open cases with severity medium
+	TotalMediumSeverity *int32 `json:"totalMediumSeverity,omitempty"`
 }
 
 // CasesAggregationByStatusProperties aggregative results of cases by status property bag.
 type CasesAggregationByStatusProperties struct {
-	// TotalNewStatus - READ-ONLY; Total amount of open cases with status New
-	TotalNewStatus *int32 `json:"totalNewStatus,omitempty"`
-	// TotalInProgressStatus - READ-ONLY; Total amount of open cases with status InProgress
-	TotalInProgressStatus *int32 `json:"totalInProgressStatus,omitempty"`
-	// TotalResolvedStatus - READ-ONLY; Total amount of open cases with status Resolved
-	TotalResolvedStatus *int32 `json:"totalResolvedStatus,omitempty"`
 	// TotalDismissedStatus - READ-ONLY; Total amount of open cases with status Dismissed
 	TotalDismissedStatus *int32 `json:"totalDismissedStatus,omitempty"`
+	// TotalInProgressStatus - READ-ONLY; Total amount of open cases with status InProgress
+	TotalInProgressStatus *int32 `json:"totalInProgressStatus,omitempty"`
+	// TotalNewStatus - READ-ONLY; Total amount of open cases with status New
+	TotalNewStatus *int32 `json:"totalNewStatus,omitempty"`
+	// TotalResolvedStatus - READ-ONLY; Total amount of open cases with status Resolved
+	TotalResolvedStatus *int32 `json:"totalResolvedStatus,omitempty"`
 }
 
 // CasesAggregationProperties aggregative results of cases property bag.
@@ -3689,11 +3591,11 @@ type CloudApplicationEntity struct {
 	*CloudApplicationEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -3715,36 +3617,6 @@ func (cae CloudApplicationEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for CloudApplicationEntity.
 func (cae CloudApplicationEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -3755,18 +3627,38 @@ func (cae CloudApplicationEntity) AsCloudApplicationEntity() (*CloudApplicationE
 	return &cae, true
 }
 
-// AsProcessEntity is the BasicEntity implementation for CloudApplicationEntity.
-func (cae CloudApplicationEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for CloudApplicationEntity.
 func (cae CloudApplicationEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for CloudApplicationEntity.
 func (cae CloudApplicationEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -3777,6 +3669,16 @@ func (cae CloudApplicationEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, boo
 
 // AsRegistryValueEntity is the BasicEntity implementation for CloudApplicationEntity.
 func (cae CloudApplicationEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for CloudApplicationEntity.
+func (cae CloudApplicationEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -3822,15 +3724,6 @@ func (cae *CloudApplicationEntity) UnmarshalJSON(body []byte) error {
 				}
 				cae.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				cae.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -3839,6 +3732,15 @@ func (cae *CloudApplicationEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				cae.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				cae.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -3863,10 +3765,10 @@ type CloudApplicationEntityProperties struct {
 	AppName *string `json:"appName,omitempty"`
 	// InstanceName - READ-ONLY; The user defined instance name of the cloud application. It is often used to distinguish between several applications of the same type that a customer has.
 	InstanceName *string `json:"instanceName,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for CloudApplicationEntityProperties.
@@ -3924,29 +3826,23 @@ type CloudErrorBody struct {
 
 // BasicDataConnector data connector.
 type BasicDataConnector interface {
+	AsAADDataConnector() (*AADDataConnector, bool)
+	AsAATPDataConnector() (*AATPDataConnector, bool)
+	AsASCDataConnector() (*ASCDataConnector, bool)
+	AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool)
+	AsMCASDataConnector() (*MCASDataConnector, bool)
+	AsMDATPDataConnector() (*MDATPDataConnector, bool)
 	AsOfficeDataConnector() (*OfficeDataConnector, bool)
 	AsTIDataConnector() (*TIDataConnector, bool)
-	AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool)
-	AsAADDataConnector() (*AADDataConnector, bool)
-	AsASCDataConnector() (*ASCDataConnector, bool)
-	AsMCASDataConnector() (*MCASDataConnector, bool)
-	AsAATPDataConnector() (*AATPDataConnector, bool)
-	AsMDATPDataConnector() (*MDATPDataConnector, bool)
 	AsDataConnector() (*DataConnector, bool)
 }
 
 // DataConnector data connector.
 type DataConnector struct {
 	autorest.Response `json:"-"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -3958,6 +3854,30 @@ func unmarshalBasicDataConnector(body []byte) (BasicDataConnector, error) {
 	}
 
 	switch m["kind"] {
+	case string(KindAzureActiveDirectory):
+		var adc AADDataConnector
+		err := json.Unmarshal(body, &adc)
+		return adc, err
+	case string(KindAzureAdvancedThreatProtection):
+		var adc AATPDataConnector
+		err := json.Unmarshal(body, &adc)
+		return adc, err
+	case string(KindAzureSecurityCenter):
+		var adc ASCDataConnector
+		err := json.Unmarshal(body, &adc)
+		return adc, err
+	case string(KindAmazonWebServicesCloudTrail):
+		var actdc AwsCloudTrailDataConnector
+		err := json.Unmarshal(body, &actdc)
+		return actdc, err
+	case string(KindMicrosoftCloudAppSecurity):
+		var mdc MCASDataConnector
+		err := json.Unmarshal(body, &mdc)
+		return mdc, err
+	case string(KindMicrosoftDefenderAdvancedThreatProtection):
+		var mdc MDATPDataConnector
+		err := json.Unmarshal(body, &mdc)
+		return mdc, err
 	case string(KindOffice365):
 		var odc OfficeDataConnector
 		err := json.Unmarshal(body, &odc)
@@ -3966,30 +3886,6 @@ func unmarshalBasicDataConnector(body []byte) (BasicDataConnector, error) {
 		var tdc TIDataConnector
 		err := json.Unmarshal(body, &tdc)
 		return tdc, err
-	case string(KindAmazonWebServicesCloudTrail):
-		var actdc AwsCloudTrailDataConnector
-		err := json.Unmarshal(body, &actdc)
-		return actdc, err
-	case string(KindAzureActiveDirectory):
-		var adc AADDataConnector
-		err := json.Unmarshal(body, &adc)
-		return adc, err
-	case string(KindAzureSecurityCenter):
-		var adc ASCDataConnector
-		err := json.Unmarshal(body, &adc)
-		return adc, err
-	case string(KindMicrosoftCloudAppSecurity):
-		var mdc MCASDataConnector
-		err := json.Unmarshal(body, &mdc)
-		return mdc, err
-	case string(KindAzureAdvancedThreatProtection):
-		var adc AATPDataConnector
-		err := json.Unmarshal(body, &adc)
-		return adc, err
-	case string(KindMicrosoftDefenderAdvancedThreatProtection):
-		var mdc MDATPDataConnector
-		err := json.Unmarshal(body, &mdc)
-		return mdc, err
 	default:
 		var dc DataConnector
 		err := json.Unmarshal(body, &dc)
@@ -4028,33 +3924,8 @@ func (dc DataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for DataConnector.
-func (dc DataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for DataConnector.
-func (dc DataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for DataConnector.
-func (dc DataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for DataConnector.
 func (dc DataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for DataConnector.
-func (dc DataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for DataConnector.
-func (dc DataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -4063,8 +3934,33 @@ func (dc DataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for DataConnector.
+func (dc DataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for DataConnector.
+func (dc DataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for DataConnector.
+func (dc DataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for DataConnector.
 func (dc DataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for DataConnector.
+func (dc DataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for DataConnector.
+func (dc DataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -4323,11 +4219,11 @@ type DNSEntity struct {
 	*DNSEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -4349,36 +4245,6 @@ func (de DNSEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for DNSEntity.
 func (de DNSEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -4389,18 +4255,38 @@ func (de DNSEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) {
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for DNSEntity.
-func (de DNSEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for DNSEntity.
 func (de DNSEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return &de, true
 }
 
+// AsFileEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for DNSEntity.
 func (de DNSEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -4411,6 +4297,16 @@ func (de DNSEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for DNSEntity.
 func (de DNSEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for DNSEntity.
+func (de DNSEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -4456,15 +4352,6 @@ func (de *DNSEntity) UnmarshalJSON(body []byte) error {
 				}
 				de.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				de.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -4473,6 +4360,15 @@ func (de *DNSEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				de.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				de.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -4491,18 +4387,18 @@ func (de *DNSEntity) UnmarshalJSON(body []byte) error {
 
 // DNSEntityProperties dns entity property bag.
 type DNSEntityProperties struct {
-	// DomainName - READ-ONLY; The name of the dns record associated with the alert
-	DomainName *string `json:"domainName,omitempty"`
-	// IPAddressEntityIds - READ-ONLY; Ip entity identifiers for the resolved ip address.
-	IPAddressEntityIds *[]string `json:"ipAddressEntityIds,omitempty"`
 	// DNSServerIPEntityID - READ-ONLY; An ip entity id for the dns server resolving the request
 	DNSServerIPEntityID *string `json:"dnsServerIpEntityId,omitempty"`
+	// DomainName - READ-ONLY; The name of the dns record associated with the alert
+	DomainName *string `json:"domainName,omitempty"`
 	// HostIPAddressEntityID - READ-ONLY; An ip entity id for the dns request client
 	HostIPAddressEntityID *string `json:"hostIpAddressEntityId,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// IPAddressEntityIds - READ-ONLY; Ip entity identifiers for the resolved ip address.
+	IPAddressEntityIds *[]string `json:"ipAddressEntityIds,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for DNSEntityProperties.
@@ -4514,19 +4410,19 @@ func (dep DNSEntityProperties) MarshalJSON() ([]byte, error) {
 // BasicEntity specific entity.
 type BasicEntity interface {
 	AsAccountEntity() (*AccountEntity, bool)
-	AsHostEntity() (*HostEntity, bool)
-	AsFileEntity() (*FileEntity, bool)
-	AsSecurityAlert() (*SecurityAlert, bool)
-	AsFileHashEntity() (*FileHashEntity, bool)
-	AsMalwareEntity() (*MalwareEntity, bool)
-	AsSecurityGroupEntity() (*SecurityGroupEntity, bool)
 	AsAzureResourceEntity() (*AzureResourceEntity, bool)
 	AsCloudApplicationEntity() (*CloudApplicationEntity, bool)
-	AsProcessEntity() (*ProcessEntity, bool)
 	AsDNSEntity() (*DNSEntity, bool)
+	AsFileEntity() (*FileEntity, bool)
+	AsFileHashEntity() (*FileHashEntity, bool)
+	AsHostEntity() (*HostEntity, bool)
 	AsIPEntity() (*IPEntity, bool)
+	AsMalwareEntity() (*MalwareEntity, bool)
+	AsProcessEntity() (*ProcessEntity, bool)
 	AsRegistryKeyEntity() (*RegistryKeyEntity, bool)
 	AsRegistryValueEntity() (*RegistryValueEntity, bool)
+	AsSecurityAlert() (*SecurityAlert, bool)
+	AsSecurityGroupEntity() (*SecurityGroupEntity, bool)
 	AsURLEntity() (*URLEntity, bool)
 	AsEntity() (*Entity, bool)
 }
@@ -4536,11 +4432,11 @@ type Entity struct {
 	autorest.Response `json:"-"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -4556,30 +4452,6 @@ func unmarshalBasicEntity(body []byte) (BasicEntity, error) {
 		var ae AccountEntity
 		err := json.Unmarshal(body, &ae)
 		return ae, err
-	case string(KindHost):
-		var he HostEntity
-		err := json.Unmarshal(body, &he)
-		return he, err
-	case string(KindFile):
-		var fe FileEntity
-		err := json.Unmarshal(body, &fe)
-		return fe, err
-	case string(KindSecurityAlert):
-		var sa SecurityAlert
-		err := json.Unmarshal(body, &sa)
-		return sa, err
-	case string(KindFileHash):
-		var fhe FileHashEntity
-		err := json.Unmarshal(body, &fhe)
-		return fhe, err
-	case string(KindMalware):
-		var me MalwareEntity
-		err := json.Unmarshal(body, &me)
-		return me, err
-	case string(KindSecurityGroup):
-		var sge SecurityGroupEntity
-		err := json.Unmarshal(body, &sge)
-		return sge, err
 	case string(KindAzureResource):
 		var are AzureResourceEntity
 		err := json.Unmarshal(body, &are)
@@ -4588,18 +4460,34 @@ func unmarshalBasicEntity(body []byte) (BasicEntity, error) {
 		var cae CloudApplicationEntity
 		err := json.Unmarshal(body, &cae)
 		return cae, err
-	case string(KindProcess):
-		var peVar ProcessEntity
-		err := json.Unmarshal(body, &peVar)
-		return peVar, err
 	case string(KindDNSResolution):
 		var de DNSEntity
 		err := json.Unmarshal(body, &de)
 		return de, err
+	case string(KindFile):
+		var fe FileEntity
+		err := json.Unmarshal(body, &fe)
+		return fe, err
+	case string(KindFileHash):
+		var fhe FileHashEntity
+		err := json.Unmarshal(body, &fhe)
+		return fhe, err
+	case string(KindHost):
+		var he HostEntity
+		err := json.Unmarshal(body, &he)
+		return he, err
 	case string(KindIP):
 		var ie IPEntity
 		err := json.Unmarshal(body, &ie)
 		return ie, err
+	case string(KindMalware):
+		var me MalwareEntity
+		err := json.Unmarshal(body, &me)
+		return me, err
+	case string(KindProcess):
+		var peVar ProcessEntity
+		err := json.Unmarshal(body, &peVar)
+		return peVar, err
 	case string(KindRegistryKey):
 		var rke RegistryKeyEntity
 		err := json.Unmarshal(body, &rke)
@@ -4608,6 +4496,14 @@ func unmarshalBasicEntity(body []byte) (BasicEntity, error) {
 		var rve RegistryValueEntity
 		err := json.Unmarshal(body, &rve)
 		return rve, err
+	case string(KindSecurityAlert):
+		var sa SecurityAlert
+		err := json.Unmarshal(body, &sa)
+		return sa, err
+	case string(KindSecurityGroup):
+		var sge SecurityGroupEntity
+		err := json.Unmarshal(body, &sge)
+		return sge, err
 	case string(KindURL):
 		var ue URLEntity
 		err := json.Unmarshal(body, &ue)
@@ -4652,36 +4548,6 @@ func (e Entity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for Entity.
-func (e Entity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for Entity.
 func (e Entity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -4692,18 +4558,38 @@ func (e Entity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) {
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for Entity.
-func (e Entity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for Entity.
 func (e Entity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for Entity.
 func (e Entity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -4714,6 +4600,16 @@ func (e Entity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for Entity.
 func (e Entity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for Entity.
+func (e Entity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for Entity.
+func (e Entity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -4734,10 +4630,10 @@ func (e Entity) AsBasicEntity() (BasicEntity, bool) {
 
 // EntityCommonProperties entity common property bag.
 type EntityCommonProperties struct {
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for EntityCommonProperties.
@@ -4748,21 +4644,21 @@ func (ecp EntityCommonProperties) MarshalJSON() ([]byte, error) {
 
 // EntityExpandParameters the parameters required to execute an expand operation on the given entity.
 type EntityExpandParameters struct {
+	// EndTime - The end date filter, so the only expansion results returned are before this date.
+	EndTime *date.Time `json:"endTime,omitempty"`
 	// ExpansionID - The Id of the expansion to perform.
 	ExpansionID *uuid.UUID `json:"expansionId,omitempty"`
 	// StartTime - The start date filter, so the only expansion results returned are after this date.
 	StartTime *date.Time `json:"startTime,omitempty"`
-	// EndTime - The end date filter, so the only expansion results returned are before this date.
-	EndTime *date.Time `json:"endTime,omitempty"`
 }
 
 // EntityExpandResponse the entity expansion result operation response.
 type EntityExpandResponse struct {
 	autorest.Response `json:"-"`
-	// Value - The expansion result values.
-	Value *EntityExpandResponseValue `json:"value,omitempty"`
 	// MetaData - The metadata from the expansion operation results.
 	MetaData *ExpansionResultsMetadata `json:"metaData,omitempty"`
+	// Value - The expansion result values.
+	Value *EntityExpandResponseValue `json:"value,omitempty"`
 }
 
 // EntityExpandResponseValue the expansion result values.
@@ -5002,10 +4898,10 @@ type EntityQuery struct {
 	*EntityQueryProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for EntityQuery.
@@ -5044,15 +4940,6 @@ func (eq *EntityQuery) UnmarshalJSON(body []byte) error {
 				}
 				eq.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				eq.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -5061,6 +4948,15 @@ func (eq *EntityQuery) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				eq.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				eq.Type = &typeVar
 			}
 		}
 	}
@@ -5216,30 +5112,30 @@ func NewEntityQueryListPage(getNextPage func(context.Context, EntityQueryList) (
 
 // EntityQueryProperties describes entity query properties
 type EntityQueryProperties struct {
-	// QueryTemplate - The template query string to be parsed and formatted
-	QueryTemplate *string `json:"queryTemplate,omitempty"`
+	// DataSources - List of the data sources that are required to run the query
+	DataSources *[]string `json:"dataSources,omitempty"`
+	// DisplayName - The query display name
+	DisplayName *string `json:"displayName,omitempty"`
 	// InputEntityType - The type of the query's source entity. Possible values include: 'EntityTypeAccount', 'EntityTypeHost', 'EntityTypeFile', 'EntityTypeAzureResource', 'EntityTypeCloudApplication', 'EntityTypeDNS', 'EntityTypeFileHash', 'EntityTypeIP', 'EntityTypeMalware', 'EntityTypeProcess', 'EntityTypeRegistryKey', 'EntityTypeRegistryValue', 'EntityTypeSecurityGroup', 'EntityTypeURL', 'EntityTypeSecurityAlert', 'EntityTypeHuntingBookmark'
 	InputEntityType EntityType `json:"inputEntityType,omitempty"`
 	// InputFields - List of the fields of the source entity that are required to run the query
 	InputFields *[]string `json:"inputFields,omitempty"`
 	// OutputEntityTypes - List of the desired output types to be constructed from the result
 	OutputEntityTypes *[]EntityType `json:"outputEntityTypes,omitempty"`
-	// DataSources - List of the data sources that are required to run the query
-	DataSources *[]string `json:"dataSources,omitempty"`
-	// DisplayName - The query display name
-	DisplayName *string `json:"displayName,omitempty"`
+	// QueryTemplate - The template query string to be parsed and formatted
+	QueryTemplate *string `json:"queryTemplate,omitempty"`
 }
 
 // ExpansionResultAggregation information of a specific aggregation in the expansion result.
 type ExpansionResultAggregation struct {
-	// EntityKind - The kind of the aggregated entity. Possible values include: 'EntityKindAccount', 'EntityKindHost', 'EntityKindFile', 'EntityKindAzureResource', 'EntityKindCloudApplication', 'EntityKindDNSResolution', 'EntityKindFileHash', 'EntityKindIP', 'EntityKindMalware', 'EntityKindProcess', 'EntityKindRegistryKey', 'EntityKindRegistryValue', 'EntityKindSecurityGroup', 'EntityKindURL', 'EntityKindSecurityAlert', 'EntityKindBookmark'
-	EntityKind EntityKind `json:"entityKind,omitempty"`
-	// Count - Total number of aggregations of the given kind (and aggregationType if given) in the expansion result.
-	Count *int32 `json:"count,omitempty"`
 	// AggregationType - The common type of the aggregation. (for e.g. entity field name)
 	AggregationType *string `json:"aggregationType,omitempty"`
+	// Count - Total number of aggregations of the given kind (and aggregationType if given) in the expansion result.
+	Count *int32 `json:"count,omitempty"`
 	// DisplayName - The display name of the aggregation by type.
 	DisplayName *string `json:"displayName,omitempty"`
+	// EntityKind - The kind of the aggregated entity. Possible values include: 'EntityKindAccount', 'EntityKindHost', 'EntityKindFile', 'EntityKindAzureResource', 'EntityKindCloudApplication', 'EntityKindDNSResolution', 'EntityKindFileHash', 'EntityKindIP', 'EntityKindMalware', 'EntityKindProcess', 'EntityKindRegistryKey', 'EntityKindRegistryValue', 'EntityKindSecurityGroup', 'EntityKindURL', 'EntityKindSecurityAlert', 'EntityKindBookmark'
+	EntityKind EntityKind `json:"entityKind,omitempty"`
 }
 
 // ExpansionResultsMetadata expansion result metadata.
@@ -5254,11 +5150,11 @@ type FileEntity struct {
 	*FileEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -5280,36 +5176,6 @@ func (fe FileEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsFileEntity() (*FileEntity, bool) {
-	return &fe, true
-}
-
-// AsSecurityAlert is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for FileEntity.
 func (fe FileEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -5320,18 +5186,38 @@ func (fe FileEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) 
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for FileEntity.
-func (fe FileEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for FileEntity.
 func (fe FileEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsFileEntity() (*FileEntity, bool) {
+	return &fe, true
+}
+
+// AsFileHashEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for FileEntity.
 func (fe FileEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -5342,6 +5228,16 @@ func (fe FileEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for FileEntity.
 func (fe FileEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for FileEntity.
+func (fe FileEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -5387,15 +5283,6 @@ func (fe *FileEntity) UnmarshalJSON(body []byte) error {
 				}
 				fe.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				fe.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -5404,6 +5291,15 @@ func (fe *FileEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				fe.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				fe.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -5424,16 +5320,16 @@ func (fe *FileEntity) UnmarshalJSON(body []byte) error {
 type FileEntityProperties struct {
 	// Directory - READ-ONLY; The full path to the file.
 	Directory *string `json:"directory,omitempty"`
+	// FileHashEntityIds - READ-ONLY; The file hash entity identifiers associated with this file
+	FileHashEntityIds *[]string `json:"fileHashEntityIds,omitempty"`
 	// FileName - READ-ONLY; The file name without path (some alerts might not include path).
 	FileName *string `json:"fileName,omitempty"`
 	// HostEntityID - READ-ONLY; The Host entity id which the file belongs to
 	HostEntityID *string `json:"hostEntityId,omitempty"`
-	// FileHashEntityIds - READ-ONLY; The file hash entity identifiers associated with this file
-	FileHashEntityIds *[]string `json:"fileHashEntityIds,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for FileEntityProperties.
@@ -5448,11 +5344,11 @@ type FileHashEntity struct {
 	*FileHashEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -5474,36 +5370,6 @@ func (fhe FileHashEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return &fhe, true
-}
-
-// AsMalwareEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for FileHashEntity.
 func (fhe FileHashEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -5514,18 +5380,38 @@ func (fhe FileHashEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, b
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for FileHashEntity.
-func (fhe FileHashEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for FileHashEntity.
 func (fhe FileHashEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return &fhe, true
+}
+
+// AsHostEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for FileHashEntity.
 func (fhe FileHashEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -5536,6 +5422,16 @@ func (fhe FileHashEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for FileHashEntity.
 func (fhe FileHashEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for FileHashEntity.
+func (fhe FileHashEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -5581,15 +5477,6 @@ func (fhe *FileHashEntity) UnmarshalJSON(body []byte) error {
 				}
 				fhe.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				fhe.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -5598,6 +5485,15 @@ func (fhe *FileHashEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				fhe.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				fhe.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -5616,14 +5512,14 @@ func (fhe *FileHashEntity) UnmarshalJSON(body []byte) error {
 
 // FileHashEntityProperties fileHash entity property bag.
 type FileHashEntityProperties struct {
-	// HashValue - READ-ONLY; The file hash value.
-	HashValue *string `json:"hashValue,omitempty"`
 	// Algorithm - READ-ONLY; The hash algorithm type. Possible values include: 'Unknown', 'MD5', 'SHA1', 'SHA256', 'SHA256AC'
 	Algorithm FileHashAlgorithm `json:"algorithm,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// HashValue - READ-ONLY; The file hash value.
+	HashValue *string `json:"hashValue,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for FileHashEntityProperties.
@@ -5632,65 +5528,59 @@ func (fhep FileHashEntityProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// FilterAlertRuleTemplate represents filter alert rule template.
-type FilterAlertRuleTemplate struct {
-	// FilterAlertRuleTemplateProperties - Filter alert rule template properties
-	*FilterAlertRuleTemplateProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+// FusionAlertRule represents Fusion alert rule.
+type FusionAlertRule struct {
+	// FusionAlertRuleProperties - Fusion alert rule properties
+	*FusionAlertRuleProperties `json:"properties,omitempty"`
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindScheduled', 'KindBasicAlertRuleTemplateKindFilter', 'KindBasicAlertRuleTemplateKindFusion'
-	Kind KindBasicAlertRuleTemplate `json:"kind,omitempty"`
+	// Kind - Possible values include: 'KindAlertRule', 'KindFusion', 'KindMicrosoftSecurityIncidentCreation', 'KindScheduled'
+	Kind KindBasicAlertRule `json:"kind,omitempty"`
 }
 
-// MarshalJSON is the custom marshaler for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) MarshalJSON() ([]byte, error) {
-	fart.Kind = KindBasicAlertRuleTemplateKindFilter
+// MarshalJSON is the custom marshaler for FusionAlertRule.
+func (far FusionAlertRule) MarshalJSON() ([]byte, error) {
+	far.Kind = KindFusion
 	objectMap := make(map[string]interface{})
-	if fart.FilterAlertRuleTemplateProperties != nil {
-		objectMap["properties"] = fart.FilterAlertRuleTemplateProperties
+	if far.FusionAlertRuleProperties != nil {
+		objectMap["properties"] = far.FusionAlertRuleProperties
 	}
-	if fart.Etag != nil {
-		objectMap["etag"] = fart.Etag
+	if far.Etag != nil {
+		objectMap["etag"] = far.Etag
 	}
-	if fart.Kind != "" {
-		objectMap["kind"] = fart.Kind
+	if far.Kind != "" {
+		objectMap["kind"] = far.Kind
 	}
 	return json.Marshal(objectMap)
 }
 
-// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
+// AsFusionAlertRule is the BasicAlertRule implementation for FusionAlertRule.
+func (far FusionAlertRule) AsFusionAlertRule() (*FusionAlertRule, bool) {
+	return &far, true
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRule is the BasicAlertRule implementation for FusionAlertRule.
+func (far FusionAlertRule) AsMicrosoftSecurityIncidentCreationAlertRule() (*MicrosoftSecurityIncidentCreationAlertRule, bool) {
 	return nil, false
 }
 
-// AsFilterAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) AsFilterAlertRuleTemplate() (*FilterAlertRuleTemplate, bool) {
-	return &fart, true
-}
-
-// AsFusionAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool) {
+// AsScheduledAlertRule is the BasicAlertRule implementation for FusionAlertRule.
+func (far FusionAlertRule) AsScheduledAlertRule() (*ScheduledAlertRule, bool) {
 	return nil, false
 }
 
-// AsAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) AsAlertRuleTemplate() (*AlertRuleTemplate, bool) {
+// AsAlertRule is the BasicAlertRule implementation for FusionAlertRule.
+func (far FusionAlertRule) AsAlertRule() (*AlertRule, bool) {
 	return nil, false
 }
 
-// AsBasicAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FilterAlertRuleTemplate.
-func (fart FilterAlertRuleTemplate) AsBasicAlertRuleTemplate() (BasicAlertRuleTemplate, bool) {
-	return &fart, true
+// AsBasicAlertRule is the BasicAlertRule implementation for FusionAlertRule.
+func (far FusionAlertRule) AsBasicAlertRule() (BasicAlertRule, bool) {
+	return &far, true
 }
 
-// UnmarshalJSON is the custom unmarshaler for FilterAlertRuleTemplate struct.
-func (fart *FilterAlertRuleTemplate) UnmarshalJSON(body []byte) error {
+// UnmarshalJSON is the custom unmarshaler for FusionAlertRule struct.
+func (far *FusionAlertRule) UnmarshalJSON(body []byte) error {
 	var m map[string]*json.RawMessage
 	err := json.Unmarshal(body, &m)
 	if err != nil {
@@ -5700,39 +5590,12 @@ func (fart *FilterAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 		switch k {
 		case "properties":
 			if v != nil {
-				var filterAlertRuleTemplateProperties FilterAlertRuleTemplateProperties
-				err = json.Unmarshal(*v, &filterAlertRuleTemplateProperties)
+				var fusionAlertRuleProperties FusionAlertRuleProperties
+				err = json.Unmarshal(*v, &fusionAlertRuleProperties)
 				if err != nil {
 					return err
 				}
-				fart.FilterAlertRuleTemplateProperties = &filterAlertRuleTemplateProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				fart.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				fart.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				fart.Name = &name
+				far.FusionAlertRuleProperties = &fusionAlertRuleProperties
 			}
 		case "etag":
 			if v != nil {
@@ -5741,16 +5604,16 @@ func (fart *FilterAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 				if err != nil {
 					return err
 				}
-				fart.Etag = &etag
+				far.Etag = &etag
 			}
 		case "kind":
 			if v != nil {
-				var kind KindBasicAlertRuleTemplate
+				var kind KindBasicAlertRule
 				err = json.Unmarshal(*v, &kind)
 				if err != nil {
 					return err
 				}
-				fart.Kind = kind
+				far.Kind = kind
 			}
 		}
 	}
@@ -5758,53 +5621,35 @@ func (fart *FilterAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// FilterAlertRuleTemplateProperties filter alert rule template properties
-type FilterAlertRuleTemplateProperties struct {
-	// DisplayName - The display name for alert rule template.
-	DisplayName *string `json:"displayName,omitempty"`
-	// Description - The description of the alert rule template.
+// FusionAlertRuleProperties fusion alert rule base property bag.
+type FusionAlertRuleProperties struct {
+	// AlertRuleTemplateName - The Name of the alert rule template used to create this rule.
+	AlertRuleTemplateName *string `json:"alertRuleTemplateName,omitempty"`
+	// Description - READ-ONLY; The description of the alert rule.
 	Description *string `json:"description,omitempty"`
-	// Tactics - The tactics of the alert rule template
+	// DisplayName - READ-ONLY; The display name for alerts created by this alert rule.
+	DisplayName *string `json:"displayName,omitempty"`
+	// Enabled - Determines whether this alert rule is enabled or disabled.
+	Enabled *bool `json:"enabled,omitempty"`
+	// LastModifiedUtc - READ-ONLY; The last time that this alert has been modified.
+	LastModifiedUtc *date.Time `json:"lastModifiedUtc,omitempty"`
+	// Severity - READ-ONLY; The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
+	Severity AlertSeverity `json:"severity,omitempty"`
+	// Tactics - READ-ONLY; The tactics of the alert rule
 	Tactics *[]AttackTactic `json:"tactics,omitempty"`
-	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
-	CreatedDateUTC *string `json:"createdDateUTC,omitempty"`
-	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
-	Status TemplateStatus `json:"status,omitempty"`
-	// RequiredDataConnectors - The required data connectors for this template
-	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
-	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
-	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
-	// FilterProduct - The filter product name for this template rule.
-	FilterProduct *string `json:"filterProduct,omitempty"`
-	// FilterSeverities - the alert’s severities on which the cases will be generated
-	FilterSeverities *[]AlertSeverity `json:"filterSeverities,omitempty"`
-	// FilterTitles - the alert’s titles on which the cases will be generated
-	FilterTitles *[]string `json:"filterTitles,omitempty"`
 }
 
-// FilterAlertRuleTemplatePropertiesModel filter alert rule template property bag.
-type FilterAlertRuleTemplatePropertiesModel struct {
-	// FilterProduct - The filter product name for this template rule.
-	FilterProduct *string `json:"filterProduct,omitempty"`
-	// FilterSeverities - the alert’s severities on which the cases will be generated
-	FilterSeverities *[]AlertSeverity `json:"filterSeverities,omitempty"`
-	// FilterTitles - the alert’s titles on which the cases will be generated
-	FilterTitles *[]string `json:"filterTitles,omitempty"`
-}
-
-// FusionAlertRuleTemplate represents fusion alert rule template.
+// FusionAlertRuleTemplate represents Fusion alert rule template.
 type FusionAlertRuleTemplate struct {
 	// FusionAlertRuleTemplateProperties - Fusion alert rule template properties
 	*FusionAlertRuleTemplateProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
-	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindScheduled', 'KindBasicAlertRuleTemplateKindFilter', 'KindBasicAlertRuleTemplateKindFusion'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindFusion', 'KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation', 'KindBasicAlertRuleTemplateKindScheduled'
 	Kind KindBasicAlertRuleTemplate `json:"kind,omitempty"`
 }
 
@@ -5815,28 +5660,25 @@ func (fart FusionAlertRuleTemplate) MarshalJSON() ([]byte, error) {
 	if fart.FusionAlertRuleTemplateProperties != nil {
 		objectMap["properties"] = fart.FusionAlertRuleTemplateProperties
 	}
-	if fart.Etag != nil {
-		objectMap["etag"] = fart.Etag
-	}
 	if fart.Kind != "" {
 		objectMap["kind"] = fart.Kind
 	}
 	return json.Marshal(objectMap)
 }
 
-// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
-func (fart FusionAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
-	return nil, false
-}
-
-// AsFilterAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
-func (fart FusionAlertRuleTemplate) AsFilterAlertRuleTemplate() (*FilterAlertRuleTemplate, bool) {
-	return nil, false
-}
-
 // AsFusionAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
 func (fart FusionAlertRuleTemplate) AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool) {
 	return &fart, true
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
+func (fart FusionAlertRuleTemplate) AsMicrosoftSecurityIncidentCreationAlertRuleTemplate() (*MicrosoftSecurityIncidentCreationAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
+func (fart FusionAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
+	return nil, false
 }
 
 // AsAlertRuleTemplate is the BasicAlertRuleTemplate implementation for FusionAlertRuleTemplate.
@@ -5876,15 +5718,6 @@ func (fart *FusionAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 				}
 				fart.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				fart.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -5894,14 +5727,14 @@ func (fart *FusionAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 				}
 				fart.Name = &name
 			}
-		case "etag":
+		case "type":
 			if v != nil {
-				var etag string
-				err = json.Unmarshal(*v, &etag)
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
 				if err != nil {
 					return err
 				}
-				fart.Etag = &etag
+				fart.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -5920,46 +5753,40 @@ func (fart *FusionAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 
 // FusionAlertRuleTemplateProperties fusion alert rule template properties
 type FusionAlertRuleTemplateProperties struct {
-	// DisplayName - The display name for alert rule template.
-	DisplayName *string `json:"displayName,omitempty"`
-	// Description - The description of the alert rule template.
-	Description *string `json:"description,omitempty"`
-	// Tactics - The tactics of the alert rule template
-	Tactics *[]AttackTactic `json:"tactics,omitempty"`
-	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
-	CreatedDateUTC *string `json:"createdDateUTC,omitempty"`
-	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
-	Status TemplateStatus `json:"status,omitempty"`
-	// RequiredDataConnectors - The required data connectors for this template
-	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
+	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
+	Severity AlertSeverity `json:"severity,omitempty"`
 	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
 	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
-	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
-	Severity AlertSeverity `json:"severity,omitempty"`
-}
-
-// FusionAlertRuleTemplatePropertiesModel filter alert rule template property bag.
-type FusionAlertRuleTemplatePropertiesModel struct {
-	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
-	Severity AlertSeverity `json:"severity,omitempty"`
+	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
+	CreatedDateUTC *date.Time `json:"createdDateUTC,omitempty"`
+	// Description - The description of the alert rule template.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alert rule template.
+	DisplayName *string `json:"displayName,omitempty"`
+	// RequiredDataConnectors - The required data connectors for this template
+	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
+	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
+	Status TemplateStatus `json:"status,omitempty"`
+	// Tactics - The tactics of the alert rule template
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
 }
 
 // GeoLocation the geo-location context attached to the ip entity
 type GeoLocation struct {
+	// Asn - READ-ONLY; Autonomous System Number
+	Asn *int32 `json:"asn,omitempty"`
+	// City - READ-ONLY; City name
+	City *string `json:"city,omitempty"`
 	// CountryCode - READ-ONLY; The country code according to ISO 3166 format
 	CountryCode *string `json:"countryCode,omitempty"`
 	// CountryName - READ-ONLY; Country name according to ISO 3166 Alpha 2: the lowercase of the English Short Name
 	CountryName *string `json:"countryName,omitempty"`
-	// State - READ-ONLY; State name
-	State *string `json:"state,omitempty"`
-	// City - READ-ONLY; City name
-	City *string `json:"city,omitempty"`
-	// Longitude - READ-ONLY; The latitude of the identified location, expressed as a floating point number with range of - 90 to 90, with positive numbers representing North and negative numbers representing South. Latitude and longitude are derived from the city or postal code.
-	Longitude *float64 `json:"longitude,omitempty"`
 	// Latitude - READ-ONLY; The longitude of the identified location, expressed as a floating point number with range of -180 to 180, with positive numbers representing East and negative numbers representing West. Latitude and longitude are derived from the city or postal code.
 	Latitude *float64 `json:"latitude,omitempty"`
-	// Asn - READ-ONLY; Autonomous System Number
-	Asn *int32 `json:"asn,omitempty"`
+	// Longitude - READ-ONLY; The latitude of the identified location, expressed as a floating point number with range of - 90 to 90, with positive numbers representing North and negative numbers representing South. Latitude and longitude are derived from the city or postal code.
+	Longitude *float64 `json:"longitude,omitempty"`
+	// State - READ-ONLY; State name
+	State *string `json:"state,omitempty"`
 }
 
 // HostEntity represents a host entity.
@@ -5968,11 +5795,11 @@ type HostEntity struct {
 	*HostEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -5994,36 +5821,6 @@ func (he HostEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsHostEntity() (*HostEntity, bool) {
-	return &he, true
-}
-
-// AsFileEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for HostEntity.
 func (he HostEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -6034,18 +5831,38 @@ func (he HostEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) 
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for HostEntity.
-func (he HostEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for HostEntity.
 func (he HostEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsHostEntity() (*HostEntity, bool) {
+	return &he, true
+}
+
 // AsIPEntity is the BasicEntity implementation for HostEntity.
 func (he HostEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -6056,6 +5873,16 @@ func (he HostEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for HostEntity.
 func (he HostEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for HostEntity.
+func (he HostEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -6101,15 +5928,6 @@ func (he *HostEntity) UnmarshalJSON(body []byte) error {
 				}
 				he.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				he.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -6118,6 +5936,15 @@ func (he *HostEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				he.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				he.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -6136,28 +5963,28 @@ func (he *HostEntity) UnmarshalJSON(body []byte) error {
 
 // HostEntityProperties host entity property bag.
 type HostEntityProperties struct {
-	// DNSDomain - READ-ONLY; The DNS domain that this host belongs to. Should contain the compete DNS suffix for the domain
-	DNSDomain *string `json:"dnsDomain,omitempty"`
-	// NtDomain - READ-ONLY; The NT domain that this host belongs to.
-	NtDomain *string `json:"ntDomain,omitempty"`
-	// HostName - READ-ONLY; The hostname without the domain suffix.
-	HostName *string `json:"hostName,omitempty"`
-	// NetBiosName - READ-ONLY; The host name (pre-windows2000).
-	NetBiosName *string `json:"netBiosName,omitempty"`
 	// AzureID - READ-ONLY; The azure resource id of the VM.
 	AzureID *string `json:"azureID,omitempty"`
+	// DNSDomain - READ-ONLY; The DNS domain that this host belongs to. Should contain the compete DNS suffix for the domain
+	DNSDomain *string `json:"dnsDomain,omitempty"`
+	// HostName - READ-ONLY; The hostname without the domain suffix.
+	HostName *string `json:"hostName,omitempty"`
+	// IsDomainJoined - READ-ONLY; Determines whether this host belongs to a domain.
+	IsDomainJoined *bool `json:"isDomainJoined,omitempty"`
+	// NetBiosName - READ-ONLY; The host name (pre-windows2000).
+	NetBiosName *string `json:"netBiosName,omitempty"`
+	// NtDomain - READ-ONLY; The NT domain that this host belongs to.
+	NtDomain *string `json:"ntDomain,omitempty"`
 	// OmsAgentID - READ-ONLY; The OMS agent id, if the host has OMS agent installed.
 	OmsAgentID *string `json:"omsAgentID,omitempty"`
 	// OsFamily - The operating system type. Possible values include: 'Linux', 'Windows', 'Android', 'IOS'
 	OsFamily OSFamily `json:"osFamily,omitempty"`
 	// OsVersion - READ-ONLY; A free text representation of the operating system. This field is meant to hold specific versions the are more fine grained than OSFamily or future values not supported by OSFamily enumeration
 	OsVersion *string `json:"osVersion,omitempty"`
-	// IsDomainJoined - READ-ONLY; Determines whether this host belongs to a domain.
-	IsDomainJoined *bool `json:"isDomainJoined,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for HostEntityProperties.
@@ -6175,11 +6002,11 @@ type IPEntity struct {
 	*IPEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -6201,36 +6028,6 @@ func (ie IPEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for IPEntity.
 func (ie IPEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -6241,19 +6038,39 @@ func (ie IPEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) {
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsProcessEntity() (*ProcessEntity, bool) {
+// AsDNSEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
-// AsDNSEntity is the BasicEntity implementation for IPEntity.
-func (ie IPEntity) AsDNSEntity() (*DNSEntity, bool) {
+// AsFileEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsHostEntity() (*HostEntity, bool) {
 	return nil, false
 }
 
 // AsIPEntity is the BasicEntity implementation for IPEntity.
 func (ie IPEntity) AsIPEntity() (*IPEntity, bool) {
 	return &ie, true
+}
+
+// AsMalwareEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsProcessEntity() (*ProcessEntity, bool) {
+	return nil, false
 }
 
 // AsRegistryKeyEntity is the BasicEntity implementation for IPEntity.
@@ -6263,6 +6080,16 @@ func (ie IPEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for IPEntity.
 func (ie IPEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for IPEntity.
+func (ie IPEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -6308,15 +6135,6 @@ func (ie *IPEntity) UnmarshalJSON(body []byte) error {
 				}
 				ie.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				ie.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -6325,6 +6143,15 @@ func (ie *IPEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				ie.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				ie.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -6349,10 +6176,10 @@ type IPEntityProperties struct {
 	Location *GeoLocation `json:"location,omitempty"`
 	// ThreatIntelligence - READ-ONLY; A list of TI contexts attached to the ip entity.
 	ThreatIntelligence *[]ThreatIntelligence `json:"threatIntelligence,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for IPEntityProperties.
@@ -6370,11 +6197,11 @@ type MalwareEntity struct {
 	*MalwareEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -6396,36 +6223,6 @@ func (me MalwareEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return &me, true
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for MalwareEntity.
 func (me MalwareEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -6436,18 +6233,38 @@ func (me MalwareEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, boo
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for MalwareEntity.
-func (me MalwareEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for MalwareEntity.
 func (me MalwareEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for MalwareEntity.
 func (me MalwareEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return &me, true
+}
+
+// AsProcessEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -6458,6 +6275,16 @@ func (me MalwareEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for MalwareEntity.
 func (me MalwareEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for MalwareEntity.
+func (me MalwareEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -6503,15 +6330,6 @@ func (me *MalwareEntity) UnmarshalJSON(body []byte) error {
 				}
 				me.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				me.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -6520,6 +6338,15 @@ func (me *MalwareEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				me.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				me.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -6538,18 +6365,18 @@ func (me *MalwareEntity) UnmarshalJSON(body []byte) error {
 
 // MalwareEntityProperties malware entity property bag.
 type MalwareEntityProperties struct {
-	// MalwareName - READ-ONLY; The malware name by the vendor, e.g. Win32/Toga!rfn
-	MalwareName *string `json:"malwareName,omitempty"`
 	// Category - READ-ONLY; The malware category by the vendor, e.g. Trojan
 	Category *string `json:"category,omitempty"`
 	// FileEntityIds - READ-ONLY; List of linked file entity identifiers on which the malware was found
 	FileEntityIds *[]string `json:"fileEntityIds,omitempty"`
+	// MalwareName - READ-ONLY; The malware name by the vendor, e.g. Win32/Toga!rfn
+	MalwareName *string `json:"malwareName,omitempty"`
 	// ProcessEntityIds - READ-ONLY; List of linked process entity identifiers on which the malware was found.
 	ProcessEntityIds *[]string `json:"processEntityIds,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for MalwareEntityProperties.
@@ -6562,15 +6389,9 @@ func (mep MalwareEntityProperties) MarshalJSON() ([]byte, error) {
 type MCASDataConnector struct {
 	// MCASDataConnectorProperties - MCAS (Microsoft Cloud App Security) data connector properties.
 	*MCASDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -6590,23 +6411,13 @@ func (mdc MCASDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for MCASDataConnector.
-func (mdc MCASDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for MCASDataConnector.
-func (mdc MCASDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for MCASDataConnector.
-func (mdc MCASDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for MCASDataConnector.
 func (mdc MCASDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
+	return nil, false
+}
+
+// AsAATPDataConnector is the BasicDataConnector implementation for MCASDataConnector.
+func (mdc MCASDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
@@ -6615,18 +6426,28 @@ func (mdc MCASDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
 	return nil, false
 }
 
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for MCASDataConnector.
+func (mdc MCASDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
 // AsMCASDataConnector is the BasicDataConnector implementation for MCASDataConnector.
 func (mdc MCASDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return &mdc, true
 }
 
-// AsAATPDataConnector is the BasicDataConnector implementation for MCASDataConnector.
-func (mdc MCASDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
+// AsMDATPDataConnector is the BasicDataConnector implementation for MCASDataConnector.
+func (mdc MCASDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
 	return nil, false
 }
 
-// AsMDATPDataConnector is the BasicDataConnector implementation for MCASDataConnector.
-func (mdc MCASDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+// AsOfficeDataConnector is the BasicDataConnector implementation for MCASDataConnector.
+func (mdc MCASDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for MCASDataConnector.
+func (mdc MCASDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -6657,33 +6478,6 @@ func (mdc *MCASDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				mdc.MCASDataConnectorProperties = &mCASDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				mdc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				mdc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				mdc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -6736,15 +6530,9 @@ type MCASDataConnectorProperties struct {
 type MDATPDataConnector struct {
 	// MDATPDataConnectorProperties - MDATP (Microsoft Defender Advanced Threat Protection) data connector properties.
 	*MDATPDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -6764,33 +6552,8 @@ func (mdc MDATPDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
-func (mdc MDATPDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
-func (mdc MDATPDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
-func (mdc MDATPDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
 func (mdc MDATPDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
-func (mdc MDATPDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
-func (mdc MDATPDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -6799,9 +6562,34 @@ func (mdc MDATPDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
+func (mdc MDATPDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
+func (mdc MDATPDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
+func (mdc MDATPDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
 func (mdc MDATPDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
 	return &mdc, true
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
+func (mdc MDATPDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
+func (mdc MDATPDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
+	return nil, false
 }
 
 // AsDataConnector is the BasicDataConnector implementation for MDATPDataConnector.
@@ -6831,33 +6619,6 @@ func (mdc *MDATPDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				mdc.MDATPDataConnectorProperties = &mDATPDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				mdc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				mdc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				mdc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -6892,6 +6653,271 @@ type MDATPDataConnectorProperties struct {
 	DataTypes *AlertsDataTypeOfDataConnector `json:"dataTypes,omitempty"`
 }
 
+// MicrosoftSecurityIncidentCreationAlertRule represents MicrosoftSecurityIncidentCreation rule.
+type MicrosoftSecurityIncidentCreationAlertRule struct {
+	// MicrosoftSecurityIncidentCreationAlertRuleProperties - MicrosoftSecurityIncidentCreation rule properties
+	*MicrosoftSecurityIncidentCreationAlertRuleProperties `json:"properties,omitempty"`
+	// Etag - Etag of the azure resource
+	Etag *string `json:"etag,omitempty"`
+	// Kind - Possible values include: 'KindAlertRule', 'KindFusion', 'KindMicrosoftSecurityIncidentCreation', 'KindScheduled'
+	Kind KindBasicAlertRule `json:"kind,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) MarshalJSON() ([]byte, error) {
+	msicar.Kind = KindMicrosoftSecurityIncidentCreation
+	objectMap := make(map[string]interface{})
+	if msicar.MicrosoftSecurityIncidentCreationAlertRuleProperties != nil {
+		objectMap["properties"] = msicar.MicrosoftSecurityIncidentCreationAlertRuleProperties
+	}
+	if msicar.Etag != nil {
+		objectMap["etag"] = msicar.Etag
+	}
+	if msicar.Kind != "" {
+		objectMap["kind"] = msicar.Kind
+	}
+	return json.Marshal(objectMap)
+}
+
+// AsFusionAlertRule is the BasicAlertRule implementation for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) AsFusionAlertRule() (*FusionAlertRule, bool) {
+	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRule is the BasicAlertRule implementation for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) AsMicrosoftSecurityIncidentCreationAlertRule() (*MicrosoftSecurityIncidentCreationAlertRule, bool) {
+	return &msicar, true
+}
+
+// AsScheduledAlertRule is the BasicAlertRule implementation for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) AsScheduledAlertRule() (*ScheduledAlertRule, bool) {
+	return nil, false
+}
+
+// AsAlertRule is the BasicAlertRule implementation for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) AsAlertRule() (*AlertRule, bool) {
+	return nil, false
+}
+
+// AsBasicAlertRule is the BasicAlertRule implementation for MicrosoftSecurityIncidentCreationAlertRule.
+func (msicar MicrosoftSecurityIncidentCreationAlertRule) AsBasicAlertRule() (BasicAlertRule, bool) {
+	return &msicar, true
+}
+
+// UnmarshalJSON is the custom unmarshaler for MicrosoftSecurityIncidentCreationAlertRule struct.
+func (msicar *MicrosoftSecurityIncidentCreationAlertRule) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var microsoftSecurityIncidentCreationAlertRuleProperties MicrosoftSecurityIncidentCreationAlertRuleProperties
+				err = json.Unmarshal(*v, &microsoftSecurityIncidentCreationAlertRuleProperties)
+				if err != nil {
+					return err
+				}
+				msicar.MicrosoftSecurityIncidentCreationAlertRuleProperties = &microsoftSecurityIncidentCreationAlertRuleProperties
+			}
+		case "etag":
+			if v != nil {
+				var etag string
+				err = json.Unmarshal(*v, &etag)
+				if err != nil {
+					return err
+				}
+				msicar.Etag = &etag
+			}
+		case "kind":
+			if v != nil {
+				var kind KindBasicAlertRule
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				msicar.Kind = kind
+			}
+		}
+	}
+
+	return nil
+}
+
+// MicrosoftSecurityIncidentCreationAlertRuleCommonProperties microsoftSecurityIncidentCreation rule common
+// property bag.
+type MicrosoftSecurityIncidentCreationAlertRuleCommonProperties struct {
+	// DisplayNamesFilter - the alerts' displayNames on which the cases will be generated
+	DisplayNamesFilter *[]string `json:"displayNamesFilter,omitempty"`
+	// ProductFilter - The alerts' productName on which the cases will be generated. Possible values include: 'MicrosoftCloudAppSecurity', 'AzureSecurityCenter', 'AzureAdvancedThreatProtection', 'AzureActiveDirectoryIdentityProtection'
+	ProductFilter MicrosoftSecurityProductName `json:"productFilter,omitempty"`
+	// SeveritiesFilter - the alerts' severities on which the cases will be generated
+	SeveritiesFilter *[]AlertSeverity `json:"severitiesFilter,omitempty"`
+}
+
+// MicrosoftSecurityIncidentCreationAlertRuleProperties microsoftSecurityIncidentCreation rule property
+// bag.
+type MicrosoftSecurityIncidentCreationAlertRuleProperties struct {
+	// AlertRuleTemplateName - The Name of the alert rule template used to create this rule.
+	AlertRuleTemplateName *string `json:"alertRuleTemplateName,omitempty"`
+	// Description - The description of the alert rule.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alerts created by this alert rule.
+	DisplayName *string `json:"displayName,omitempty"`
+	// Enabled - Determines whether this alert rule is enabled or disabled.
+	Enabled *bool `json:"enabled,omitempty"`
+	// LastModifiedUtc - READ-ONLY; The last time that this alert has been modified.
+	LastModifiedUtc *date.Time `json:"lastModifiedUtc,omitempty"`
+	// Tactics - The tactics of the alert rule
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
+	// DisplayNamesFilter - the alerts' displayNames on which the cases will be generated
+	DisplayNamesFilter *[]string `json:"displayNamesFilter,omitempty"`
+	// ProductFilter - The alerts' productName on which the cases will be generated. Possible values include: 'MicrosoftCloudAppSecurity', 'AzureSecurityCenter', 'AzureAdvancedThreatProtection', 'AzureActiveDirectoryIdentityProtection'
+	ProductFilter MicrosoftSecurityProductName `json:"productFilter,omitempty"`
+	// SeveritiesFilter - the alerts' severities on which the cases will be generated
+	SeveritiesFilter *[]AlertSeverity `json:"severitiesFilter,omitempty"`
+}
+
+// MicrosoftSecurityIncidentCreationAlertRuleTemplate represents MicrosoftSecurityIncidentCreation rule
+// template.
+type MicrosoftSecurityIncidentCreationAlertRuleTemplate struct {
+	// MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties - MicrosoftSecurityIncidentCreation rule template properties
+	*MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties `json:"properties,omitempty"`
+	// ID - READ-ONLY; Azure resource Id
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Azure resource name
+	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindFusion', 'KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation', 'KindBasicAlertRuleTemplateKindScheduled'
+	Kind KindBasicAlertRuleTemplate `json:"kind,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) MarshalJSON() ([]byte, error) {
+	msicart.Kind = KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation
+	objectMap := make(map[string]interface{})
+	if msicart.MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties != nil {
+		objectMap["properties"] = msicart.MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties
+	}
+	if msicart.Kind != "" {
+		objectMap["kind"] = msicart.Kind
+	}
+	return json.Marshal(objectMap)
+}
+
+// AsFusionAlertRuleTemplate is the BasicAlertRuleTemplate implementation for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRuleTemplate is the BasicAlertRuleTemplate implementation for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) AsMicrosoftSecurityIncidentCreationAlertRuleTemplate() (*MicrosoftSecurityIncidentCreationAlertRuleTemplate, bool) {
+	return &msicart, true
+}
+
+// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsAlertRuleTemplate is the BasicAlertRuleTemplate implementation for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) AsAlertRuleTemplate() (*AlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsBasicAlertRuleTemplate is the BasicAlertRuleTemplate implementation for MicrosoftSecurityIncidentCreationAlertRuleTemplate.
+func (msicart MicrosoftSecurityIncidentCreationAlertRuleTemplate) AsBasicAlertRuleTemplate() (BasicAlertRuleTemplate, bool) {
+	return &msicart, true
+}
+
+// UnmarshalJSON is the custom unmarshaler for MicrosoftSecurityIncidentCreationAlertRuleTemplate struct.
+func (msicart *MicrosoftSecurityIncidentCreationAlertRuleTemplate) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var microsoftSecurityIncidentCreationAlertRuleTemplateProperties MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties
+				err = json.Unmarshal(*v, &microsoftSecurityIncidentCreationAlertRuleTemplateProperties)
+				if err != nil {
+					return err
+				}
+				msicart.MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties = &microsoftSecurityIncidentCreationAlertRuleTemplateProperties
+			}
+		case "id":
+			if v != nil {
+				var ID string
+				err = json.Unmarshal(*v, &ID)
+				if err != nil {
+					return err
+				}
+				msicart.ID = &ID
+			}
+		case "name":
+			if v != nil {
+				var name string
+				err = json.Unmarshal(*v, &name)
+				if err != nil {
+					return err
+				}
+				msicart.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				msicart.Type = &typeVar
+			}
+		case "kind":
+			if v != nil {
+				var kind KindBasicAlertRuleTemplate
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				msicart.Kind = kind
+			}
+		}
+	}
+
+	return nil
+}
+
+// MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties microsoftSecurityIncidentCreation rule
+// template properties
+type MicrosoftSecurityIncidentCreationAlertRuleTemplateProperties struct {
+	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
+	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
+	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
+	CreatedDateUTC *date.Time `json:"createdDateUTC,omitempty"`
+	// Description - The description of the alert rule template.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alert rule template.
+	DisplayName *string `json:"displayName,omitempty"`
+	// RequiredDataConnectors - The required data connectors for this template
+	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
+	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
+	Status TemplateStatus `json:"status,omitempty"`
+	// Tactics - The tactics of the alert rule template
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
+	// DisplayNamesFilter - the alerts' displayNames on which the cases will be generated
+	DisplayNamesFilter *[]string `json:"displayNamesFilter,omitempty"`
+	// ProductFilter - The alerts' productName on which the cases will be generated. Possible values include: 'MicrosoftCloudAppSecurity', 'AzureSecurityCenter', 'AzureAdvancedThreatProtection', 'AzureActiveDirectoryIdentityProtection'
+	ProductFilter MicrosoftSecurityProductName `json:"productFilter,omitempty"`
+	// SeveritiesFilter - the alerts' severities on which the cases will be generated
+	SeveritiesFilter *[]AlertSeverity `json:"severitiesFilter,omitempty"`
+}
+
 // OfficeConsent consent for Office365 tenant that already made.
 type OfficeConsent struct {
 	autorest.Response `json:"-"`
@@ -6899,10 +6925,10 @@ type OfficeConsent struct {
 	*OfficeConsentProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for OfficeConsent.
@@ -6941,15 +6967,6 @@ func (oc *OfficeConsent) UnmarshalJSON(body []byte) error {
 				}
 				oc.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				oc.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -6958,6 +6975,15 @@ func (oc *OfficeConsent) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				oc.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				oc.Type = &typeVar
 			}
 		}
 	}
@@ -7123,15 +7149,9 @@ type OfficeConsentProperties struct {
 type OfficeDataConnector struct {
 	// OfficeDataConnectorProperties - Office data connector properties.
 	*OfficeDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -7151,33 +7171,8 @@ func (odc OfficeDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
-func (odc OfficeDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return &odc, true
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
-func (odc OfficeDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return nil, false
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
-func (odc OfficeDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
 func (odc OfficeDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
-func (odc OfficeDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
-func (odc OfficeDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -7186,8 +7181,33 @@ func (odc OfficeDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) 
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
+func (odc OfficeDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
+func (odc OfficeDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
+func (odc OfficeDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
 func (odc OfficeDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
+	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
+func (odc OfficeDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return &odc, true
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for OfficeDataConnector.
+func (odc OfficeDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
 	return nil, false
 }
 
@@ -7219,33 +7239,6 @@ func (odc *OfficeDataConnector) UnmarshalJSON(body []byte) error {
 				}
 				odc.OfficeDataConnectorProperties = &officeDataConnectorProperties
 			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				odc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				odc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				odc.Name = &name
-			}
 		case "etag":
 			if v != nil {
 				var etag string
@@ -7272,10 +7265,10 @@ func (odc *OfficeDataConnector) UnmarshalJSON(body []byte) error {
 
 // OfficeDataConnectorDataTypes the available data types for office data connector.
 type OfficeDataConnectorDataTypes struct {
-	// SharePoint - SharePoint data type connection.
-	SharePoint *OfficeDataConnectorDataTypesSharePoint `json:"sharePoint,omitempty"`
 	// Exchange - Exchange data type connection.
 	Exchange *OfficeDataConnectorDataTypesExchange `json:"exchange,omitempty"`
+	// SharePoint - SharePoint data type connection.
+	SharePoint *OfficeDataConnectorDataTypesSharePoint `json:"sharePoint,omitempty"`
 }
 
 // OfficeDataConnectorDataTypesExchange exchange data type connection.
@@ -7300,22 +7293,22 @@ type OfficeDataConnectorProperties struct {
 
 // Operation operation provided by provider
 type Operation struct {
-	// Name - Name of the operation
-	Name *string `json:"name,omitempty"`
 	// Display - Properties of the operation
 	Display *OperationDisplay `json:"display,omitempty"`
+	// Name - Name of the operation
+	Name *string `json:"name,omitempty"`
 }
 
 // OperationDisplay properties of the operation
 type OperationDisplay struct {
+	// Description - Description of the operation
+	Description *string `json:"description,omitempty"`
+	// Operation - Operation name
+	Operation *string `json:"operation,omitempty"`
 	// Provider - Provider name
 	Provider *string `json:"provider,omitempty"`
 	// Resource - Resource name
 	Resource *string `json:"resource,omitempty"`
-	// Operation - Operation name
-	Operation *string `json:"operation,omitempty"`
-	// Description - Description of the operation
-	Description *string `json:"description,omitempty"`
 }
 
 // OperationsList lists the operations available in the SecurityInsights RP.
@@ -7470,11 +7463,11 @@ type ProcessEntity struct {
 	*ProcessEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -7496,36 +7489,6 @@ func (peVar ProcessEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for ProcessEntity.
 func (peVar ProcessEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -7536,19 +7499,39 @@ func (peVar ProcessEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, 
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for ProcessEntity.
-func (peVar ProcessEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return &peVar, true
-}
-
 // AsDNSEntity is the BasicEntity implementation for ProcessEntity.
 func (peVar ProcessEntity) AsDNSEntity() (*DNSEntity, bool) {
+	return nil, false
+}
+
+// AsFileEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsHostEntity() (*HostEntity, bool) {
 	return nil, false
 }
 
 // AsIPEntity is the BasicEntity implementation for ProcessEntity.
 func (peVar ProcessEntity) AsIPEntity() (*IPEntity, bool) {
 	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsProcessEntity() (*ProcessEntity, bool) {
+	return &peVar, true
 }
 
 // AsRegistryKeyEntity is the BasicEntity implementation for ProcessEntity.
@@ -7558,6 +7541,16 @@ func (peVar ProcessEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for ProcessEntity.
 func (peVar ProcessEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for ProcessEntity.
+func (peVar ProcessEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -7603,15 +7596,6 @@ func (peVar *ProcessEntity) UnmarshalJSON(body []byte) error {
 				}
 				peVar.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				peVar.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -7620,6 +7604,15 @@ func (peVar *ProcessEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				peVar.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				peVar.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -7638,28 +7631,28 @@ func (peVar *ProcessEntity) UnmarshalJSON(body []byte) error {
 
 // ProcessEntityProperties process entity property bag.
 type ProcessEntityProperties struct {
-	// ProcessID - READ-ONLY; The process ID
-	ProcessID *string `json:"processId,omitempty"`
-	// CommandLine - READ-ONLY; The command line used to create the process
-	CommandLine *string `json:"commandLine,omitempty"`
-	// ElevationToken - The elevation token associated with the process. Possible values include: 'Default', 'Full', 'Limited'
-	ElevationToken ElevationToken `json:"elevationToken,omitempty"`
-	// CreationTimeUtc - READ-ONLY; The time when the process started to run
-	CreationTimeUtc *date.Time `json:"creationTimeUtc,omitempty"`
-	// ImageFileEntityID - READ-ONLY; Image file entity id
-	ImageFileEntityID *string `json:"imageFileEntityId,omitempty"`
 	// AccountEntityID - READ-ONLY; The account entity id running the processes.
 	AccountEntityID *string `json:"accountEntityId,omitempty"`
-	// ParentProcessEntityID - READ-ONLY; The parent process entity id.
-	ParentProcessEntityID *string `json:"parentProcessEntityId,omitempty"`
+	// CommandLine - READ-ONLY; The command line used to create the process
+	CommandLine *string `json:"commandLine,omitempty"`
+	// CreationTimeUtc - READ-ONLY; The time when the process started to run
+	CreationTimeUtc *date.Time `json:"creationTimeUtc,omitempty"`
+	// ElevationToken - The elevation token associated with the process. Possible values include: 'Default', 'Full', 'Limited'
+	ElevationToken ElevationToken `json:"elevationToken,omitempty"`
 	// HostEntityID - READ-ONLY; The host entity id on which the process was running
 	HostEntityID *string `json:"hostEntityId,omitempty"`
 	// HostLogonSessionEntityID - READ-ONLY; The session entity id in which the process was running
 	HostLogonSessionEntityID *string `json:"hostLogonSessionEntityId,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// ImageFileEntityID - READ-ONLY; Image file entity id
+	ImageFileEntityID *string `json:"imageFileEntityId,omitempty"`
+	// ParentProcessEntityID - READ-ONLY; The parent process entity id.
+	ParentProcessEntityID *string `json:"parentProcessEntityId,omitempty"`
+	// ProcessID - READ-ONLY; The process ID
+	ProcessID *string `json:"processId,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for ProcessEntityProperties.
@@ -7677,11 +7670,11 @@ type RegistryKeyEntity struct {
 	*RegistryKeyEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -7703,36 +7696,6 @@ func (rke RegistryKeyEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for RegistryKeyEntity.
 func (rke RegistryKeyEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -7743,18 +7706,38 @@ func (rke RegistryKeyEntity) AsCloudApplicationEntity() (*CloudApplicationEntity
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for RegistryKeyEntity.
-func (rke RegistryKeyEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for RegistryKeyEntity.
 func (rke RegistryKeyEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for RegistryKeyEntity.
 func (rke RegistryKeyEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -7765,6 +7748,16 @@ func (rke RegistryKeyEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for RegistryKeyEntity.
 func (rke RegistryKeyEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for RegistryKeyEntity.
+func (rke RegistryKeyEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -7810,15 +7803,6 @@ func (rke *RegistryKeyEntity) UnmarshalJSON(body []byte) error {
 				}
 				rke.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				rke.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -7827,6 +7811,15 @@ func (rke *RegistryKeyEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				rke.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				rke.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -7849,10 +7842,10 @@ type RegistryKeyEntityProperties struct {
 	Hive RegistryHive `json:"hive,omitempty"`
 	// Key - READ-ONLY; The registry key path.
 	Key *string `json:"key,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for RegistryKeyEntityProperties.
@@ -7867,11 +7860,11 @@ type RegistryValueEntity struct {
 	*RegistryValueEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -7893,36 +7886,6 @@ func (rve RegistryValueEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for RegistryValueEntity.
 func (rve RegistryValueEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -7933,18 +7896,38 @@ func (rve RegistryValueEntity) AsCloudApplicationEntity() (*CloudApplicationEnti
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for RegistryValueEntity.
-func (rve RegistryValueEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for RegistryValueEntity.
 func (rve RegistryValueEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for RegistryValueEntity.
 func (rve RegistryValueEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -7956,6 +7939,16 @@ func (rve RegistryValueEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) 
 // AsRegistryValueEntity is the BasicEntity implementation for RegistryValueEntity.
 func (rve RegistryValueEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
 	return &rve, true
+}
+
+// AsSecurityAlert is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for RegistryValueEntity.
+func (rve RegistryValueEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
+	return nil, false
 }
 
 // AsURLEntity is the BasicEntity implementation for RegistryValueEntity.
@@ -8000,15 +7993,6 @@ func (rve *RegistryValueEntity) UnmarshalJSON(body []byte) error {
 				}
 				rve.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				rve.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -8017,6 +8001,15 @@ func (rve *RegistryValueEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				rve.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				rve.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -8035,18 +8028,18 @@ func (rve *RegistryValueEntity) UnmarshalJSON(body []byte) error {
 
 // RegistryValueEntityProperties registryValue entity property bag.
 type RegistryValueEntityProperties struct {
-	// ValueName - READ-ONLY; The registry value name.
-	ValueName *string `json:"valueName,omitempty"`
-	// ValueData - READ-ONLY; String formatted representation of the value data.
-	ValueData *string `json:"valueData,omitempty"`
-	// ValueType - READ-ONLY; Specifies the data types to use when storing values in the registry, or identifies the data type of a value in the registry. Possible values include: 'RegistryValueKindNone', 'RegistryValueKindUnknown', 'RegistryValueKindString', 'RegistryValueKindExpandString', 'RegistryValueKindBinary', 'RegistryValueKindDWord', 'RegistryValueKindMultiString', 'RegistryValueKindQWord'
-	ValueType RegistryValueKind `json:"valueType,omitempty"`
 	// KeyEntityID - READ-ONLY; The registry key entity id.
 	KeyEntityID *string `json:"keyEntityId,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// ValueData - READ-ONLY; String formatted representation of the value data.
+	ValueData *string `json:"valueData,omitempty"`
+	// ValueName - READ-ONLY; The registry value name.
+	ValueName *string `json:"valueName,omitempty"`
+	// ValueType - READ-ONLY; Specifies the data types to use when storing values in the registry, or identifies the data type of a value in the registry. Possible values include: 'RegistryValueKindNone', 'RegistryValueKindUnknown', 'RegistryValueKindString', 'RegistryValueKindExpandString', 'RegistryValueKindBinary', 'RegistryValueKindDWord', 'RegistryValueKindMultiString', 'RegistryValueKindQWord'
+	ValueType RegistryValueKind `json:"valueType,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for RegistryValueEntityProperties.
@@ -8059,26 +8052,32 @@ func (rvep RegistryValueEntityProperties) MarshalJSON() ([]byte, error) {
 type Resource struct {
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+}
+
+// ResourceWithEtag an azure resource object with an Etag property
+type ResourceWithEtag struct {
+	// Etag - Etag of the azure resource
+	Etag *string `json:"etag,omitempty"`
+	// ID - READ-ONLY; Azure resource Id
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Azure resource name
+	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
 }
 
 // ScheduledAlertRule represents scheduled alert rule.
 type ScheduledAlertRule struct {
 	// ScheduledAlertRuleProperties - Scheduled alert rule properties
 	*ScheduledAlertRuleProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindAlertRule', 'KindScheduled'
-	Kind Kind `json:"kind,omitempty"`
+	// Kind - Possible values include: 'KindAlertRule', 'KindFusion', 'KindMicrosoftSecurityIncidentCreation', 'KindScheduled'
+	Kind KindBasicAlertRule `json:"kind,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for ScheduledAlertRule.
@@ -8095,6 +8094,16 @@ func (sar ScheduledAlertRule) MarshalJSON() ([]byte, error) {
 		objectMap["kind"] = sar.Kind
 	}
 	return json.Marshal(objectMap)
+}
+
+// AsFusionAlertRule is the BasicAlertRule implementation for ScheduledAlertRule.
+func (sar ScheduledAlertRule) AsFusionAlertRule() (*FusionAlertRule, bool) {
+	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRule is the BasicAlertRule implementation for ScheduledAlertRule.
+func (sar ScheduledAlertRule) AsMicrosoftSecurityIncidentCreationAlertRule() (*MicrosoftSecurityIncidentCreationAlertRule, bool) {
+	return nil, false
 }
 
 // AsScheduledAlertRule is the BasicAlertRule implementation for ScheduledAlertRule.
@@ -8130,33 +8139,6 @@ func (sar *ScheduledAlertRule) UnmarshalJSON(body []byte) error {
 				}
 				sar.ScheduledAlertRuleProperties = &scheduledAlertRuleProperties
 			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				sar.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				sar.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				sar.Name = &name
-			}
 		case "etag":
 			if v != nil {
 				var etag string
@@ -8168,7 +8150,7 @@ func (sar *ScheduledAlertRule) UnmarshalJSON(body []byte) error {
 			}
 		case "kind":
 			if v != nil {
-				var kind Kind
+				var kind KindBasicAlertRule
 				err = json.Unmarshal(*v, &kind)
 				if err != nil {
 					return err
@@ -8181,32 +8163,52 @@ func (sar *ScheduledAlertRule) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// ScheduledAlertRuleProperties alert rule property bag.
-type ScheduledAlertRuleProperties struct {
-	// DisplayName - The display name for alerts created by this alert rule.
-	DisplayName *string `json:"displayName,omitempty"`
-	// Description - The description of the alert rule.
-	Description *string `json:"description,omitempty"`
-	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
-	Severity AlertSeverity `json:"severity,omitempty"`
-	// Enabled - Determines whether this alert rule is enabled or disabled.
-	Enabled *bool `json:"enabled,omitempty"`
+// ScheduledAlertRuleCommonProperties schedule alert rule template property bag.
+type ScheduledAlertRuleCommonProperties struct {
 	// Query - The query that creates alerts for this rule.
 	Query *string `json:"query,omitempty"`
 	// QueryFrequency - The frequency (in ISO 8601 duration format) for this alert rule to run.
 	QueryFrequency *string `json:"queryFrequency,omitempty"`
 	// QueryPeriod - The period (in ISO 8601 duration format) that this alert rule looks at.
 	QueryPeriod *string `json:"queryPeriod,omitempty"`
+	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
+	Severity AlertSeverity `json:"severity,omitempty"`
 	// TriggerOperator - The operation against the threshold that triggers alert rule. Possible values include: 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
 	TriggerOperator TriggerOperator `json:"triggerOperator,omitempty"`
 	// TriggerThreshold - The threshold triggers this alert rule.
 	TriggerThreshold *int32 `json:"triggerThreshold,omitempty"`
-	// SuppressionEnabled - Determines whether the suppression for this alert rule is enabled or disabled.
-	SuppressionEnabled *bool `json:"suppressionEnabled,omitempty"`
+}
+
+// ScheduledAlertRuleProperties scheduled alert rule base property bag.
+type ScheduledAlertRuleProperties struct {
+	// AlertRuleTemplateName - The Name of the alert rule template used to create this rule.
+	AlertRuleTemplateName *string `json:"alertRuleTemplateName,omitempty"`
+	// Description - The description of the alert rule.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alerts created by this alert rule.
+	DisplayName *string `json:"displayName,omitempty"`
+	// Enabled - Determines whether this alert rule is enabled or disabled.
+	Enabled *bool `json:"enabled,omitempty"`
+	// LastModifiedUtc - READ-ONLY; The last time that this alert rule has been modified.
+	LastModifiedUtc *date.Time `json:"lastModifiedUtc,omitempty"`
 	// SuppressionDuration - The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
 	SuppressionDuration *string `json:"suppressionDuration,omitempty"`
-	// LastModifiedUtc - READ-ONLY; The last time that this alert has been modified.
-	LastModifiedUtc *string `json:"lastModifiedUtc,omitempty"`
+	// SuppressionEnabled - Determines whether the suppression for this alert rule is enabled or disabled.
+	SuppressionEnabled *bool `json:"suppressionEnabled,omitempty"`
+	// Tactics - The tactics of the alert rule
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
+	// Query - The query that creates alerts for this rule.
+	Query *string `json:"query,omitempty"`
+	// QueryFrequency - The frequency (in ISO 8601 duration format) for this alert rule to run.
+	QueryFrequency *string `json:"queryFrequency,omitempty"`
+	// QueryPeriod - The period (in ISO 8601 duration format) that this alert rule looks at.
+	QueryPeriod *string `json:"queryPeriod,omitempty"`
+	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
+	Severity AlertSeverity `json:"severity,omitempty"`
+	// TriggerOperator - The operation against the threshold that triggers alert rule. Possible values include: 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
+	TriggerOperator TriggerOperator `json:"triggerOperator,omitempty"`
+	// TriggerThreshold - The threshold triggers this alert rule.
+	TriggerThreshold *int32 `json:"triggerThreshold,omitempty"`
 }
 
 // ScheduledAlertRuleTemplate represents scheduled alert rule template.
@@ -8215,13 +8217,11 @@ type ScheduledAlertRuleTemplate struct {
 	*ScheduledAlertRuleTemplateProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
-	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindScheduled', 'KindBasicAlertRuleTemplateKindFilter', 'KindBasicAlertRuleTemplateKindFusion'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindBasicAlertRuleTemplateKindAlertRuleTemplate', 'KindBasicAlertRuleTemplateKindFusion', 'KindBasicAlertRuleTemplateKindMicrosoftSecurityIncidentCreation', 'KindBasicAlertRuleTemplateKindScheduled'
 	Kind KindBasicAlertRuleTemplate `json:"kind,omitempty"`
 }
 
@@ -8232,28 +8232,25 @@ func (sart ScheduledAlertRuleTemplate) MarshalJSON() ([]byte, error) {
 	if sart.ScheduledAlertRuleTemplateProperties != nil {
 		objectMap["properties"] = sart.ScheduledAlertRuleTemplateProperties
 	}
-	if sart.Etag != nil {
-		objectMap["etag"] = sart.Etag
-	}
 	if sart.Kind != "" {
 		objectMap["kind"] = sart.Kind
 	}
 	return json.Marshal(objectMap)
 }
 
-// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
-func (sart ScheduledAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
-	return &sart, true
-}
-
-// AsFilterAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
-func (sart ScheduledAlertRuleTemplate) AsFilterAlertRuleTemplate() (*FilterAlertRuleTemplate, bool) {
-	return nil, false
-}
-
 // AsFusionAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
 func (sart ScheduledAlertRuleTemplate) AsFusionAlertRuleTemplate() (*FusionAlertRuleTemplate, bool) {
 	return nil, false
+}
+
+// AsMicrosoftSecurityIncidentCreationAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
+func (sart ScheduledAlertRuleTemplate) AsMicrosoftSecurityIncidentCreationAlertRuleTemplate() (*MicrosoftSecurityIncidentCreationAlertRuleTemplate, bool) {
+	return nil, false
+}
+
+// AsScheduledAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
+func (sart ScheduledAlertRuleTemplate) AsScheduledAlertRuleTemplate() (*ScheduledAlertRuleTemplate, bool) {
+	return &sart, true
 }
 
 // AsAlertRuleTemplate is the BasicAlertRuleTemplate implementation for ScheduledAlertRuleTemplate.
@@ -8293,15 +8290,6 @@ func (sart *ScheduledAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 				}
 				sart.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				sart.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -8311,14 +8299,14 @@ func (sart *ScheduledAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 				}
 				sart.Name = &name
 			}
-		case "etag":
+		case "type":
 			if v != nil {
-				var etag string
-				err = json.Unmarshal(*v, &etag)
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
 				if err != nil {
 					return err
 				}
-				sart.Etag = &etag
+				sart.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -8337,44 +8325,28 @@ func (sart *ScheduledAlertRuleTemplate) UnmarshalJSON(body []byte) error {
 
 // ScheduledAlertRuleTemplateProperties scheduled alert rule template properties
 type ScheduledAlertRuleTemplateProperties struct {
-	// DisplayName - The display name for alert rule template.
-	DisplayName *string `json:"displayName,omitempty"`
-	// Description - The description of the alert rule template.
-	Description *string `json:"description,omitempty"`
-	// Tactics - The tactics of the alert rule template
-	Tactics *[]AttackTactic `json:"tactics,omitempty"`
-	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
-	CreatedDateUTC *string `json:"createdDateUTC,omitempty"`
-	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
-	Status TemplateStatus `json:"status,omitempty"`
-	// RequiredDataConnectors - The required data connectors for this template
-	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
 	// AlertRulesCreatedByTemplateCount - the number of alert rules that were created by this template
 	AlertRulesCreatedByTemplateCount *int32 `json:"alertRulesCreatedByTemplateCount,omitempty"`
-	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
-	Severity AlertSeverity `json:"severity,omitempty"`
+	// CreatedDateUTC - READ-ONLY; The time that this alert rule template has been added.
+	CreatedDateUTC *date.Time `json:"createdDateUTC,omitempty"`
+	// Description - The description of the alert rule template.
+	Description *string `json:"description,omitempty"`
+	// DisplayName - The display name for alert rule template.
+	DisplayName *string `json:"displayName,omitempty"`
+	// RequiredDataConnectors - The required data connectors for this template
+	RequiredDataConnectors *[]DataConnectorStatus `json:"requiredDataConnectors,omitempty"`
+	// Status - The alert rule template status. Possible values include: 'Installed', 'Available', 'NotAvailable'
+	Status TemplateStatus `json:"status,omitempty"`
+	// Tactics - The tactics of the alert rule template
+	Tactics *[]AttackTactic `json:"tactics,omitempty"`
 	// Query - The query that creates alerts for this rule.
 	Query *string `json:"query,omitempty"`
 	// QueryFrequency - The frequency (in ISO 8601 duration format) for this alert rule to run.
 	QueryFrequency *string `json:"queryFrequency,omitempty"`
 	// QueryPeriod - The period (in ISO 8601 duration format) that this alert rule looks at.
 	QueryPeriod *string `json:"queryPeriod,omitempty"`
-	// TriggerOperator - The operation against the threshold that triggers alert rule. Possible values include: 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
-	TriggerOperator TriggerOperator `json:"triggerOperator,omitempty"`
-	// TriggerThreshold - The threshold triggers this alert rule.
-	TriggerThreshold *int32 `json:"triggerThreshold,omitempty"`
-}
-
-// ScheduledAlertRuleTemplatePropertiesModel schedule alert rule template property bag.
-type ScheduledAlertRuleTemplatePropertiesModel struct {
 	// Severity - The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium', 'Low', 'Informational'
 	Severity AlertSeverity `json:"severity,omitempty"`
-	// Query - The query that creates alerts for this rule.
-	Query *string `json:"query,omitempty"`
-	// QueryFrequency - The frequency (in ISO 8601 duration format) for this alert rule to run.
-	QueryFrequency *string `json:"queryFrequency,omitempty"`
-	// QueryPeriod - The period (in ISO 8601 duration format) that this alert rule looks at.
-	QueryPeriod *string `json:"queryPeriod,omitempty"`
 	// TriggerOperator - The operation against the threshold that triggers alert rule. Possible values include: 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
 	TriggerOperator TriggerOperator `json:"triggerOperator,omitempty"`
 	// TriggerThreshold - The threshold triggers this alert rule.
@@ -8387,11 +8359,11 @@ type SecurityAlert struct {
 	*SecurityAlertProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -8413,36 +8385,6 @@ func (sa SecurityAlert) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsSecurityAlert() (*SecurityAlert, bool) {
-	return &sa, true
-}
-
-// AsFileHashEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for SecurityAlert.
 func (sa SecurityAlert) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -8453,18 +8395,38 @@ func (sa SecurityAlert) AsCloudApplicationEntity() (*CloudApplicationEntity, boo
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for SecurityAlert.
-func (sa SecurityAlert) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for SecurityAlert.
 func (sa SecurityAlert) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for SecurityAlert.
 func (sa SecurityAlert) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -8475,6 +8437,16 @@ func (sa SecurityAlert) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for SecurityAlert.
 func (sa SecurityAlert) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsSecurityAlert() (*SecurityAlert, bool) {
+	return &sa, true
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for SecurityAlert.
+func (sa SecurityAlert) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -8520,15 +8492,6 @@ func (sa *SecurityAlert) UnmarshalJSON(body []byte) error {
 				}
 				sa.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				sa.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -8537,6 +8500,15 @@ func (sa *SecurityAlert) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				sa.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				sa.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -8555,52 +8527,52 @@ func (sa *SecurityAlert) UnmarshalJSON(body []byte) error {
 
 // SecurityAlertProperties securityAlert entity property bag.
 type SecurityAlertProperties struct {
-	// SystemAlertID - READ-ONLY; Holds the product identifier of the alert for the product.
-	SystemAlertID *string `json:"systemAlertId,omitempty"`
-	// ConfidenceReasons - READ-ONLY; The confidence reasons
-	ConfidenceReasons *[]SecurityAlertPropertiesConfidenceReasonsItem `json:"confidenceReasons,omitempty"`
-	// ConfidenceScoreStatus - READ-ONLY; The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. Possible values include: 'NotApplicable', 'InProcess', 'NotFinal', 'Final'
-	ConfidenceScoreStatus ConfidenceScoreStatus `json:"confidenceScoreStatus,omitempty"`
-	// Intent - READ-ONLY; Holds the alert intent stage(s) mapping for this alert. Possible values include: 'KillChainIntentUnknown', 'KillChainIntentProbing', 'KillChainIntentExploitation', 'KillChainIntentPersistence', 'KillChainIntentPrivilegeEscalation', 'KillChainIntentDefenseEvasion', 'KillChainIntentCredentialAccess', 'KillChainIntentDiscovery', 'KillChainIntentLateralMovement', 'KillChainIntentExecution', 'KillChainIntentCollection', 'KillChainIntentExfiltration', 'KillChainIntentCommandAndControl', 'KillChainIntentImpact'
-	Intent KillChainIntent `json:"intent,omitempty"`
-	// ConfidenceScore - READ-ONLY; The confidence score of the alert.
-	ConfidenceScore *float64 `json:"confidenceScore,omitempty"`
 	// AlertDisplayName - READ-ONLY; The display name of the alert.
 	AlertDisplayName *string `json:"alertDisplayName,omitempty"`
-	// Description - READ-ONLY; Alert description.
-	Description *string `json:"description,omitempty"`
-	// RemediationSteps - READ-ONLY; Manual action items to take to remediate the alert.
-	RemediationSteps *[]string `json:"remediationSteps,omitempty"`
-	// ConfidenceLevel - READ-ONLY; The confidence level of this alert. Possible values include: 'ConfidenceLevelUnknown', 'ConfidenceLevelLow', 'ConfidenceLevelHigh'
-	ConfidenceLevel ConfidenceLevel `json:"confidenceLevel,omitempty"`
-	// Severity - The severity of the alert. Possible values include: 'High', 'Medium', 'Low', 'Informational'
-	Severity AlertSeverity `json:"severity,omitempty"`
-	// VendorName - READ-ONLY; The name of the vendor that raise the alert.
-	VendorName *string `json:"vendorName,omitempty"`
-	// ProductName - READ-ONLY; The name of the product which published this alert.
-	ProductName *string `json:"productName,omitempty"`
-	// ProductComponentName - READ-ONLY; The name of a component inside the product which generated the alert.
-	ProductComponentName *string `json:"productComponentName,omitempty"`
 	// AlertType - READ-ONLY; The type name of the alert.
 	AlertType *string `json:"alertType,omitempty"`
-	// ProductVersion - READ-ONLY; The version of the product generating the alert.
-	ProductVersion *string `json:"productVersion,omitempty"`
-	// ProcessingEndTime - READ-ONLY; The time the alert was made available for consumption.
-	ProcessingEndTime *date.Time `json:"processingEndTime,omitempty"`
-	// Status - READ-ONLY; The lifecycle status of the alert. Possible values include: 'AlertStatusUnknown', 'AlertStatusNew', 'AlertStatusResolved', 'AlertStatusDismissed', 'AlertStatusInProgress'
-	Status AlertStatus `json:"status,omitempty"`
-	// EndTimeUtc - READ-ONLY; The impact end time of the alert (the time of the last event contributing to the alert).
-	EndTimeUtc *date.Time `json:"endTimeUtc,omitempty"`
-	// StartTimeUtc - READ-ONLY; The impact start time of the alert (the time of the first event contributing to the alert).
-	StartTimeUtc *date.Time `json:"startTimeUtc,omitempty"`
-	// TimeGenerated - READ-ONLY; The time the alert was generated.
-	TimeGenerated *date.Time `json:"timeGenerated,omitempty"`
 	// CompromisedEntity - READ-ONLY; Display name of the main entity being reported on.
 	CompromisedEntity *string `json:"compromisedEntity,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// ConfidenceLevel - READ-ONLY; The confidence level of this alert. Possible values include: 'ConfidenceLevelUnknown', 'ConfidenceLevelLow', 'ConfidenceLevelHigh'
+	ConfidenceLevel ConfidenceLevel `json:"confidenceLevel,omitempty"`
+	// ConfidenceReasons - READ-ONLY; The confidence reasons
+	ConfidenceReasons *[]SecurityAlertPropertiesConfidenceReasonsItem `json:"confidenceReasons,omitempty"`
+	// ConfidenceScore - READ-ONLY; The confidence score of the alert.
+	ConfidenceScore *float64 `json:"confidenceScore,omitempty"`
+	// ConfidenceScoreStatus - READ-ONLY; The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. Possible values include: 'NotApplicable', 'InProcess', 'NotFinal', 'Final'
+	ConfidenceScoreStatus ConfidenceScoreStatus `json:"confidenceScoreStatus,omitempty"`
+	// Description - READ-ONLY; Alert description.
+	Description *string `json:"description,omitempty"`
+	// EndTimeUtc - READ-ONLY; The impact end time of the alert (the time of the last event contributing to the alert).
+	EndTimeUtc *date.Time `json:"endTimeUtc,omitempty"`
+	// Intent - READ-ONLY; Holds the alert intent stage(s) mapping for this alert. Possible values include: 'KillChainIntentUnknown', 'KillChainIntentProbing', 'KillChainIntentExploitation', 'KillChainIntentPersistence', 'KillChainIntentPrivilegeEscalation', 'KillChainIntentDefenseEvasion', 'KillChainIntentCredentialAccess', 'KillChainIntentDiscovery', 'KillChainIntentLateralMovement', 'KillChainIntentExecution', 'KillChainIntentCollection', 'KillChainIntentExfiltration', 'KillChainIntentCommandAndControl', 'KillChainIntentImpact'
+	Intent KillChainIntent `json:"intent,omitempty"`
+	// ProcessingEndTime - READ-ONLY; The time the alert was made available for consumption.
+	ProcessingEndTime *date.Time `json:"processingEndTime,omitempty"`
+	// ProductComponentName - READ-ONLY; The name of a component inside the product which generated the alert.
+	ProductComponentName *string `json:"productComponentName,omitempty"`
+	// ProductName - READ-ONLY; The name of the product which published this alert.
+	ProductName *string `json:"productName,omitempty"`
+	// ProductVersion - READ-ONLY; The version of the product generating the alert.
+	ProductVersion *string `json:"productVersion,omitempty"`
+	// RemediationSteps - READ-ONLY; Manual action items to take to remediate the alert.
+	RemediationSteps *[]string `json:"remediationSteps,omitempty"`
+	// Severity - The severity of the alert. Possible values include: 'High', 'Medium', 'Low', 'Informational'
+	Severity AlertSeverity `json:"severity,omitempty"`
+	// StartTimeUtc - READ-ONLY; The impact start time of the alert (the time of the first event contributing to the alert).
+	StartTimeUtc *date.Time `json:"startTimeUtc,omitempty"`
+	// Status - READ-ONLY; The lifecycle status of the alert. Possible values include: 'AlertStatusUnknown', 'AlertStatusNew', 'AlertStatusResolved', 'AlertStatusDismissed', 'AlertStatusInProgress'
+	Status AlertStatus `json:"status,omitempty"`
+	// SystemAlertID - READ-ONLY; Holds the product identifier of the alert for the product.
+	SystemAlertID *string `json:"systemAlertId,omitempty"`
+	// TimeGenerated - READ-ONLY; The time the alert was generated.
+	TimeGenerated *date.Time `json:"timeGenerated,omitempty"`
+	// VendorName - READ-ONLY; The name of the vendor that raise the alert.
+	VendorName *string `json:"vendorName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for SecurityAlertProperties.
@@ -8614,10 +8586,10 @@ func (sap SecurityAlertProperties) MarshalJSON() ([]byte, error) {
 
 // SecurityAlertPropertiesConfidenceReasonsItem confidence reason item
 type SecurityAlertPropertiesConfidenceReasonsItem struct {
-	// ReasonType - READ-ONLY; The type (category) of the reason
-	ReasonType *string `json:"reasonType,omitempty"`
 	// Reason - READ-ONLY; The reason's description
 	Reason *string `json:"reason,omitempty"`
+	// ReasonType - READ-ONLY; The type (category) of the reason
+	ReasonType *string `json:"reasonType,omitempty"`
 }
 
 // SecurityGroupEntity represents a security group entity.
@@ -8626,11 +8598,11 @@ type SecurityGroupEntity struct {
 	*SecurityGroupEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -8652,36 +8624,6 @@ func (sge SecurityGroupEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return &sge, true
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for SecurityGroupEntity.
 func (sge SecurityGroupEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -8692,18 +8634,38 @@ func (sge SecurityGroupEntity) AsCloudApplicationEntity() (*CloudApplicationEnti
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for SecurityGroupEntity.
-func (sge SecurityGroupEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for SecurityGroupEntity.
 func (sge SecurityGroupEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for SecurityGroupEntity.
 func (sge SecurityGroupEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -8715,6 +8677,16 @@ func (sge SecurityGroupEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) 
 // AsRegistryValueEntity is the BasicEntity implementation for SecurityGroupEntity.
 func (sge SecurityGroupEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
 	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for SecurityGroupEntity.
+func (sge SecurityGroupEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
+	return &sge, true
 }
 
 // AsURLEntity is the BasicEntity implementation for SecurityGroupEntity.
@@ -8759,15 +8731,6 @@ func (sge *SecurityGroupEntity) UnmarshalJSON(body []byte) error {
 				}
 				sge.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				sge.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -8776,6 +8739,15 @@ func (sge *SecurityGroupEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				sge.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				sge.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -8796,14 +8768,14 @@ func (sge *SecurityGroupEntity) UnmarshalJSON(body []byte) error {
 type SecurityGroupEntityProperties struct {
 	// DistinguishedName - READ-ONLY; The group distinguished name
 	DistinguishedName *string `json:"distinguishedName,omitempty"`
-	// Sid - READ-ONLY; The SID attribute is a single-value attribute that specifies the security identifier (SID) of the group
-	Sid *string `json:"sid,omitempty"`
 	// ObjectGUID - READ-ONLY; A single-value attribute that is the unique identifier for the object, assigned by active directory.
 	ObjectGUID *uuid.UUID `json:"objectGuid,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
+	// Sid - READ-ONLY; The SID attribute is a single-value attribute that specifies the security identifier (SID) of the group
+	Sid *string `json:"sid,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for SecurityGroupEntityProperties.
@@ -8814,23 +8786,17 @@ func (sgep SecurityGroupEntityProperties) MarshalJSON() ([]byte, error) {
 
 // BasicSettings the Setting.
 type BasicSettings interface {
-	AsUebaSettings() (*UebaSettings, bool)
 	AsToggleSettings() (*ToggleSettings, bool)
+	AsUebaSettings() (*UebaSettings, bool)
 	AsSettings() (*Settings, bool)
 }
 
 // Settings the Setting.
 type Settings struct {
 	autorest.Response `json:"-"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindSettings', 'KindUebaSettings', 'KindToggleSettings'
+	// Kind - Possible values include: 'KindSettings', 'KindToggleSettings', 'KindUebaSettings'
 	Kind KindBasicSettings `json:"kind,omitempty"`
 }
 
@@ -8842,14 +8808,14 @@ func unmarshalBasicSettings(body []byte) (BasicSettings, error) {
 	}
 
 	switch m["kind"] {
-	case string(KindUebaSettings):
-		var us UebaSettings
-		err := json.Unmarshal(body, &us)
-		return us, err
 	case string(KindToggleSettings):
 		var ts ToggleSettings
 		err := json.Unmarshal(body, &ts)
 		return ts, err
+	case string(KindUebaSettings):
+		var us UebaSettings
+		err := json.Unmarshal(body, &us)
+		return us, err
 	default:
 		var s Settings
 		err := json.Unmarshal(body, &s)
@@ -8888,13 +8854,13 @@ func (s Settings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsUebaSettings is the BasicSettings implementation for Settings.
-func (s Settings) AsUebaSettings() (*UebaSettings, bool) {
+// AsToggleSettings is the BasicSettings implementation for Settings.
+func (s Settings) AsToggleSettings() (*ToggleSettings, bool) {
 	return nil, false
 }
 
-// AsToggleSettings is the BasicSettings implementation for Settings.
-func (s Settings) AsToggleSettings() (*ToggleSettings, bool) {
+// AsUebaSettings is the BasicSettings implementation for Settings.
+func (s Settings) AsUebaSettings() (*UebaSettings, bool) {
 	return nil, false
 }
 
@@ -8933,33 +8899,27 @@ func (sm *SettingsModel) UnmarshalJSON(body []byte) error {
 
 // ThreatIntelligence threatIntelligence property bag.
 type ThreatIntelligence struct {
-	// ProviderName - READ-ONLY; Name of the provider from whom this Threat Intelligence information was received
-	ProviderName *string `json:"providerName,omitempty"`
-	// ThreatType - READ-ONLY; Threat type (e.g. "Botnet")
-	ThreatType *string `json:"threatType,omitempty"`
-	// ThreatName - READ-ONLY; Threat name (e.g. "Jedobot malware")
-	ThreatName *string `json:"threatName,omitempty"`
 	// Confidence - READ-ONLY; Confidence (must be between 0 and 1)
 	Confidence *float64 `json:"confidence,omitempty"`
+	// ProviderName - READ-ONLY; Name of the provider from whom this Threat Intelligence information was received
+	ProviderName *string `json:"providerName,omitempty"`
 	// ReportLink - READ-ONLY; Report link
 	ReportLink *string `json:"reportLink,omitempty"`
 	// ThreatDescription - READ-ONLY; Threat description (free text)
 	ThreatDescription *string `json:"threatDescription,omitempty"`
+	// ThreatName - READ-ONLY; Threat name (e.g. "Jedobot malware")
+	ThreatName *string `json:"threatName,omitempty"`
+	// ThreatType - READ-ONLY; Threat type (e.g. "Botnet")
+	ThreatType *string `json:"threatType,omitempty"`
 }
 
 // TIDataConnector represents threat intelligence data connector.
 type TIDataConnector struct {
 	// TIDataConnectorProperties - TI (Threat Intelligence) data connector properties.
 	*TIDataConnectorProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the data connector.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindDataConnector', 'KindOffice365', 'KindThreatIntelligence', 'KindAmazonWebServicesCloudTrail', 'KindAzureActiveDirectory', 'KindAzureSecurityCenter', 'KindMicrosoftCloudAppSecurity', 'KindAzureAdvancedThreatProtection', 'KindMicrosoftDefenderAdvancedThreatProtection'
+	// Kind - Possible values include: 'KindDataConnector', 'KindAzureActiveDirectory', 'KindAzureAdvancedThreatProtection', 'KindAzureSecurityCenter', 'KindAmazonWebServicesCloudTrail', 'KindMicrosoftCloudAppSecurity', 'KindMicrosoftDefenderAdvancedThreatProtection', 'KindOffice365', 'KindThreatIntelligence'
 	Kind KindBasicDataConnector `json:"kind,omitempty"`
 }
 
@@ -8979,33 +8939,8 @@ func (tdc TIDataConnector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsOfficeDataConnector is the BasicDataConnector implementation for TIDataConnector.
-func (tdc TIDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
-	return nil, false
-}
-
-// AsTIDataConnector is the BasicDataConnector implementation for TIDataConnector.
-func (tdc TIDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
-	return &tdc, true
-}
-
-// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for TIDataConnector.
-func (tdc TIDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
-	return nil, false
-}
-
 // AsAADDataConnector is the BasicDataConnector implementation for TIDataConnector.
 func (tdc TIDataConnector) AsAADDataConnector() (*AADDataConnector, bool) {
-	return nil, false
-}
-
-// AsASCDataConnector is the BasicDataConnector implementation for TIDataConnector.
-func (tdc TIDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
-	return nil, false
-}
-
-// AsMCASDataConnector is the BasicDataConnector implementation for TIDataConnector.
-func (tdc TIDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
 	return nil, false
 }
 
@@ -9014,9 +8949,34 @@ func (tdc TIDataConnector) AsAATPDataConnector() (*AATPDataConnector, bool) {
 	return nil, false
 }
 
+// AsASCDataConnector is the BasicDataConnector implementation for TIDataConnector.
+func (tdc TIDataConnector) AsASCDataConnector() (*ASCDataConnector, bool) {
+	return nil, false
+}
+
+// AsAwsCloudTrailDataConnector is the BasicDataConnector implementation for TIDataConnector.
+func (tdc TIDataConnector) AsAwsCloudTrailDataConnector() (*AwsCloudTrailDataConnector, bool) {
+	return nil, false
+}
+
+// AsMCASDataConnector is the BasicDataConnector implementation for TIDataConnector.
+func (tdc TIDataConnector) AsMCASDataConnector() (*MCASDataConnector, bool) {
+	return nil, false
+}
+
 // AsMDATPDataConnector is the BasicDataConnector implementation for TIDataConnector.
 func (tdc TIDataConnector) AsMDATPDataConnector() (*MDATPDataConnector, bool) {
 	return nil, false
+}
+
+// AsOfficeDataConnector is the BasicDataConnector implementation for TIDataConnector.
+func (tdc TIDataConnector) AsOfficeDataConnector() (*OfficeDataConnector, bool) {
+	return nil, false
+}
+
+// AsTIDataConnector is the BasicDataConnector implementation for TIDataConnector.
+func (tdc TIDataConnector) AsTIDataConnector() (*TIDataConnector, bool) {
+	return &tdc, true
 }
 
 // AsDataConnector is the BasicDataConnector implementation for TIDataConnector.
@@ -9046,33 +9006,6 @@ func (tdc *TIDataConnector) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				tdc.TIDataConnectorProperties = &tIDataConnectorProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				tdc.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				tdc.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				tdc.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -9122,15 +9055,9 @@ type TIDataConnectorProperties struct {
 type ToggleSettings struct {
 	// ToggleSettingsProperties - toggle properties
 	*ToggleSettingsProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindSettings', 'KindUebaSettings', 'KindToggleSettings'
+	// Kind - Possible values include: 'KindSettings', 'KindToggleSettings', 'KindUebaSettings'
 	Kind KindBasicSettings `json:"kind,omitempty"`
 }
 
@@ -9150,14 +9077,14 @@ func (ts ToggleSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsUebaSettings is the BasicSettings implementation for ToggleSettings.
-func (ts ToggleSettings) AsUebaSettings() (*UebaSettings, bool) {
-	return nil, false
-}
-
 // AsToggleSettings is the BasicSettings implementation for ToggleSettings.
 func (ts ToggleSettings) AsToggleSettings() (*ToggleSettings, bool) {
 	return &ts, true
+}
+
+// AsUebaSettings is the BasicSettings implementation for ToggleSettings.
+func (ts ToggleSettings) AsUebaSettings() (*UebaSettings, bool) {
+	return nil, false
 }
 
 // AsSettings is the BasicSettings implementation for ToggleSettings.
@@ -9187,33 +9114,6 @@ func (ts *ToggleSettings) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				ts.ToggleSettingsProperties = &toggleSettingsProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				ts.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				ts.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				ts.Name = &name
 			}
 		case "etag":
 			if v != nil {
@@ -9249,15 +9149,9 @@ type ToggleSettingsProperties struct {
 type UebaSettings struct {
 	// UebaSettingsProperties - User and Entity Behavior Analytics settings properties
 	*UebaSettingsProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Azure resource Id
-	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
-	// Name - READ-ONLY; Azure resource name
-	Name *string `json:"name,omitempty"`
-	// Etag - Etag of the alert rule.
+	// Etag - Etag of the azure resource
 	Etag *string `json:"etag,omitempty"`
-	// Kind - Possible values include: 'KindSettings', 'KindUebaSettings', 'KindToggleSettings'
+	// Kind - Possible values include: 'KindSettings', 'KindToggleSettings', 'KindUebaSettings'
 	Kind KindBasicSettings `json:"kind,omitempty"`
 }
 
@@ -9277,14 +9171,14 @@ func (us UebaSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// AsUebaSettings is the BasicSettings implementation for UebaSettings.
-func (us UebaSettings) AsUebaSettings() (*UebaSettings, bool) {
-	return &us, true
-}
-
 // AsToggleSettings is the BasicSettings implementation for UebaSettings.
 func (us UebaSettings) AsToggleSettings() (*ToggleSettings, bool) {
 	return nil, false
+}
+
+// AsUebaSettings is the BasicSettings implementation for UebaSettings.
+func (us UebaSettings) AsUebaSettings() (*UebaSettings, bool) {
+	return &us, true
 }
 
 // AsSettings is the BasicSettings implementation for UebaSettings.
@@ -9315,33 +9209,6 @@ func (us *UebaSettings) UnmarshalJSON(body []byte) error {
 				}
 				us.UebaSettingsProperties = &uebaSettingsProperties
 			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				us.ID = &ID
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				us.Type = &typeVar
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				us.Name = &name
-			}
 		case "etag":
 			if v != nil {
 				var etag string
@@ -9368,12 +9235,12 @@ func (us *UebaSettings) UnmarshalJSON(body []byte) error {
 
 // UebaSettingsProperties user and Entity Behavior Analytics settings property bag.
 type UebaSettingsProperties struct {
+	// AtpLicenseStatus - READ-ONLY; Determines whether the tenant has ATP (Advanced Threat Protection) license. Possible values include: 'LicenseStatusEnabled', 'LicenseStatusDisabled'
+	AtpLicenseStatus LicenseStatus `json:"atpLicenseStatus,omitempty"`
 	// IsEnabled - Determines whether User and Entity Behavior Analytics is enabled for this workspace.
 	IsEnabled *bool `json:"isEnabled,omitempty"`
 	// StatusInMcas - READ-ONLY; Determines whether User and Entity Behavior Analytics is enabled from MCAS (Microsoft Cloud App Security). Possible values include: 'StatusInMcasEnabled', 'StatusInMcasDisabled'
 	StatusInMcas StatusInMcas `json:"statusInMcas,omitempty"`
-	// AtpLicenseStatus - READ-ONLY; Determines whether the tenant has ATP (Advanced Threat Protection) license. Possible values include: 'LicenseStatusEnabled', 'LicenseStatusDisabled'
-	AtpLicenseStatus LicenseStatus `json:"atpLicenseStatus,omitempty"`
 }
 
 // URLEntity represents a url entity.
@@ -9382,11 +9249,11 @@ type URLEntity struct {
 	*URLEntityProperties `json:"properties,omitempty"`
 	// ID - READ-ONLY; Azure resource Id
 	ID *string `json:"id,omitempty"`
-	// Type - READ-ONLY; Azure resource type
-	Type *string `json:"type,omitempty"`
 	// Name - READ-ONLY; Azure resource name
 	Name *string `json:"name,omitempty"`
-	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindHost', 'KindFile', 'KindSecurityAlert', 'KindFileHash', 'KindMalware', 'KindSecurityGroup', 'KindAzureResource', 'KindCloudApplication', 'KindProcess', 'KindDNSResolution', 'KindIP', 'KindRegistryKey', 'KindRegistryValue', 'KindURL'
+	// Type - READ-ONLY; Azure resource type
+	Type *string `json:"type,omitempty"`
+	// Kind - Possible values include: 'KindEntity', 'KindAccount', 'KindAzureResource', 'KindCloudApplication', 'KindDNSResolution', 'KindFile', 'KindFileHash', 'KindHost', 'KindIP', 'KindMalware', 'KindProcess', 'KindRegistryKey', 'KindRegistryValue', 'KindSecurityAlert', 'KindSecurityGroup', 'KindURL'
 	Kind KindBasicEntity `json:"kind,omitempty"`
 }
 
@@ -9408,36 +9275,6 @@ func (ue URLEntity) AsAccountEntity() (*AccountEntity, bool) {
 	return nil, false
 }
 
-// AsHostEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsHostEntity() (*HostEntity, bool) {
-	return nil, false
-}
-
-// AsFileEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsFileEntity() (*FileEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityAlert is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsSecurityAlert() (*SecurityAlert, bool) {
-	return nil, false
-}
-
-// AsFileHashEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsFileHashEntity() (*FileHashEntity, bool) {
-	return nil, false
-}
-
-// AsMalwareEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsMalwareEntity() (*MalwareEntity, bool) {
-	return nil, false
-}
-
-// AsSecurityGroupEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
-	return nil, false
-}
-
 // AsAzureResourceEntity is the BasicEntity implementation for URLEntity.
 func (ue URLEntity) AsAzureResourceEntity() (*AzureResourceEntity, bool) {
 	return nil, false
@@ -9448,18 +9285,38 @@ func (ue URLEntity) AsCloudApplicationEntity() (*CloudApplicationEntity, bool) {
 	return nil, false
 }
 
-// AsProcessEntity is the BasicEntity implementation for URLEntity.
-func (ue URLEntity) AsProcessEntity() (*ProcessEntity, bool) {
-	return nil, false
-}
-
 // AsDNSEntity is the BasicEntity implementation for URLEntity.
 func (ue URLEntity) AsDNSEntity() (*DNSEntity, bool) {
 	return nil, false
 }
 
+// AsFileEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsFileEntity() (*FileEntity, bool) {
+	return nil, false
+}
+
+// AsFileHashEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsFileHashEntity() (*FileHashEntity, bool) {
+	return nil, false
+}
+
+// AsHostEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsHostEntity() (*HostEntity, bool) {
+	return nil, false
+}
+
 // AsIPEntity is the BasicEntity implementation for URLEntity.
 func (ue URLEntity) AsIPEntity() (*IPEntity, bool) {
+	return nil, false
+}
+
+// AsMalwareEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsMalwareEntity() (*MalwareEntity, bool) {
+	return nil, false
+}
+
+// AsProcessEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsProcessEntity() (*ProcessEntity, bool) {
 	return nil, false
 }
 
@@ -9470,6 +9327,16 @@ func (ue URLEntity) AsRegistryKeyEntity() (*RegistryKeyEntity, bool) {
 
 // AsRegistryValueEntity is the BasicEntity implementation for URLEntity.
 func (ue URLEntity) AsRegistryValueEntity() (*RegistryValueEntity, bool) {
+	return nil, false
+}
+
+// AsSecurityAlert is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsSecurityAlert() (*SecurityAlert, bool) {
+	return nil, false
+}
+
+// AsSecurityGroupEntity is the BasicEntity implementation for URLEntity.
+func (ue URLEntity) AsSecurityGroupEntity() (*SecurityGroupEntity, bool) {
 	return nil, false
 }
 
@@ -9515,15 +9382,6 @@ func (ue *URLEntity) UnmarshalJSON(body []byte) error {
 				}
 				ue.ID = &ID
 			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				ue.Type = &typeVar
-			}
 		case "name":
 			if v != nil {
 				var name string
@@ -9532,6 +9390,15 @@ func (ue *URLEntity) UnmarshalJSON(body []byte) error {
 					return err
 				}
 				ue.Name = &name
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				ue.Type = &typeVar
 			}
 		case "kind":
 			if v != nil {
@@ -9552,10 +9419,10 @@ func (ue *URLEntity) UnmarshalJSON(body []byte) error {
 type URLEntityProperties struct {
 	// URL - READ-ONLY; A full URL the entity points to
 	URL *string `json:"url,omitempty"`
-	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
-	FriendlyName *string `json:"friendlyName,omitempty"`
 	// AdditionalData - READ-ONLY; A bag of custom fields that should be part of the entity and will be presented to the user.
 	AdditionalData map[string]interface{} `json:"additionalData"`
+	// FriendlyName - READ-ONLY; The graph item display name which is a short humanly readable description of the graph item instance. This property is optional and might be system generated.
+	FriendlyName *string `json:"friendlyName,omitempty"`
 }
 
 // MarshalJSON is the custom marshaler for URLEntityProperties.
@@ -9566,10 +9433,10 @@ func (uep URLEntityProperties) MarshalJSON() ([]byte, error) {
 
 // UserInfo user information that made some action
 type UserInfo struct {
-	// ObjectID - The object id of the user.
-	ObjectID *uuid.UUID `json:"objectId,omitempty"`
 	// Email - READ-ONLY; The email of the user.
 	Email *string `json:"email,omitempty"`
 	// Name - READ-ONLY; The name of the user.
 	Name *string `json:"name,omitempty"`
+	// ObjectID - The object id of the user.
+	ObjectID *uuid.UUID `json:"objectId,omitempty"`
 }
