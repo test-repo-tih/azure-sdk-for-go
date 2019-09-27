@@ -51,7 +51,7 @@ var _ ProfilesClientAPI = (*cdn.ProfilesClient)(nil)
 type EndpointsClientAPI interface {
 	Create(ctx context.Context, resourceGroupName string, profileName string, endpointName string, endpoint cdn.Endpoint) (result cdn.EndpointsCreateFuture, err error)
 	Delete(ctx context.Context, resourceGroupName string, profileName string, endpointName string) (result cdn.EndpointsDeleteFuture, err error)
-	Get(ctx context.Context, resourceGroupName string, profileName string, endpointName string) (result cdn.Endpoint, err error)
+	Get(ctx context.Context, resourceGroupName string, profileName string, endpointNamee string) (result cdn.Endpoint, err error)
 	ListByProfile(ctx context.Context, resourceGroupName string, profileName string) (result cdn.EndpointListResultPage, err error)
 	ListResourceUsage(ctx context.Context, resourceGroupName string, profileName string, endpointName string) (result cdn.ResourceUsageListResultPage, err error)
 	LoadContent(ctx context.Context, resourceGroupName string, profileName string, endpointName string, contentFilePaths cdn.LoadParameters) (result cdn.EndpointsLoadContentFuture, err error)

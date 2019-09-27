@@ -227,8 +227,8 @@ func (client EndpointsClient) DeleteResponder(resp *http.Response) (result autor
 // Parameters:
 // resourceGroupName - name of the Resource group within the Azure subscription.
 // profileName - name of the CDN profile which is unique within the resource group.
-// endpointName - name of the endpoint under the profile which is unique globally.
-func (client EndpointsClient) Get(ctx context.Context, resourceGroupName string, profileName string, endpointName string) (result Endpoint, err error) {
+// endpointNamee - name of the endpoint under the profile which is unique globally.
+func (client EndpointsClient) Get(ctx context.Context, resourceGroupName string, profileName string, endpointNamee string) (result Endpoint, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/EndpointsClient.Get")
 		defer func() {
@@ -247,7 +247,7 @@ func (client EndpointsClient) Get(ctx context.Context, resourceGroupName string,
 		return result, validation.NewError("cdn.EndpointsClient", "Get", err.Error())
 	}
 
-	req, err := client.GetPreparer(ctx, resourceGroupName, profileName, endpointName)
+	req, err := client.GetPreparer(ctx, resourceGroupName, profileName, endpointNamee)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "cdn.EndpointsClient", "Get", nil, "Failure preparing request")
 		return
@@ -269,9 +269,9 @@ func (client EndpointsClient) Get(ctx context.Context, resourceGroupName string,
 }
 
 // GetPreparer prepares the Get request.
-func (client EndpointsClient) GetPreparer(ctx context.Context, resourceGroupName string, profileName string, endpointName string) (*http.Request, error) {
+func (client EndpointsClient) GetPreparer(ctx context.Context, resourceGroupName string, profileName string, endpointNamee string) (*http.Request, error) {
 	pathParameters := map[string]interface{}{
-		"endpointName":      autorest.Encode("path", endpointName),
+		"endpointNamee":     autorest.Encode("path", endpointNamee),
 		"profileName":       autorest.Encode("path", profileName),
 		"resourceGroupName": autorest.Encode("path", resourceGroupName),
 		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
