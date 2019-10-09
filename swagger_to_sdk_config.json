@@ -3,7 +3,7 @@
   "meta": {
     "after_scripts_in_repo": [
       "dep ensure",
-      "go run ./tools/versioner/main.go ./ -v",
+      "go run ./tools/versioner/main.go ./services -v",
       "gofmt -w ./services/"
     ],
     "autorest_options": {
