@@ -85,12 +85,12 @@ type BackupItemStatus string
 const (
 	// Created ...
 	Created BackupItemStatus = "Created"
-	// Deleted ...
-	Deleted BackupItemStatus = "Deleted"
 	// DeleteFailed ...
 	DeleteFailed BackupItemStatus = "DeleteFailed"
 	// DeleteInProgress ...
 	DeleteInProgress BackupItemStatus = "DeleteInProgress"
+	// Deleted ...
+	Deleted BackupItemStatus = "Deleted"
 	// Failed ...
 	Failed BackupItemStatus = "Failed"
 	// InProgress ...
@@ -107,7 +107,7 @@ const (
 
 // PossibleBackupItemStatusValues returns an array of possible values for the BackupItemStatus const type.
 func PossibleBackupItemStatusValues() []BackupItemStatus {
-	return []BackupItemStatus{Created, Deleted, DeleteFailed, DeleteInProgress, Failed, InProgress, PartiallySucceeded, Skipped, Succeeded, TimedOut}
+	return []BackupItemStatus{Created, DeleteFailed, DeleteInProgress, Deleted, Failed, InProgress, PartiallySucceeded, Skipped, Succeeded, TimedOut}
 }
 
 // BackupRestoreOperationType enumerates the values for backup restore operation type.
@@ -191,10 +191,10 @@ const (
 	Issued CertificateOrderStatus = "Issued"
 	// NotSubmitted ...
 	NotSubmitted CertificateOrderStatus = "NotSubmitted"
-	// Pendingissuance ...
-	Pendingissuance CertificateOrderStatus = "Pendingissuance"
 	// PendingRekey ...
 	PendingRekey CertificateOrderStatus = "PendingRekey"
+	// Pendingissuance ...
+	Pendingissuance CertificateOrderStatus = "Pendingissuance"
 	// Pendingrevocation ...
 	Pendingrevocation CertificateOrderStatus = "Pendingrevocation"
 	// Revoked ...
@@ -205,7 +205,7 @@ const (
 
 // PossibleCertificateOrderStatusValues returns an array of possible values for the CertificateOrderStatus const type.
 func PossibleCertificateOrderStatusValues() []CertificateOrderStatus {
-	return []CertificateOrderStatus{Canceled, Denied, Expired, Issued, NotSubmitted, Pendingissuance, PendingRekey, Pendingrevocation, Revoked, Unused}
+	return []CertificateOrderStatus{Canceled, Denied, Expired, Issued, NotSubmitted, PendingRekey, Pendingissuance, Pendingrevocation, Revoked, Unused}
 }
 
 // CertificateProductType enumerates the values for certificate product type.
@@ -227,10 +227,10 @@ func PossibleCertificateProductTypeValues() []CertificateProductType {
 type Channels string
 
 const (
-	// All ...
-	All Channels = "All"
 	// API ...
 	API Channels = "Api"
+	// All ...
+	All Channels = "All"
 	// Email ...
 	Email Channels = "Email"
 	// Notification ...
@@ -239,7 +239,7 @@ const (
 
 // PossibleChannelsValues returns an array of possible values for the Channels const type.
 func PossibleChannelsValues() []Channels {
-	return []Channels{All, API, Email, Notification}
+	return []Channels{API, All, Email, Notification}
 }
 
 // CloneAbilityResult enumerates the values for clone ability result.
@@ -422,6 +422,21 @@ func PossibleFrequencyUnitValues() []FrequencyUnit {
 	return []FrequencyUnit{Day, Hour}
 }
 
+// HostNameType enumerates the values for host name type.
+type HostNameType string
+
+const (
+	// Managed ...
+	Managed HostNameType = "Managed"
+	// Verified ...
+	Verified HostNameType = "Verified"
+)
+
+// PossibleHostNameTypeValues returns an array of possible values for the HostNameType const type.
+func PossibleHostNameTypeValues() []HostNameType {
+	return []HostNameType{Managed, Verified}
+}
+
 // HostingEnvironmentStatus enumerates the values for hosting environment status.
 type HostingEnvironmentStatus string
 
@@ -439,21 +454,6 @@ const (
 // PossibleHostingEnvironmentStatusValues returns an array of possible values for the HostingEnvironmentStatus const type.
 func PossibleHostingEnvironmentStatusValues() []HostingEnvironmentStatus {
 	return []HostingEnvironmentStatus{Deleting, Preparing, Ready, Scaling}
-}
-
-// HostNameType enumerates the values for host name type.
-type HostNameType string
-
-const (
-	// Managed ...
-	Managed HostNameType = "Managed"
-	// Verified ...
-	Verified HostNameType = "Verified"
-)
-
-// PossibleHostNameTypeValues returns an array of possible values for the HostNameType const type.
-func PossibleHostNameTypeValues() []HostNameType {
-	return []HostNameType{Managed, Verified}
 }
 
 // InternalLoadBalancingMode enumerates the values for internal load balancing mode.
@@ -748,35 +748,6 @@ const (
 // PossibleWorkerSizeOptionsValues returns an array of possible values for the WorkerSizeOptions const type.
 func PossibleWorkerSizeOptionsValues() []WorkerSizeOptions {
 	return []WorkerSizeOptions{WorkerSizeOptionsDefault, WorkerSizeOptionsLarge, WorkerSizeOptionsMedium, WorkerSizeOptionsSmall}
-}
-
-// Address address information for domain registration
-type Address struct {
-	// Address1 - Address 1
-	Address1 *string `json:"address1,omitempty"`
-	// Address2 - Address 2
-	Address2 *string `json:"address2,omitempty"`
-	// City - City
-	City *string `json:"city,omitempty"`
-	// Country - Country
-	Country *string `json:"country,omitempty"`
-	// PostalCode - Postal code
-	PostalCode *string `json:"postalCode,omitempty"`
-	// State - State
-	State *string `json:"state,omitempty"`
-}
-
-// AddressResponse describes main public ip address and any extra vips
-type AddressResponse struct {
-	autorest.Response `json:"-"`
-	// ServiceIPAddress - Main public vip
-	ServiceIPAddress *string `json:"serviceIpAddress,omitempty"`
-	// InternalIPAddress - VNET internal ip address of the hostingEnvironment (App Service Environment) if it is in internal load-balancing mode
-	InternalIPAddress *string `json:"internalIpAddress,omitempty"`
-	// OutboundIPAddresses - IP addresses appearing on outbound connections
-	OutboundIPAddresses *[]string `json:"outboundIpAddresses,omitempty"`
-	// VipMappings - Additional vips
-	VipMappings *[]VirtualIPMapping `json:"vipMappings,omitempty"`
 }
 
 // APIDefinitionInfo information about the formal API definition for the web app.
@@ -1165,6 +1136,35 @@ func (ap *APIPolicies) UnmarshalJSON(body []byte) error {
 type APIPoliciesProperties struct {
 	// Content - Content of xml policy
 	Content *string `json:"content,omitempty"`
+}
+
+// Address address information for domain registration
+type Address struct {
+	// Address1 - Address 1
+	Address1 *string `json:"address1,omitempty"`
+	// Address2 - Address 2
+	Address2 *string `json:"address2,omitempty"`
+	// City - City
+	City *string `json:"city,omitempty"`
+	// Country - Country
+	Country *string `json:"country,omitempty"`
+	// PostalCode - Postal code
+	PostalCode *string `json:"postalCode,omitempty"`
+	// State - State
+	State *string `json:"state,omitempty"`
+}
+
+// AddressResponse describes main public ip address and any extra vips
+type AddressResponse struct {
+	autorest.Response `json:"-"`
+	// ServiceIPAddress - Main public vip
+	ServiceIPAddress *string `json:"serviceIpAddress,omitempty"`
+	// InternalIPAddress - VNET internal ip address of the hostingEnvironment (App Service Environment) if it is in internal load-balancing mode
+	InternalIPAddress *string `json:"internalIpAddress,omitempty"`
+	// OutboundIPAddresses - IP addresses appearing on outbound connections
+	OutboundIPAddresses *[]string `json:"outboundIpAddresses,omitempty"`
+	// VipMappings - Additional vips
+	VipMappings *[]VirtualIPMapping `json:"vipMappings,omitempty"`
 }
 
 // ApisCollection collection of Apis
@@ -3819,6 +3819,24 @@ type ConfirmConsentCodeInputProperties struct {
 	Code *string `json:"code,omitempty"`
 }
 
+// ConnStringInfo represents database connection string information
+type ConnStringInfo struct {
+	// Name - Name of connection string
+	Name *string `json:"name,omitempty"`
+	// ConnectionString - Connection string value
+	ConnectionString *string `json:"connectionString,omitempty"`
+	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom'
+	Type DatabaseServerType `json:"type,omitempty"`
+}
+
+// ConnStringValueTypePair database connection string value to type pair
+type ConnStringValueTypePair struct {
+	// Value - Value of pair
+	Value *string `json:"value,omitempty"`
+	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom'
+	Type DatabaseServerType `json:"type,omitempty"`
+}
+
 // Connection API Connection
 type Connection struct {
 	autorest.Response     `json:"-"`
@@ -4500,24 +4518,6 @@ func (csd ConnectionStringDictionary) MarshalJSON() ([]byte, error) {
 		objectMap["tags"] = csd.Tags
 	}
 	return json.Marshal(objectMap)
-}
-
-// ConnStringInfo represents database connection string information
-type ConnStringInfo struct {
-	// Name - Name of connection string
-	Name *string `json:"name,omitempty"`
-	// ConnectionString - Connection string value
-	ConnectionString *string `json:"connectionString,omitempty"`
-	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom'
-	Type DatabaseServerType `json:"type,omitempty"`
-}
-
-// ConnStringValueTypePair database connection string value to type pair
-type ConnStringValueTypePair struct {
-	// Value - Value of pair
-	Value *string `json:"value,omitempty"`
-	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom'
-	Type DatabaseServerType `json:"type,omitempty"`
 }
 
 // ConsentLink ...
@@ -6905,6 +6905,14 @@ type GeoRegionProperties struct {
 	DisplayName *string `json:"displayName,omitempty"`
 }
 
+// HTTPLogsConfig http logs configuration
+type HTTPLogsConfig struct {
+	// FileSystem - Http logs to file system configuration
+	FileSystem *FileSystemHTTPLogsConfig `json:"fileSystem,omitempty"`
+	// AzureBlobStorage - Http logs to azure blob storage configuration
+	AzureBlobStorage *AzureBlobStorageHTTPLogsConfig `json:"azureBlobStorage,omitempty"`
+}
+
 // HandlerMapping the IIS handler mappings used to define which handler processes HTTP requests with
 // certain extension.
 // For example it is used to configure php-cgi.exe process to handle all HTTP requests with *.php
@@ -6916,6 +6924,323 @@ type HandlerMapping struct {
 	ScriptProcessor *string `json:"scriptProcessor,omitempty"`
 	// Arguments - Command-line arguments to be passed to the script processor.
 	Arguments *string `json:"arguments,omitempty"`
+}
+
+// HostName details of a hostname derived from a domain
+type HostName struct {
+	// Name - Name of the hostname
+	Name *string `json:"name,omitempty"`
+	// SiteNames - List of sites the hostname is assigned to. This list will have more than one site only if the hostname is pointing to a Traffic Manager
+	SiteNames *[]string `json:"siteNames,omitempty"`
+	// AzureResourceName - Name of the Azure resource the hostname is assigned to. If it is assigned to a traffic manager then it will be the traffic manager name otherwise it will be the website name
+	AzureResourceName *string `json:"azureResourceName,omitempty"`
+	// AzureResourceType - Type of the Azure resource the hostname is assigned to. Possible values include: 'Website', 'TrafficManager'
+	AzureResourceType AzureResourceType `json:"azureResourceType,omitempty"`
+	// CustomHostNameDNSRecordType - Type of the Dns record. Possible values include: 'CName', 'A'
+	CustomHostNameDNSRecordType CustomHostNameDNSRecordType `json:"customHostNameDnsRecordType,omitempty"`
+	// HostNameType - Type of the hostname. Possible values include: 'Verified', 'Managed'
+	HostNameType HostNameType `json:"hostNameType,omitempty"`
+}
+
+// HostNameBinding a host name binding object
+type HostNameBinding struct {
+	autorest.Response          `json:"-"`
+	*HostNameBindingProperties `json:"properties,omitempty"`
+	// ID - Resource Id
+	ID *string `json:"id,omitempty"`
+	// Name - Resource Name
+	Name *string `json:"name,omitempty"`
+	// Kind - Kind of resource
+	Kind *string `json:"kind,omitempty"`
+	// Location - Resource Location
+	Location *string `json:"location,omitempty"`
+	// Type - Resource type
+	Type *string `json:"type,omitempty"`
+	// Tags - Resource tags
+	Tags map[string]*string `json:"tags"`
+}
+
+// MarshalJSON is the custom marshaler for HostNameBinding.
+func (hnb HostNameBinding) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if hnb.HostNameBindingProperties != nil {
+		objectMap["properties"] = hnb.HostNameBindingProperties
+	}
+	if hnb.ID != nil {
+		objectMap["id"] = hnb.ID
+	}
+	if hnb.Name != nil {
+		objectMap["name"] = hnb.Name
+	}
+	if hnb.Kind != nil {
+		objectMap["kind"] = hnb.Kind
+	}
+	if hnb.Location != nil {
+		objectMap["location"] = hnb.Location
+	}
+	if hnb.Type != nil {
+		objectMap["type"] = hnb.Type
+	}
+	if hnb.Tags != nil {
+		objectMap["tags"] = hnb.Tags
+	}
+	return json.Marshal(objectMap)
+}
+
+// UnmarshalJSON is the custom unmarshaler for HostNameBinding struct.
+func (hnb *HostNameBinding) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var hostNameBindingProperties HostNameBindingProperties
+				err = json.Unmarshal(*v, &hostNameBindingProperties)
+				if err != nil {
+					return err
+				}
+				hnb.HostNameBindingProperties = &hostNameBindingProperties
+			}
+		case "id":
+			if v != nil {
+				var ID string
+				err = json.Unmarshal(*v, &ID)
+				if err != nil {
+					return err
+				}
+				hnb.ID = &ID
+			}
+		case "name":
+			if v != nil {
+				var name string
+				err = json.Unmarshal(*v, &name)
+				if err != nil {
+					return err
+				}
+				hnb.Name = &name
+			}
+		case "kind":
+			if v != nil {
+				var kind string
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				hnb.Kind = &kind
+			}
+		case "location":
+			if v != nil {
+				var location string
+				err = json.Unmarshal(*v, &location)
+				if err != nil {
+					return err
+				}
+				hnb.Location = &location
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				hnb.Type = &typeVar
+			}
+		case "tags":
+			if v != nil {
+				var tags map[string]*string
+				err = json.Unmarshal(*v, &tags)
+				if err != nil {
+					return err
+				}
+				hnb.Tags = tags
+			}
+		}
+	}
+
+	return nil
+}
+
+// HostNameBindingCollection collection of host name bindings
+type HostNameBindingCollection struct {
+	autorest.Response `json:"-"`
+	// Value - Collection of resources
+	Value *[]HostNameBinding `json:"value,omitempty"`
+	// NextLink - Link to next page of resources
+	NextLink *string `json:"nextLink,omitempty"`
+}
+
+// HostNameBindingCollectionIterator provides access to a complete listing of HostNameBinding values.
+type HostNameBindingCollectionIterator struct {
+	i    int
+	page HostNameBindingCollectionPage
+}
+
+// NextWithContext advances to the next value.  If there was an error making
+// the request the iterator does not advance and the error is returned.
+func (iter *HostNameBindingCollectionIterator) NextWithContext(ctx context.Context) (err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/HostNameBindingCollectionIterator.NextWithContext")
+		defer func() {
+			sc := -1
+			if iter.Response().Response.Response != nil {
+				sc = iter.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	iter.i++
+	if iter.i < len(iter.page.Values()) {
+		return nil
+	}
+	err = iter.page.NextWithContext(ctx)
+	if err != nil {
+		iter.i--
+		return err
+	}
+	iter.i = 0
+	return nil
+}
+
+// Next advances to the next value.  If there was an error making
+// the request the iterator does not advance and the error is returned.
+// Deprecated: Use NextWithContext() instead.
+func (iter *HostNameBindingCollectionIterator) Next() error {
+	return iter.NextWithContext(context.Background())
+}
+
+// NotDone returns true if the enumeration should be started or is not yet complete.
+func (iter HostNameBindingCollectionIterator) NotDone() bool {
+	return iter.page.NotDone() && iter.i < len(iter.page.Values())
+}
+
+// Response returns the raw server response from the last page request.
+func (iter HostNameBindingCollectionIterator) Response() HostNameBindingCollection {
+	return iter.page.Response()
+}
+
+// Value returns the current value or a zero-initialized value if the
+// iterator has advanced beyond the end of the collection.
+func (iter HostNameBindingCollectionIterator) Value() HostNameBinding {
+	if !iter.page.NotDone() {
+		return HostNameBinding{}
+	}
+	return iter.page.Values()[iter.i]
+}
+
+// Creates a new instance of the HostNameBindingCollectionIterator type.
+func NewHostNameBindingCollectionIterator(page HostNameBindingCollectionPage) HostNameBindingCollectionIterator {
+	return HostNameBindingCollectionIterator{page: page}
+}
+
+// IsEmpty returns true if the ListResult contains no values.
+func (hnbc HostNameBindingCollection) IsEmpty() bool {
+	return hnbc.Value == nil || len(*hnbc.Value) == 0
+}
+
+// hostNameBindingCollectionPreparer prepares a request to retrieve the next set of results.
+// It returns nil if no more results exist.
+func (hnbc HostNameBindingCollection) hostNameBindingCollectionPreparer(ctx context.Context) (*http.Request, error) {
+	if hnbc.NextLink == nil || len(to.String(hnbc.NextLink)) < 1 {
+		return nil, nil
+	}
+	return autorest.Prepare((&http.Request{}).WithContext(ctx),
+		autorest.AsJSON(),
+		autorest.AsGet(),
+		autorest.WithBaseURL(to.String(hnbc.NextLink)))
+}
+
+// HostNameBindingCollectionPage contains a page of HostNameBinding values.
+type HostNameBindingCollectionPage struct {
+	fn   func(context.Context, HostNameBindingCollection) (HostNameBindingCollection, error)
+	hnbc HostNameBindingCollection
+}
+
+// NextWithContext advances to the next page of values.  If there was an error making
+// the request the page does not advance and the error is returned.
+func (page *HostNameBindingCollectionPage) NextWithContext(ctx context.Context) (err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/HostNameBindingCollectionPage.NextWithContext")
+		defer func() {
+			sc := -1
+			if page.Response().Response.Response != nil {
+				sc = page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	next, err := page.fn(ctx, page.hnbc)
+	if err != nil {
+		return err
+	}
+	page.hnbc = next
+	return nil
+}
+
+// Next advances to the next page of values.  If there was an error making
+// the request the page does not advance and the error is returned.
+// Deprecated: Use NextWithContext() instead.
+func (page *HostNameBindingCollectionPage) Next() error {
+	return page.NextWithContext(context.Background())
+}
+
+// NotDone returns true if the page enumeration should be started or is not yet complete.
+func (page HostNameBindingCollectionPage) NotDone() bool {
+	return !page.hnbc.IsEmpty()
+}
+
+// Response returns the raw server response from the last page request.
+func (page HostNameBindingCollectionPage) Response() HostNameBindingCollection {
+	return page.hnbc
+}
+
+// Values returns the slice of values for the current page or nil if there are no values.
+func (page HostNameBindingCollectionPage) Values() []HostNameBinding {
+	if page.hnbc.IsEmpty() {
+		return nil
+	}
+	return *page.hnbc.Value
+}
+
+// Creates a new instance of the HostNameBindingCollectionPage type.
+func NewHostNameBindingCollectionPage(getNextPage func(context.Context, HostNameBindingCollection) (HostNameBindingCollection, error)) HostNameBindingCollectionPage {
+	return HostNameBindingCollectionPage{fn: getNextPage}
+}
+
+// HostNameBindingProperties ...
+type HostNameBindingProperties struct {
+	// Name - Hostname
+	Name *string `json:"name,omitempty"`
+	// SiteName - Web app name
+	SiteName *string `json:"siteName,omitempty"`
+	// DomainID - Fully qualified ARM domain resource URI
+	DomainID *string `json:"domainId,omitempty"`
+	// AzureResourceName - Azure resource name
+	AzureResourceName *string `json:"azureResourceName,omitempty"`
+	// AzureResourceType - Azure resource type. Possible values include: 'Website', 'TrafficManager'
+	AzureResourceType AzureResourceType `json:"azureResourceType,omitempty"`
+	// CustomHostNameDNSRecordType - Custom DNS record type. Possible values include: 'CName', 'A'
+	CustomHostNameDNSRecordType CustomHostNameDNSRecordType `json:"customHostNameDnsRecordType,omitempty"`
+	// HostNameType - Host name type. Possible values include: 'Verified', 'Managed'
+	HostNameType HostNameType `json:"hostNameType,omitempty"`
+}
+
+// HostNameSslState object that represents a SSL-enabled host name.
+type HostNameSslState struct {
+	// Name - Host name
+	Name *string `json:"name,omitempty"`
+	// SslState - SSL type. Possible values include: 'Disabled', 'SniEnabled', 'IPBasedEnabled'
+	SslState SslState `json:"sslState,omitempty"`
+	// VirtualIP - Virtual IP address assigned to the host name if IP based SSL is enabled
+	VirtualIP *string `json:"virtualIP,omitempty"`
+	// Thumbprint - SSL cert thumbprint
+	Thumbprint *string `json:"thumbprint,omitempty"`
+	// ToUpdate - Set this flag to update existing host name
+	ToUpdate *bool `json:"toUpdate,omitempty"`
 }
 
 // HostingEnvironment description of an hostingEnvironment (App Service Environment)
@@ -7276,6 +7601,21 @@ type HostingEnvironmentProperties struct {
 	ClusterSettings *[]NameValuePair `json:"clusterSettings,omitempty"`
 }
 
+// HostingEnvironmentServiceDescriptions back end service per ASE
+type HostingEnvironmentServiceDescriptions struct {
+	// HostingEnvironmentID - Hosting environment Id
+	HostingEnvironmentID *string `json:"hostingEnvironmentId,omitempty"`
+	// HostID - Host Id
+	HostID *string `json:"hostId,omitempty"`
+	// ServiceURL - service url to use
+	ServiceURL *string `json:"serviceUrl,omitempty"`
+	// UseInternalRouting - When the backend url is in same ASE, for performance reason this flag can be set to true
+	//             If WebApp.DisableHostNames is also set it improves the security by making the back end accessible only
+	//             via API calls
+	//             Note: calls will fail if this option is used but back end is not on the same ASE
+	UseInternalRouting *bool `json:"useInternalRouting,omitempty"`
+}
+
 // HostingEnvironmentsCreateOrUpdateHostingEnvironmentFuture an abstraction for monitoring and retrieving
 // the results of a long-running operation.
 type HostingEnvironmentsCreateOrUpdateHostingEnvironmentFuture struct {
@@ -7392,21 +7732,6 @@ func (future *HostingEnvironmentsDeleteHostingEnvironmentFuture) Result(client H
 	return
 }
 
-// HostingEnvironmentServiceDescriptions back end service per ASE
-type HostingEnvironmentServiceDescriptions struct {
-	// HostingEnvironmentID - Hosting environment Id
-	HostingEnvironmentID *string `json:"hostingEnvironmentId,omitempty"`
-	// HostID - Host Id
-	HostID *string `json:"hostId,omitempty"`
-	// ServiceURL - service url to use
-	ServiceURL *string `json:"serviceUrl,omitempty"`
-	// UseInternalRouting - When the backend url is in same ASE, for performance reason this flag can be set to true
-	//             If WebApp.DisableHostNames is also set it improves the security by making the back end accessible only
-	//             via API calls
-	//             Note: calls will fail if this option is used but back end is not on the same ASE
-	UseInternalRouting *bool `json:"useInternalRouting,omitempty"`
-}
-
 // HostingEnvironmentsResumeHostingEnvironmentAllFuture an abstraction for monitoring and retrieving the
 // results of a long-running operation.
 type HostingEnvironmentsResumeHostingEnvironmentAllFuture struct {
@@ -7521,331 +7846,6 @@ func (future *HostingEnvironmentsSuspendHostingEnvironmentFuture) Result(client 
 		}
 	}
 	return
-}
-
-// HostName details of a hostname derived from a domain
-type HostName struct {
-	// Name - Name of the hostname
-	Name *string `json:"name,omitempty"`
-	// SiteNames - List of sites the hostname is assigned to. This list will have more than one site only if the hostname is pointing to a Traffic Manager
-	SiteNames *[]string `json:"siteNames,omitempty"`
-	// AzureResourceName - Name of the Azure resource the hostname is assigned to. If it is assigned to a traffic manager then it will be the traffic manager name otherwise it will be the website name
-	AzureResourceName *string `json:"azureResourceName,omitempty"`
-	// AzureResourceType - Type of the Azure resource the hostname is assigned to. Possible values include: 'Website', 'TrafficManager'
-	AzureResourceType AzureResourceType `json:"azureResourceType,omitempty"`
-	// CustomHostNameDNSRecordType - Type of the Dns record. Possible values include: 'CName', 'A'
-	CustomHostNameDNSRecordType CustomHostNameDNSRecordType `json:"customHostNameDnsRecordType,omitempty"`
-	// HostNameType - Type of the hostname. Possible values include: 'Verified', 'Managed'
-	HostNameType HostNameType `json:"hostNameType,omitempty"`
-}
-
-// HostNameBinding a host name binding object
-type HostNameBinding struct {
-	autorest.Response          `json:"-"`
-	*HostNameBindingProperties `json:"properties,omitempty"`
-	// ID - Resource Id
-	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
-	Name *string `json:"name,omitempty"`
-	// Kind - Kind of resource
-	Kind *string `json:"kind,omitempty"`
-	// Location - Resource Location
-	Location *string `json:"location,omitempty"`
-	// Type - Resource type
-	Type *string `json:"type,omitempty"`
-	// Tags - Resource tags
-	Tags map[string]*string `json:"tags"`
-}
-
-// MarshalJSON is the custom marshaler for HostNameBinding.
-func (hnb HostNameBinding) MarshalJSON() ([]byte, error) {
-	objectMap := make(map[string]interface{})
-	if hnb.HostNameBindingProperties != nil {
-		objectMap["properties"] = hnb.HostNameBindingProperties
-	}
-	if hnb.ID != nil {
-		objectMap["id"] = hnb.ID
-	}
-	if hnb.Name != nil {
-		objectMap["name"] = hnb.Name
-	}
-	if hnb.Kind != nil {
-		objectMap["kind"] = hnb.Kind
-	}
-	if hnb.Location != nil {
-		objectMap["location"] = hnb.Location
-	}
-	if hnb.Type != nil {
-		objectMap["type"] = hnb.Type
-	}
-	if hnb.Tags != nil {
-		objectMap["tags"] = hnb.Tags
-	}
-	return json.Marshal(objectMap)
-}
-
-// UnmarshalJSON is the custom unmarshaler for HostNameBinding struct.
-func (hnb *HostNameBinding) UnmarshalJSON(body []byte) error {
-	var m map[string]*json.RawMessage
-	err := json.Unmarshal(body, &m)
-	if err != nil {
-		return err
-	}
-	for k, v := range m {
-		switch k {
-		case "properties":
-			if v != nil {
-				var hostNameBindingProperties HostNameBindingProperties
-				err = json.Unmarshal(*v, &hostNameBindingProperties)
-				if err != nil {
-					return err
-				}
-				hnb.HostNameBindingProperties = &hostNameBindingProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				hnb.ID = &ID
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				hnb.Name = &name
-			}
-		case "kind":
-			if v != nil {
-				var kind string
-				err = json.Unmarshal(*v, &kind)
-				if err != nil {
-					return err
-				}
-				hnb.Kind = &kind
-			}
-		case "location":
-			if v != nil {
-				var location string
-				err = json.Unmarshal(*v, &location)
-				if err != nil {
-					return err
-				}
-				hnb.Location = &location
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				hnb.Type = &typeVar
-			}
-		case "tags":
-			if v != nil {
-				var tags map[string]*string
-				err = json.Unmarshal(*v, &tags)
-				if err != nil {
-					return err
-				}
-				hnb.Tags = tags
-			}
-		}
-	}
-
-	return nil
-}
-
-// HostNameBindingCollection collection of host name bindings
-type HostNameBindingCollection struct {
-	autorest.Response `json:"-"`
-	// Value - Collection of resources
-	Value *[]HostNameBinding `json:"value,omitempty"`
-	// NextLink - Link to next page of resources
-	NextLink *string `json:"nextLink,omitempty"`
-}
-
-// HostNameBindingCollectionIterator provides access to a complete listing of HostNameBinding values.
-type HostNameBindingCollectionIterator struct {
-	i    int
-	page HostNameBindingCollectionPage
-}
-
-// NextWithContext advances to the next value.  If there was an error making
-// the request the iterator does not advance and the error is returned.
-func (iter *HostNameBindingCollectionIterator) NextWithContext(ctx context.Context) (err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/HostNameBindingCollectionIterator.NextWithContext")
-		defer func() {
-			sc := -1
-			if iter.Response().Response.Response != nil {
-				sc = iter.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	iter.i++
-	if iter.i < len(iter.page.Values()) {
-		return nil
-	}
-	err = iter.page.NextWithContext(ctx)
-	if err != nil {
-		iter.i--
-		return err
-	}
-	iter.i = 0
-	return nil
-}
-
-// Next advances to the next value.  If there was an error making
-// the request the iterator does not advance and the error is returned.
-// Deprecated: Use NextWithContext() instead.
-func (iter *HostNameBindingCollectionIterator) Next() error {
-	return iter.NextWithContext(context.Background())
-}
-
-// NotDone returns true if the enumeration should be started or is not yet complete.
-func (iter HostNameBindingCollectionIterator) NotDone() bool {
-	return iter.page.NotDone() && iter.i < len(iter.page.Values())
-}
-
-// Response returns the raw server response from the last page request.
-func (iter HostNameBindingCollectionIterator) Response() HostNameBindingCollection {
-	return iter.page.Response()
-}
-
-// Value returns the current value or a zero-initialized value if the
-// iterator has advanced beyond the end of the collection.
-func (iter HostNameBindingCollectionIterator) Value() HostNameBinding {
-	if !iter.page.NotDone() {
-		return HostNameBinding{}
-	}
-	return iter.page.Values()[iter.i]
-}
-
-// Creates a new instance of the HostNameBindingCollectionIterator type.
-func NewHostNameBindingCollectionIterator(page HostNameBindingCollectionPage) HostNameBindingCollectionIterator {
-	return HostNameBindingCollectionIterator{page: page}
-}
-
-// IsEmpty returns true if the ListResult contains no values.
-func (hnbc HostNameBindingCollection) IsEmpty() bool {
-	return hnbc.Value == nil || len(*hnbc.Value) == 0
-}
-
-// hostNameBindingCollectionPreparer prepares a request to retrieve the next set of results.
-// It returns nil if no more results exist.
-func (hnbc HostNameBindingCollection) hostNameBindingCollectionPreparer(ctx context.Context) (*http.Request, error) {
-	if hnbc.NextLink == nil || len(to.String(hnbc.NextLink)) < 1 {
-		return nil, nil
-	}
-	return autorest.Prepare((&http.Request{}).WithContext(ctx),
-		autorest.AsJSON(),
-		autorest.AsGet(),
-		autorest.WithBaseURL(to.String(hnbc.NextLink)))
-}
-
-// HostNameBindingCollectionPage contains a page of HostNameBinding values.
-type HostNameBindingCollectionPage struct {
-	fn   func(context.Context, HostNameBindingCollection) (HostNameBindingCollection, error)
-	hnbc HostNameBindingCollection
-}
-
-// NextWithContext advances to the next page of values.  If there was an error making
-// the request the page does not advance and the error is returned.
-func (page *HostNameBindingCollectionPage) NextWithContext(ctx context.Context) (err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/HostNameBindingCollectionPage.NextWithContext")
-		defer func() {
-			sc := -1
-			if page.Response().Response.Response != nil {
-				sc = page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	next, err := page.fn(ctx, page.hnbc)
-	if err != nil {
-		return err
-	}
-	page.hnbc = next
-	return nil
-}
-
-// Next advances to the next page of values.  If there was an error making
-// the request the page does not advance and the error is returned.
-// Deprecated: Use NextWithContext() instead.
-func (page *HostNameBindingCollectionPage) Next() error {
-	return page.NextWithContext(context.Background())
-}
-
-// NotDone returns true if the page enumeration should be started or is not yet complete.
-func (page HostNameBindingCollectionPage) NotDone() bool {
-	return !page.hnbc.IsEmpty()
-}
-
-// Response returns the raw server response from the last page request.
-func (page HostNameBindingCollectionPage) Response() HostNameBindingCollection {
-	return page.hnbc
-}
-
-// Values returns the slice of values for the current page or nil if there are no values.
-func (page HostNameBindingCollectionPage) Values() []HostNameBinding {
-	if page.hnbc.IsEmpty() {
-		return nil
-	}
-	return *page.hnbc.Value
-}
-
-// Creates a new instance of the HostNameBindingCollectionPage type.
-func NewHostNameBindingCollectionPage(getNextPage func(context.Context, HostNameBindingCollection) (HostNameBindingCollection, error)) HostNameBindingCollectionPage {
-	return HostNameBindingCollectionPage{fn: getNextPage}
-}
-
-// HostNameBindingProperties ...
-type HostNameBindingProperties struct {
-	// Name - Hostname
-	Name *string `json:"name,omitempty"`
-	// SiteName - Web app name
-	SiteName *string `json:"siteName,omitempty"`
-	// DomainID - Fully qualified ARM domain resource URI
-	DomainID *string `json:"domainId,omitempty"`
-	// AzureResourceName - Azure resource name
-	AzureResourceName *string `json:"azureResourceName,omitempty"`
-	// AzureResourceType - Azure resource type. Possible values include: 'Website', 'TrafficManager'
-	AzureResourceType AzureResourceType `json:"azureResourceType,omitempty"`
-	// CustomHostNameDNSRecordType - Custom DNS record type. Possible values include: 'CName', 'A'
-	CustomHostNameDNSRecordType CustomHostNameDNSRecordType `json:"customHostNameDnsRecordType,omitempty"`
-	// HostNameType - Host name type. Possible values include: 'Verified', 'Managed'
-	HostNameType HostNameType `json:"hostNameType,omitempty"`
-}
-
-// HostNameSslState object that represents a SSL-enabled host name.
-type HostNameSslState struct {
-	// Name - Host name
-	Name *string `json:"name,omitempty"`
-	// SslState - SSL type. Possible values include: 'Disabled', 'SniEnabled', 'IPBasedEnabled'
-	SslState SslState `json:"sslState,omitempty"`
-	// VirtualIP - Virtual IP address assigned to the host name if IP based SSL is enabled
-	VirtualIP *string `json:"virtualIP,omitempty"`
-	// Thumbprint - SSL cert thumbprint
-	Thumbprint *string `json:"thumbprint,omitempty"`
-	// ToUpdate - Set this flag to update existing host name
-	ToUpdate *bool `json:"toUpdate,omitempty"`
-}
-
-// HTTPLogsConfig http logs configuration
-type HTTPLogsConfig struct {
-	// FileSystem - Http logs to file system configuration
-	FileSystem *FileSystemHTTPLogsConfig `json:"fileSystem,omitempty"`
-	// AzureBlobStorage - Http logs to azure blob storage configuration
-	AzureBlobStorage *AzureBlobStorageHTTPLogsConfig `json:"azureBlobStorage,omitempty"`
 }
 
 // IPSecurityRestriction represents an ip security restriction on a web app.
@@ -10392,35 +10392,6 @@ func NewServerFarmCollectionPage(getNextPage func(context.Context, ServerFarmCol
 	return ServerFarmCollectionPage{fn: getNextPage}
 }
 
-// ServerFarmsCreateOrUpdateServerFarmFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type ServerFarmsCreateOrUpdateServerFarmFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *ServerFarmsCreateOrUpdateServerFarmFuture) Result(client ServerFarmsClient) (sfwrs ServerFarmWithRichSku, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ServerFarmsCreateOrUpdateServerFarmFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.ServerFarmsCreateOrUpdateServerFarmFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if sfwrs.Response.Response, err = future.GetResult(sender); err == nil && sfwrs.Response.Response.StatusCode != http.StatusNoContent {
-		sfwrs, err = client.CreateOrUpdateServerFarmResponder(sfwrs.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.ServerFarmsCreateOrUpdateServerFarmFuture", "Result", sfwrs.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
 // ServerFarmWithRichSku app Service Plan Model
 type ServerFarmWithRichSku struct {
 	autorest.Response                `json:"-"`
@@ -10584,6 +10555,35 @@ type ServerFarmWithRichSkuProperties struct {
 	ResourceGroup *string `json:"resourceGroup,omitempty"`
 	// Reserved - Enables creation of a Linux App Service Plan
 	Reserved *bool `json:"reserved,omitempty"`
+}
+
+// ServerFarmsCreateOrUpdateServerFarmFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type ServerFarmsCreateOrUpdateServerFarmFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *ServerFarmsCreateOrUpdateServerFarmFuture) Result(client ServerFarmsClient) (sfwrs ServerFarmWithRichSku, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ServerFarmsCreateOrUpdateServerFarmFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.ServerFarmsCreateOrUpdateServerFarmFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if sfwrs.Response.Response, err = future.GetResult(sender); err == nil && sfwrs.Response.Response.StatusCode != http.StatusNoContent {
+		sfwrs, err = client.CreateOrUpdateServerFarmResponder(sfwrs.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.ServerFarmsCreateOrUpdateServerFarmFuture", "Result", sfwrs.Response.Response, "Failure responding to request")
+		}
+	}
+	return
 }
 
 // SetObject ...
@@ -11682,122 +11682,6 @@ type SitePropertiesModel struct {
 	AppSettings *[]NameValuePair `json:"appSettings,omitempty"`
 }
 
-// SitesCreateOrUpdateSiteFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type SitesCreateOrUpdateSiteFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *SitesCreateOrUpdateSiteFuture) Result(client SitesClient) (s Site, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.SitesCreateOrUpdateSiteFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
-		s, err = client.CreateOrUpdateSiteResponder(s.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteFuture", "Result", s.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// SitesCreateOrUpdateSiteSlotFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type SitesCreateOrUpdateSiteSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *SitesCreateOrUpdateSiteSlotFuture) Result(client SitesClient) (s Site, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.SitesCreateOrUpdateSiteSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
-		s, err = client.CreateOrUpdateSiteSlotResponder(s.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteSlotFuture", "Result", s.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// SitesListSitePublishingCredentialsFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type SitesListSitePublishingCredentialsFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *SitesListSitePublishingCredentialsFuture) Result(client SitesClient) (u User, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.SitesListSitePublishingCredentialsFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if u.Response.Response, err = future.GetResult(sender); err == nil && u.Response.Response.StatusCode != http.StatusNoContent {
-		u, err = client.ListSitePublishingCredentialsResponder(u.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsFuture", "Result", u.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// SitesListSitePublishingCredentialsSlotFuture an abstraction for monitoring and retrieving the results of
-// a long-running operation.
-type SitesListSitePublishingCredentialsSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *SitesListSitePublishingCredentialsSlotFuture) Result(client SitesClient) (u User, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.SitesListSitePublishingCredentialsSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if u.Response.Response, err = future.GetResult(sender); err == nil && u.Response.Response.StatusCode != http.StatusNoContent {
-		u, err = client.ListSitePublishingCredentialsSlotResponder(u.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsSlotFuture", "Result", u.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
 // SiteSourceControl describes the source control configuration for web app
 type SiteSourceControl struct {
 	autorest.Response            `json:"-"`
@@ -11935,6 +11819,122 @@ type SiteSourceControlProperties struct {
 	IsMercurial *bool `json:"isMercurial,omitempty"`
 }
 
+// SitesCreateOrUpdateSiteFuture an abstraction for monitoring and retrieving the results of a long-running
+// operation.
+type SitesCreateOrUpdateSiteFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *SitesCreateOrUpdateSiteFuture) Result(client SitesClient) (s Site, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.SitesCreateOrUpdateSiteFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
+		s, err = client.CreateOrUpdateSiteResponder(s.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteFuture", "Result", s.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// SitesCreateOrUpdateSiteSlotFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type SitesCreateOrUpdateSiteSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *SitesCreateOrUpdateSiteSlotFuture) Result(client SitesClient) (s Site, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.SitesCreateOrUpdateSiteSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
+		s, err = client.CreateOrUpdateSiteSlotResponder(s.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteSlotFuture", "Result", s.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// SitesListSitePublishingCredentialsFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type SitesListSitePublishingCredentialsFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *SitesListSitePublishingCredentialsFuture) Result(client SitesClient) (u User, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.SitesListSitePublishingCredentialsFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if u.Response.Response, err = future.GetResult(sender); err == nil && u.Response.Response.StatusCode != http.StatusNoContent {
+		u, err = client.ListSitePublishingCredentialsResponder(u.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsFuture", "Result", u.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// SitesListSitePublishingCredentialsSlotFuture an abstraction for monitoring and retrieving the results of
+// a long-running operation.
+type SitesListSitePublishingCredentialsSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *SitesListSitePublishingCredentialsSlotFuture) Result(client SitesClient) (u User, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.SitesListSitePublishingCredentialsSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if u.Response.Response, err = future.GetResult(sender); err == nil && u.Response.Response.StatusCode != http.StatusNoContent {
+		u, err = client.ListSitePublishingCredentialsSlotResponder(u.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsSlotFuture", "Result", u.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
 // SitesRecoverSiteFuture an abstraction for monitoring and retrieving the results of a long-running
 // operation.
 type SitesRecoverSiteFuture struct {
@@ -12051,35 +12051,6 @@ func (future *SitesRestoreSiteSlotFuture) Result(client SitesClient) (rr Restore
 	return
 }
 
-// SitesSwapSlotsSlotFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type SitesSwapSlotsSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *SitesSwapSlotsSlotFuture) Result(client SitesClient) (so SetObject, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.SitesSwapSlotsSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.SitesSwapSlotsSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if so.Response.Response, err = future.GetResult(sender); err == nil && so.Response.Response.StatusCode != http.StatusNoContent {
-		so, err = client.SwapSlotsSlotResponder(so.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.SitesSwapSlotsSlotFuture", "Result", so.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
 // SitesSwapSlotWithProductionFuture an abstraction for monitoring and retrieving the results of a
 // long-running operation.
 type SitesSwapSlotWithProductionFuture struct {
@@ -12104,6 +12075,35 @@ func (future *SitesSwapSlotWithProductionFuture) Result(client SitesClient) (so 
 		so, err = client.SwapSlotWithProductionResponder(so.Response.Response)
 		if err != nil {
 			err = autorest.NewErrorWithError(err, "web.SitesSwapSlotWithProductionFuture", "Result", so.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// SitesSwapSlotsSlotFuture an abstraction for monitoring and retrieving the results of a long-running
+// operation.
+type SitesSwapSlotsSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *SitesSwapSlotsSlotFuture) Result(client SitesClient) (so SetObject, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.SitesSwapSlotsSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.SitesSwapSlotsSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if so.Response.Response, err = future.GetResult(sender); err == nil && so.Response.Response.StatusCode != http.StatusNoContent {
+		so, err = client.SwapSlotsSlotResponder(so.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.SitesSwapSlotsSlotFuture", "Result", so.Response.Response, "Failure responding to request")
 		}
 	}
 	return

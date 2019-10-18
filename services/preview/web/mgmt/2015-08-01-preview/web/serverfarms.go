@@ -922,119 +922,6 @@ func (client ServerFarmsClient) GetServerFarmOperationResponder(resp *http.Respo
 	return
 }
 
-// GetServerFarms sends the get server farms request.
-// Parameters:
-// resourceGroupName - name of resource group
-func (client ServerFarmsClient) GetServerFarms(ctx context.Context, resourceGroupName string) (result ServerFarmCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ServerFarmsClient.GetServerFarms")
-		defer func() {
-			sc := -1
-			if result.sfc.Response.Response != nil {
-				sc = result.sfc.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.fn = client.getServerFarmsNextResults
-	req, err := client.GetServerFarmsPreparer(ctx, resourceGroupName)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.GetServerFarmsSender(req)
-	if err != nil {
-		result.sfc.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", resp, "Failure sending request")
-		return
-	}
-
-	result.sfc, err = client.GetServerFarmsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// GetServerFarmsPreparer prepares the GetServerFarms request.
-func (client ServerFarmsClient) GetServerFarmsPreparer(ctx context.Context, resourceGroupName string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2015-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// GetServerFarmsSender sends the GetServerFarms request. The method will close the
-// http.Response Body if it receives an error.
-func (client ServerFarmsClient) GetServerFarmsSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// GetServerFarmsResponder handles the response to the GetServerFarms request. The method always
-// closes the http.Response Body.
-func (client ServerFarmsClient) GetServerFarmsResponder(resp *http.Response) (result ServerFarmCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// getServerFarmsNextResults retrieves the next set of results, if any.
-func (client ServerFarmsClient) getServerFarmsNextResults(ctx context.Context, lastResults ServerFarmCollection) (result ServerFarmCollection, err error) {
-	req, err := lastResults.serverFarmCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.GetServerFarmsSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.GetServerFarmsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// GetServerFarmsComplete enumerates all values, automatically crossing page boundaries as required.
-func (client ServerFarmsClient) GetServerFarmsComplete(ctx context.Context, resourceGroupName string) (result ServerFarmCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ServerFarmsClient.GetServerFarms")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.GetServerFarms(ctx, resourceGroupName)
-	return
-}
-
 // GetServerFarmSites sends the get server farm sites request.
 // Parameters:
 // resourceGroupName - name of resource group
@@ -1241,6 +1128,119 @@ func (client ServerFarmsClient) GetServerFarmVnetGatewayResponder(resp *http.Res
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// GetServerFarms sends the get server farms request.
+// Parameters:
+// resourceGroupName - name of resource group
+func (client ServerFarmsClient) GetServerFarms(ctx context.Context, resourceGroupName string) (result ServerFarmCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ServerFarmsClient.GetServerFarms")
+		defer func() {
+			sc := -1
+			if result.sfc.Response.Response != nil {
+				sc = result.sfc.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.fn = client.getServerFarmsNextResults
+	req, err := client.GetServerFarmsPreparer(ctx, resourceGroupName)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.GetServerFarmsSender(req)
+	if err != nil {
+		result.sfc.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", resp, "Failure sending request")
+		return
+	}
+
+	result.sfc, err = client.GetServerFarmsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "GetServerFarms", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// GetServerFarmsPreparer prepares the GetServerFarms request.
+func (client ServerFarmsClient) GetServerFarmsPreparer(ctx context.Context, resourceGroupName string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2015-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// GetServerFarmsSender sends the GetServerFarms request. The method will close the
+// http.Response Body if it receives an error.
+func (client ServerFarmsClient) GetServerFarmsSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// GetServerFarmsResponder handles the response to the GetServerFarms request. The method always
+// closes the http.Response Body.
+func (client ServerFarmsClient) GetServerFarmsResponder(resp *http.Response) (result ServerFarmCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// getServerFarmsNextResults retrieves the next set of results, if any.
+func (client ServerFarmsClient) getServerFarmsNextResults(ctx context.Context, lastResults ServerFarmCollection) (result ServerFarmCollection, err error) {
+	req, err := lastResults.serverFarmCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.GetServerFarmsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.GetServerFarmsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ServerFarmsClient", "getServerFarmsNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// GetServerFarmsComplete enumerates all values, automatically crossing page boundaries as required.
+func (client ServerFarmsClient) GetServerFarmsComplete(ctx context.Context, resourceGroupName string) (result ServerFarmCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ServerFarmsClient.GetServerFarms")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.GetServerFarms(ctx, resourceGroupName)
 	return
 }
 

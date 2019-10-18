@@ -357,119 +357,6 @@ func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentOpera
 	return
 }
 
-// GetManagedHostingEnvironments sends the get managed hosting environments request.
-// Parameters:
-// resourceGroupName - name of resource group
-func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironments(ctx context.Context, resourceGroupName string) (result HostingEnvironmentCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ManagedHostingEnvironmentsClient.GetManagedHostingEnvironments")
-		defer func() {
-			sc := -1
-			if result.hec.Response.Response != nil {
-				sc = result.hec.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.fn = client.getManagedHostingEnvironmentsNextResults
-	req, err := client.GetManagedHostingEnvironmentsPreparer(ctx, resourceGroupName)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.GetManagedHostingEnvironmentsSender(req)
-	if err != nil {
-		result.hec.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", resp, "Failure sending request")
-		return
-	}
-
-	result.hec, err = client.GetManagedHostingEnvironmentsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// GetManagedHostingEnvironmentsPreparer prepares the GetManagedHostingEnvironments request.
-func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsPreparer(ctx context.Context, resourceGroupName string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2015-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/managedHostingEnvironments", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// GetManagedHostingEnvironmentsSender sends the GetManagedHostingEnvironments request. The method will close the
-// http.Response Body if it receives an error.
-func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// GetManagedHostingEnvironmentsResponder handles the response to the GetManagedHostingEnvironments request. The method always
-// closes the http.Response Body.
-func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsResponder(resp *http.Response) (result HostingEnvironmentCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// getManagedHostingEnvironmentsNextResults retrieves the next set of results, if any.
-func (client ManagedHostingEnvironmentsClient) getManagedHostingEnvironmentsNextResults(ctx context.Context, lastResults HostingEnvironmentCollection) (result HostingEnvironmentCollection, err error) {
-	req, err := lastResults.hostingEnvironmentCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.GetManagedHostingEnvironmentsSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.GetManagedHostingEnvironmentsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// GetManagedHostingEnvironmentsComplete enumerates all values, automatically crossing page boundaries as required.
-func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsComplete(ctx context.Context, resourceGroupName string) (result HostingEnvironmentCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ManagedHostingEnvironmentsClient.GetManagedHostingEnvironments")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.GetManagedHostingEnvironments(ctx, resourceGroupName)
-	return
-}
-
 // GetManagedHostingEnvironmentServerFarms sends the get managed hosting environment server farms request.
 // Parameters:
 // resourceGroupName - name of resource group
@@ -893,5 +780,118 @@ func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentWebHo
 		}()
 	}
 	result.page, err = client.GetManagedHostingEnvironmentWebHostingPlans(ctx, resourceGroupName, name)
+	return
+}
+
+// GetManagedHostingEnvironments sends the get managed hosting environments request.
+// Parameters:
+// resourceGroupName - name of resource group
+func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironments(ctx context.Context, resourceGroupName string) (result HostingEnvironmentCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ManagedHostingEnvironmentsClient.GetManagedHostingEnvironments")
+		defer func() {
+			sc := -1
+			if result.hec.Response.Response != nil {
+				sc = result.hec.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.fn = client.getManagedHostingEnvironmentsNextResults
+	req, err := client.GetManagedHostingEnvironmentsPreparer(ctx, resourceGroupName)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.GetManagedHostingEnvironmentsSender(req)
+	if err != nil {
+		result.hec.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", resp, "Failure sending request")
+		return
+	}
+
+	result.hec, err = client.GetManagedHostingEnvironmentsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "GetManagedHostingEnvironments", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// GetManagedHostingEnvironmentsPreparer prepares the GetManagedHostingEnvironments request.
+func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsPreparer(ctx context.Context, resourceGroupName string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2015-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/managedHostingEnvironments", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// GetManagedHostingEnvironmentsSender sends the GetManagedHostingEnvironments request. The method will close the
+// http.Response Body if it receives an error.
+func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// GetManagedHostingEnvironmentsResponder handles the response to the GetManagedHostingEnvironments request. The method always
+// closes the http.Response Body.
+func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsResponder(resp *http.Response) (result HostingEnvironmentCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// getManagedHostingEnvironmentsNextResults retrieves the next set of results, if any.
+func (client ManagedHostingEnvironmentsClient) getManagedHostingEnvironmentsNextResults(ctx context.Context, lastResults HostingEnvironmentCollection) (result HostingEnvironmentCollection, err error) {
+	req, err := lastResults.hostingEnvironmentCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.GetManagedHostingEnvironmentsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.GetManagedHostingEnvironmentsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsClient", "getManagedHostingEnvironmentsNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// GetManagedHostingEnvironmentsComplete enumerates all values, automatically crossing page boundaries as required.
+func (client ManagedHostingEnvironmentsClient) GetManagedHostingEnvironmentsComplete(ctx context.Context, resourceGroupName string) (result HostingEnvironmentCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ManagedHostingEnvironmentsClient.GetManagedHostingEnvironments")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.GetManagedHostingEnvironments(ctx, resourceGroupName)
 	return
 }
