@@ -19,12 +19,12 @@ package compute
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 compute/2017-03-30"
+	return "Azure-SDK-For-Go/v1.0.0 compute/2017-03-30"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/compute/mgmt/2017-03-30/compute/v1.0.0
