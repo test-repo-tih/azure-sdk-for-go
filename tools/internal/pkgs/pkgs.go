@@ -46,20 +46,12 @@ func (p Pkg) GetAPIVersion() (string, error) {
 	if p.IsARMPkg() {
 		// management-plane
 		regex := regexp.MustCompile(`mgmt/(.+)/`)
-		groups := regex.FindStringSubmatch(dest)
-		if len(groups) < 2 {
-			return "", fmt.Errorf("cannot find api version in %s", dest)
-		}
-		versionString := groups[1]
+		versionString := regex.FindStringSubmatch(dest)[1]
 		return versionString, nil
 	}
 	// data-plane
 	regex := regexp.MustCompile(`/(\d{4}-\d{2}.*|v?\d+(\.\d+)?)/`)
-	groups := regex.FindStringSubmatch(dest)
-	if len(groups) < 2 {
-		return "", fmt.Errorf("cannot find api version in %s", dest)
-	}
-	versionString := groups[1]
+	versionString := regex.FindStringSubmatch(dest)[1]
 	if versionString == "" {
 		return "", fmt.Errorf("does not find api version in data plane package %s", dest)
 	}
