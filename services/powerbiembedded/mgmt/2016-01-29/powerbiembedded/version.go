@@ -19,12 +19,12 @@ package powerbiembedded
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 powerbiembedded/2016-01-29"
+	return "Azure-SDK-For-Go/v1.0.0 powerbiembedded/2016-01-29"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/powerbiembedded/mgmt/2016-01-29/powerbiembedded/v1.0.0
