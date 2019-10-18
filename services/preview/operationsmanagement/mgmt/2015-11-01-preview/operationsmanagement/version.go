@@ -19,12 +19,12 @@ package operationsmanagement
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 operationsmanagement/2015-11-01-preview"
+	return "Azure-SDK-For-Go/v1.0.0 operationsmanagement/2015-11-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/operationsmanagement/mgmt/2015-11-01-preview/operationsmanagement/v1.0.0

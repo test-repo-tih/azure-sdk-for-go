@@ -19,12 +19,12 @@ package dns
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 dns/2015-05-04-preview"
+	return "Azure-SDK-For-Go/v1.0.0 dns/2015-05-04-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/dns/mgmt/2015-05-04-preview/dns/v1.0.0
