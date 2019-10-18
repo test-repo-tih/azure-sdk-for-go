@@ -126,9 +126,6 @@ func theInitCommand(args []string) error {
 		if err := createGoModFile(root, p); err != nil {
 			errs = append(errs, err)
 		}
-		if err := createChangeLogFile(root, p); err != nil {
-			errs = append(errs, err)
-		}
 	}
 	// handle errors
 	if len(errs) == 0 {
@@ -147,8 +144,7 @@ func createVersionFile(root string, p pkgs.Pkg, tagPrefix string) error {
 		return fmt.Errorf("failed to get api version of package %s: %+v", p.Dest, err)
 	}
 	tag := tagPrefix + "/" + startingModVer
-	ver := versionGoRegex.FindString(startingModVer)
-	content := fmt.Sprintf(initialVerGo, p.Package.Name, ver, p.Package.Name, apiVersion, ver, tag)
+	content := fmt.Sprintf(initialVerGo, p.Package.Name, startingModVer, p.Package.Name, apiVersion, startingModVer, tag)
 	err = ioutil.WriteFile(verFilePath, []byte(content), 0755)
 	if err != nil {
 		return fmt.Errorf("failed to write file %s: %+v", verFilePath, err)
@@ -170,17 +166,6 @@ func createGoModFile(root string, p pkgs.Pkg) error {
 		return fmt.Errorf("failed to write file %s: %+v", modFilePath, err)
 	}
 	return nil
-}
-
-func createChangeLogFile(root string, p pkgs.Pkg) error {
-	logFilePath := filepath.Join(root, p.Dest, changeLogName)
-	log, err := os.Create(logFilePath)
-	if err != nil {
-		return fmt.Errorf("failed to create %s: %v", changeLogName, err)
-	}
-	defer log.Close()
-	_, err = log.WriteString("No changes to exported content compared to the previous release.\n")
-	return err
 }
 
 func loadExceptions(exceptFile string) (map[string]bool, error) {
