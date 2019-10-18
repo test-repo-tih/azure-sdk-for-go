@@ -19,12 +19,12 @@ package storage
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 storage/2018-03-01-preview"
+	return "Azure-SDK-For-Go/v1.0.0 storage/2018-03-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/storage/mgmt/2018-03-01-preview/storage/v1.0.0

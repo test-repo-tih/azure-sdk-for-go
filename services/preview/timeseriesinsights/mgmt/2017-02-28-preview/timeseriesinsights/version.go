@@ -19,12 +19,12 @@ package timeseriesinsights
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 timeseriesinsights/2017-02-28-preview"
+	return "Azure-SDK-For-Go/v1.0.0 timeseriesinsights/2017-02-28-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/timeseriesinsights/mgmt/2017-02-28-preview/timeseriesinsights/v1.0.0

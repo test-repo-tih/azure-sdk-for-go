@@ -19,12 +19,12 @@ package logic
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 logic/2015-08-01-preview"
+	return "Azure-SDK-For-Go/v1.0.0 logic/2015-08-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/logic/mgmt/2015-08-01-preview/logic/v1.0.0
