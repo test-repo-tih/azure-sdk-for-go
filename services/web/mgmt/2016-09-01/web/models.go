@@ -109,12 +109,12 @@ type BackupItemStatus string
 const (
 	// Created ...
 	Created BackupItemStatus = "Created"
-	// Deleted ...
-	Deleted BackupItemStatus = "Deleted"
 	// DeleteFailed ...
 	DeleteFailed BackupItemStatus = "DeleteFailed"
 	// DeleteInProgress ...
 	DeleteInProgress BackupItemStatus = "DeleteInProgress"
+	// Deleted ...
+	Deleted BackupItemStatus = "Deleted"
 	// Failed ...
 	Failed BackupItemStatus = "Failed"
 	// InProgress ...
@@ -131,7 +131,7 @@ const (
 
 // PossibleBackupItemStatusValues returns an array of possible values for the BackupItemStatus const type.
 func PossibleBackupItemStatusValues() []BackupItemStatus {
-	return []BackupItemStatus{Created, Deleted, DeleteFailed, DeleteInProgress, Failed, InProgress, PartiallySucceeded, Skipped, Succeeded, TimedOut}
+	return []BackupItemStatus{Created, DeleteFailed, DeleteInProgress, Deleted, Failed, InProgress, PartiallySucceeded, Skipped, Succeeded, TimedOut}
 }
 
 // BackupRestoreOperationType enumerates the values for backup restore operation type.
@@ -227,10 +227,10 @@ const (
 	Issued CertificateOrderStatus = "Issued"
 	// NotSubmitted ...
 	NotSubmitted CertificateOrderStatus = "NotSubmitted"
-	// Pendingissuance ...
-	Pendingissuance CertificateOrderStatus = "Pendingissuance"
 	// PendingRekey ...
 	PendingRekey CertificateOrderStatus = "PendingRekey"
+	// Pendingissuance ...
+	Pendingissuance CertificateOrderStatus = "Pendingissuance"
 	// Pendingrevocation ...
 	Pendingrevocation CertificateOrderStatus = "Pendingrevocation"
 	// Revoked ...
@@ -241,7 +241,7 @@ const (
 
 // PossibleCertificateOrderStatusValues returns an array of possible values for the CertificateOrderStatus const type.
 func PossibleCertificateOrderStatusValues() []CertificateOrderStatus {
-	return []CertificateOrderStatus{Canceled, Denied, Expired, Issued, NotSubmitted, Pendingissuance, PendingRekey, Pendingrevocation, Revoked, Unused}
+	return []CertificateOrderStatus{Canceled, Denied, Expired, Issued, NotSubmitted, PendingRekey, Pendingissuance, Pendingrevocation, Revoked, Unused}
 }
 
 // CertificateProductType enumerates the values for certificate product type.
@@ -263,10 +263,10 @@ func PossibleCertificateProductTypeValues() []CertificateProductType {
 type Channels string
 
 const (
-	// All ...
-	All Channels = "All"
 	// API ...
 	API Channels = "Api"
+	// All ...
+	All Channels = "All"
 	// Email ...
 	Email Channels = "Email"
 	// Notification ...
@@ -277,7 +277,7 @@ const (
 
 // PossibleChannelsValues returns an array of possible values for the Channels const type.
 func PossibleChannelsValues() []Channels {
-	return []Channels{All, API, Email, Notification, Webhook}
+	return []Channels{API, All, Email, Notification, Webhook}
 }
 
 // CheckNameResourceTypes enumerates the values for check name resource types.
@@ -361,17 +361,17 @@ const (
 	PostgreSQL ConnectionStringType = "PostgreSQL"
 	// RedisCache ...
 	RedisCache ConnectionStringType = "RedisCache"
-	// ServiceBus ...
-	ServiceBus ConnectionStringType = "ServiceBus"
 	// SQLAzure ...
 	SQLAzure ConnectionStringType = "SQLAzure"
 	// SQLServer ...
 	SQLServer ConnectionStringType = "SQLServer"
+	// ServiceBus ...
+	ServiceBus ConnectionStringType = "ServiceBus"
 )
 
 // PossibleConnectionStringTypeValues returns an array of possible values for the ConnectionStringType const type.
 func PossibleConnectionStringTypeValues() []ConnectionStringType {
-	return []ConnectionStringType{APIHub, Custom, DocDb, EventHub, MySQL, NotificationHub, PostgreSQL, RedisCache, ServiceBus, SQLAzure, SQLServer}
+	return []ConnectionStringType{APIHub, Custom, DocDb, EventHub, MySQL, NotificationHub, PostgreSQL, RedisCache, SQLAzure, SQLServer, ServiceBus}
 }
 
 // ContinuousWebJobStatus enumerates the values for continuous web job status.
@@ -410,25 +410,6 @@ func PossibleCustomHostNameDNSRecordTypeValues() []CustomHostNameDNSRecordType {
 	return []CustomHostNameDNSRecordType{A, CName}
 }
 
-// DatabaseType enumerates the values for database type.
-type DatabaseType string
-
-const (
-	// DatabaseTypeLocalMySQL ...
-	DatabaseTypeLocalMySQL DatabaseType = "LocalMySql"
-	// DatabaseTypeMySQL ...
-	DatabaseTypeMySQL DatabaseType = "MySql"
-	// DatabaseTypePostgreSQL ...
-	DatabaseTypePostgreSQL DatabaseType = "PostgreSql"
-	// DatabaseTypeSQLAzure ...
-	DatabaseTypeSQLAzure DatabaseType = "SqlAzure"
-)
-
-// PossibleDatabaseTypeValues returns an array of possible values for the DatabaseType const type.
-func PossibleDatabaseTypeValues() []DatabaseType {
-	return []DatabaseType{DatabaseTypeLocalMySQL, DatabaseTypeMySQL, DatabaseTypePostgreSQL, DatabaseTypeSQLAzure}
-}
-
 // DNSType enumerates the values for dns type.
 type DNSType string
 
@@ -459,6 +440,25 @@ const (
 // PossibleDNSVerificationTestResultValues returns an array of possible values for the DNSVerificationTestResult const type.
 func PossibleDNSVerificationTestResultValues() []DNSVerificationTestResult {
 	return []DNSVerificationTestResult{DNSVerificationTestResultFailed, DNSVerificationTestResultPassed, DNSVerificationTestResultSkipped}
+}
+
+// DatabaseType enumerates the values for database type.
+type DatabaseType string
+
+const (
+	// DatabaseTypeLocalMySQL ...
+	DatabaseTypeLocalMySQL DatabaseType = "LocalMySql"
+	// DatabaseTypeMySQL ...
+	DatabaseTypeMySQL DatabaseType = "MySql"
+	// DatabaseTypePostgreSQL ...
+	DatabaseTypePostgreSQL DatabaseType = "PostgreSql"
+	// DatabaseTypeSQLAzure ...
+	DatabaseTypeSQLAzure DatabaseType = "SqlAzure"
+)
+
+// PossibleDatabaseTypeValues returns an array of possible values for the DatabaseType const type.
+func PossibleDatabaseTypeValues() []DatabaseType {
+	return []DatabaseType{DatabaseTypeLocalMySQL, DatabaseTypeMySQL, DatabaseTypePostgreSQL, DatabaseTypeSQLAzure}
 }
 
 // DomainStatus enumerates the values for domain status.
@@ -544,25 +544,6 @@ func PossibleFrequencyUnitValues() []FrequencyUnit {
 	return []FrequencyUnit{Day, Hour}
 }
 
-// HostingEnvironmentStatus enumerates the values for hosting environment status.
-type HostingEnvironmentStatus string
-
-const (
-	// Deleting ...
-	Deleting HostingEnvironmentStatus = "Deleting"
-	// Preparing ...
-	Preparing HostingEnvironmentStatus = "Preparing"
-	// Ready ...
-	Ready HostingEnvironmentStatus = "Ready"
-	// Scaling ...
-	Scaling HostingEnvironmentStatus = "Scaling"
-)
-
-// PossibleHostingEnvironmentStatusValues returns an array of possible values for the HostingEnvironmentStatus const type.
-func PossibleHostingEnvironmentStatusValues() []HostingEnvironmentStatus {
-	return []HostingEnvironmentStatus{Deleting, Preparing, Ready, Scaling}
-}
-
 // HostNameType enumerates the values for host name type.
 type HostNameType string
 
@@ -591,6 +572,25 @@ const (
 // PossibleHostTypeValues returns an array of possible values for the HostType const type.
 func PossibleHostTypeValues() []HostType {
 	return []HostType{HostTypeRepository, HostTypeStandard}
+}
+
+// HostingEnvironmentStatus enumerates the values for hosting environment status.
+type HostingEnvironmentStatus string
+
+const (
+	// Deleting ...
+	Deleting HostingEnvironmentStatus = "Deleting"
+	// Preparing ...
+	Preparing HostingEnvironmentStatus = "Preparing"
+	// Ready ...
+	Ready HostingEnvironmentStatus = "Ready"
+	// Scaling ...
+	Scaling HostingEnvironmentStatus = "Scaling"
+)
+
+// PossibleHostingEnvironmentStatusValues returns an array of possible values for the HostingEnvironmentStatus const type.
+func PossibleHostingEnvironmentStatusValues() []HostingEnvironmentStatus {
+	return []HostingEnvironmentStatus{Deleting, Preparing, Ready, Scaling}
 }
 
 // InAvailabilityReasonType enumerates the values for in availability reason type.
@@ -721,34 +721,6 @@ func PossibleLogLevelValues() []LogLevel {
 	return []LogLevel{Error, Information, Off, Verbose, Warning}
 }
 
-// ManagedPipelineMode enumerates the values for managed pipeline mode.
-type ManagedPipelineMode string
-
-const (
-	// Classic ...
-	Classic ManagedPipelineMode = "Classic"
-	// Integrated ...
-	Integrated ManagedPipelineMode = "Integrated"
-)
-
-// PossibleManagedPipelineModeValues returns an array of possible values for the ManagedPipelineMode const type.
-func PossibleManagedPipelineModeValues() []ManagedPipelineMode {
-	return []ManagedPipelineMode{Classic, Integrated}
-}
-
-// ManagedServiceIdentityType enumerates the values for managed service identity type.
-type ManagedServiceIdentityType string
-
-const (
-	// SystemAssigned ...
-	SystemAssigned ManagedServiceIdentityType = "SystemAssigned"
-)
-
-// PossibleManagedServiceIdentityTypeValues returns an array of possible values for the ManagedServiceIdentityType const type.
-func PossibleManagedServiceIdentityTypeValues() []ManagedServiceIdentityType {
-	return []ManagedServiceIdentityType{SystemAssigned}
-}
-
 // MSDeployLogEntryType enumerates the values for ms deploy log entry type.
 type MSDeployLogEntryType string
 
@@ -785,6 +757,34 @@ const (
 // PossibleMSDeployProvisioningStateValues returns an array of possible values for the MSDeployProvisioningState const type.
 func PossibleMSDeployProvisioningStateValues() []MSDeployProvisioningState {
 	return []MSDeployProvisioningState{MSDeployProvisioningStateAccepted, MSDeployProvisioningStateCanceled, MSDeployProvisioningStateFailed, MSDeployProvisioningStateRunning, MSDeployProvisioningStateSucceeded}
+}
+
+// ManagedPipelineMode enumerates the values for managed pipeline mode.
+type ManagedPipelineMode string
+
+const (
+	// Classic ...
+	Classic ManagedPipelineMode = "Classic"
+	// Integrated ...
+	Integrated ManagedPipelineMode = "Integrated"
+)
+
+// PossibleManagedPipelineModeValues returns an array of possible values for the ManagedPipelineMode const type.
+func PossibleManagedPipelineModeValues() []ManagedPipelineMode {
+	return []ManagedPipelineMode{Classic, Integrated}
+}
+
+// ManagedServiceIdentityType enumerates the values for managed service identity type.
+type ManagedServiceIdentityType string
+
+const (
+	// SystemAssigned ...
+	SystemAssigned ManagedServiceIdentityType = "SystemAssigned"
+)
+
+// PossibleManagedServiceIdentityTypeValues returns an array of possible values for the ManagedServiceIdentityType const type.
+func PossibleManagedServiceIdentityTypeValues() []ManagedServiceIdentityType {
+	return []ManagedServiceIdentityType{SystemAssigned}
 }
 
 // MySQLMigrationType enumerates the values for my sql migration type.
@@ -1222,6 +1222,12 @@ func PossibleWorkerSizeOptionsValues() []WorkerSizeOptions {
 	return []WorkerSizeOptions{D1, D2, D3, Default, Large, Medium, Small}
 }
 
+// APIDefinitionInfo information about the formal API definition for the app.
+type APIDefinitionInfo struct {
+	// URL - The URL of the API definition.
+	URL *string `json:"url,omitempty"`
+}
+
 // AbnormalTimePeriod class representing Abnormal Time Period identified in diagnosis
 type AbnormalTimePeriod struct {
 	// StartTime - Start time of the downtime
@@ -1367,12 +1373,6 @@ func (ad *AnalysisDefinition) UnmarshalJSON(body []byte) error {
 type AnalysisDefinitionProperties struct {
 	// Description - READ-ONLY; Description of the Analysis
 	Description *string `json:"description,omitempty"`
-}
-
-// APIDefinitionInfo information about the formal API definition for the app.
-type APIDefinitionInfo struct {
-	// URL - The URL of the API definition.
-	URL *string `json:"url,omitempty"`
 }
 
 // AppCollection collection of App Service apps.
@@ -1665,466 +1665,6 @@ func (page AppInstanceCollectionPage) Values() []SiteInstance {
 // Creates a new instance of the AppInstanceCollectionPage type.
 func NewAppInstanceCollectionPage(getNextPage func(context.Context, AppInstanceCollection) (AppInstanceCollection, error)) AppInstanceCollectionPage {
 	return AppInstanceCollectionPage{fn: getNextPage}
-}
-
-// ApplicationLogsConfig application logs configuration.
-type ApplicationLogsConfig struct {
-	// FileSystem - Application logs to file system configuration.
-	FileSystem *FileSystemApplicationLogsConfig `json:"fileSystem,omitempty"`
-	// AzureTableStorage - Application logs to azure table storage configuration.
-	AzureTableStorage *AzureTableStorageApplicationLogsConfig `json:"azureTableStorage,omitempty"`
-	// AzureBlobStorage - Application logs to blob storage configuration.
-	AzureBlobStorage *AzureBlobStorageApplicationLogsConfig `json:"azureBlobStorage,omitempty"`
-}
-
-// ApplicationStack application stack.
-type ApplicationStack struct {
-	// Name - Application stack name.
-	Name *string `json:"name,omitempty"`
-	// Display - Application stack display name.
-	Display *string `json:"display,omitempty"`
-	// Dependency - Application stack dependency.
-	Dependency *string `json:"dependency,omitempty"`
-	// MajorVersions - List of major versions available.
-	MajorVersions *[]StackMajorVersion `json:"majorVersions,omitempty"`
-	// Frameworks - List of frameworks associated with application stack.
-	Frameworks *[]ApplicationStack `json:"frameworks,omitempty"`
-}
-
-// ApplicationStackCollection collection of Application Stacks
-type ApplicationStackCollection struct {
-	autorest.Response `json:"-"`
-	// Value - Collection of resources.
-	Value *[]ApplicationStack `json:"value,omitempty"`
-	// NextLink - READ-ONLY; Link to next page of resources.
-	NextLink *string `json:"nextLink,omitempty"`
-}
-
-// ApplicationStackCollectionIterator provides access to a complete listing of ApplicationStack values.
-type ApplicationStackCollectionIterator struct {
-	i    int
-	page ApplicationStackCollectionPage
-}
-
-// NextWithContext advances to the next value.  If there was an error making
-// the request the iterator does not advance and the error is returned.
-func (iter *ApplicationStackCollectionIterator) NextWithContext(ctx context.Context) (err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ApplicationStackCollectionIterator.NextWithContext")
-		defer func() {
-			sc := -1
-			if iter.Response().Response.Response != nil {
-				sc = iter.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	iter.i++
-	if iter.i < len(iter.page.Values()) {
-		return nil
-	}
-	err = iter.page.NextWithContext(ctx)
-	if err != nil {
-		iter.i--
-		return err
-	}
-	iter.i = 0
-	return nil
-}
-
-// Next advances to the next value.  If there was an error making
-// the request the iterator does not advance and the error is returned.
-// Deprecated: Use NextWithContext() instead.
-func (iter *ApplicationStackCollectionIterator) Next() error {
-	return iter.NextWithContext(context.Background())
-}
-
-// NotDone returns true if the enumeration should be started or is not yet complete.
-func (iter ApplicationStackCollectionIterator) NotDone() bool {
-	return iter.page.NotDone() && iter.i < len(iter.page.Values())
-}
-
-// Response returns the raw server response from the last page request.
-func (iter ApplicationStackCollectionIterator) Response() ApplicationStackCollection {
-	return iter.page.Response()
-}
-
-// Value returns the current value or a zero-initialized value if the
-// iterator has advanced beyond the end of the collection.
-func (iter ApplicationStackCollectionIterator) Value() ApplicationStack {
-	if !iter.page.NotDone() {
-		return ApplicationStack{}
-	}
-	return iter.page.Values()[iter.i]
-}
-
-// Creates a new instance of the ApplicationStackCollectionIterator type.
-func NewApplicationStackCollectionIterator(page ApplicationStackCollectionPage) ApplicationStackCollectionIterator {
-	return ApplicationStackCollectionIterator{page: page}
-}
-
-// IsEmpty returns true if the ListResult contains no values.
-func (asc ApplicationStackCollection) IsEmpty() bool {
-	return asc.Value == nil || len(*asc.Value) == 0
-}
-
-// applicationStackCollectionPreparer prepares a request to retrieve the next set of results.
-// It returns nil if no more results exist.
-func (asc ApplicationStackCollection) applicationStackCollectionPreparer(ctx context.Context) (*http.Request, error) {
-	if asc.NextLink == nil || len(to.String(asc.NextLink)) < 1 {
-		return nil, nil
-	}
-	return autorest.Prepare((&http.Request{}).WithContext(ctx),
-		autorest.AsJSON(),
-		autorest.AsGet(),
-		autorest.WithBaseURL(to.String(asc.NextLink)))
-}
-
-// ApplicationStackCollectionPage contains a page of ApplicationStack values.
-type ApplicationStackCollectionPage struct {
-	fn  func(context.Context, ApplicationStackCollection) (ApplicationStackCollection, error)
-	asc ApplicationStackCollection
-}
-
-// NextWithContext advances to the next page of values.  If there was an error making
-// the request the page does not advance and the error is returned.
-func (page *ApplicationStackCollectionPage) NextWithContext(ctx context.Context) (err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/ApplicationStackCollectionPage.NextWithContext")
-		defer func() {
-			sc := -1
-			if page.Response().Response.Response != nil {
-				sc = page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	next, err := page.fn(ctx, page.asc)
-	if err != nil {
-		return err
-	}
-	page.asc = next
-	return nil
-}
-
-// Next advances to the next page of values.  If there was an error making
-// the request the page does not advance and the error is returned.
-// Deprecated: Use NextWithContext() instead.
-func (page *ApplicationStackCollectionPage) Next() error {
-	return page.NextWithContext(context.Background())
-}
-
-// NotDone returns true if the page enumeration should be started or is not yet complete.
-func (page ApplicationStackCollectionPage) NotDone() bool {
-	return !page.asc.IsEmpty()
-}
-
-// Response returns the raw server response from the last page request.
-func (page ApplicationStackCollectionPage) Response() ApplicationStackCollection {
-	return page.asc
-}
-
-// Values returns the slice of values for the current page or nil if there are no values.
-func (page ApplicationStackCollectionPage) Values() []ApplicationStack {
-	if page.asc.IsEmpty() {
-		return nil
-	}
-	return *page.asc.Value
-}
-
-// Creates a new instance of the ApplicationStackCollectionPage type.
-func NewApplicationStackCollectionPage(getNextPage func(context.Context, ApplicationStackCollection) (ApplicationStackCollection, error)) ApplicationStackCollectionPage {
-	return ApplicationStackCollectionPage{fn: getNextPage}
-}
-
-// AppsCreateFunctionFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type AppsCreateFunctionFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateFunctionFuture) Result(client AppsClient) (fe FunctionEnvelope, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateFunctionFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateFunctionFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if fe.Response.Response, err = future.GetResult(sender); err == nil && fe.Response.Response.StatusCode != http.StatusNoContent {
-		fe, err = client.CreateFunctionResponder(fe.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateFunctionFuture", "Result", fe.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateInstanceFunctionSlotFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateInstanceFunctionSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateInstanceFunctionSlotFuture) Result(client AppsClient) (fe FunctionEnvelope, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceFunctionSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceFunctionSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if fe.Response.Response, err = future.GetResult(sender); err == nil && fe.Response.Response.StatusCode != http.StatusNoContent {
-		fe, err = client.CreateInstanceFunctionSlotResponder(fe.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceFunctionSlotFuture", "Result", fe.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateInstanceMSDeployOperationFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateInstanceMSDeployOperationFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateInstanceMSDeployOperationFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceMSDeployOperationFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
-		mds, err = client.CreateInstanceMSDeployOperationResponder(mds.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationFuture", "Result", mds.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateInstanceMSDeployOperationSlotFuture an abstraction for monitoring and retrieving the results
-// of a long-running operation.
-type AppsCreateInstanceMSDeployOperationSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateInstanceMSDeployOperationSlotFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceMSDeployOperationSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
-		mds, err = client.CreateInstanceMSDeployOperationSlotResponder(mds.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationSlotFuture", "Result", mds.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateMSDeployOperationFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateMSDeployOperationFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateMSDeployOperationFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateMSDeployOperationFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
-		mds, err = client.CreateMSDeployOperationResponder(mds.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationFuture", "Result", mds.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateMSDeployOperationSlotFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateMSDeployOperationSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateMSDeployOperationSlotFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateMSDeployOperationSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
-		mds, err = client.CreateMSDeployOperationSlotResponder(mds.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationSlotFuture", "Result", mds.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateOrUpdateFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type AppsCreateOrUpdateFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateOrUpdateFuture) Result(client AppsClient) (s Site, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
-		s, err = client.CreateOrUpdateResponder(s.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateFuture", "Result", s.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateOrUpdateSlotFuture an abstraction for monitoring and retrieving the results of a long-running
-// operation.
-type AppsCreateOrUpdateSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateOrUpdateSlotFuture) Result(client AppsClient) (s Site, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
-		s, err = client.CreateOrUpdateSlotResponder(s.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSlotFuture", "Result", s.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateOrUpdateSourceControlFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateOrUpdateSourceControlFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateOrUpdateSourceControlFuture) Result(client AppsClient) (ssc SiteSourceControl, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSourceControlFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if ssc.Response.Response, err = future.GetResult(sender); err == nil && ssc.Response.Response.StatusCode != http.StatusNoContent {
-		ssc, err = client.CreateOrUpdateSourceControlResponder(ssc.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlFuture", "Result", ssc.Response.Response, "Failure responding to request")
-		}
-	}
-	return
-}
-
-// AppsCreateOrUpdateSourceControlSlotFuture an abstraction for monitoring and retrieving the results of a
-// long-running operation.
-type AppsCreateOrUpdateSourceControlSlotFuture struct {
-	azure.Future
-}
-
-// Result returns the result of the asynchronous operation.
-// If the operation has not completed it will return an error.
-func (future *AppsCreateOrUpdateSourceControlSlotFuture) Result(client AppsClient) (ssc SiteSourceControl, err error) {
-	var done bool
-	done, err = future.DoneWithContext(context.Background(), client)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlSlotFuture", "Result", future.Response(), "Polling failure")
-		return
-	}
-	if !done {
-		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSourceControlSlotFuture")
-		return
-	}
-	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-	if ssc.Response.Response, err = future.GetResult(sender); err == nil && ssc.Response.Response.StatusCode != http.StatusNoContent {
-		ssc, err = client.CreateOrUpdateSourceControlSlotResponder(ssc.Response.Response)
-		if err != nil {
-			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlSlotFuture", "Result", ssc.Response.Response, "Failure responding to request")
-		}
-	}
-	return
 }
 
 // AppServiceCertificate key Vault container for a certificate that is purchased through Azure.
@@ -4152,6 +3692,466 @@ func (future *AppServicePlansCreateOrUpdateFuture) Result(client AppServicePlans
 	return
 }
 
+// ApplicationLogsConfig application logs configuration.
+type ApplicationLogsConfig struct {
+	// FileSystem - Application logs to file system configuration.
+	FileSystem *FileSystemApplicationLogsConfig `json:"fileSystem,omitempty"`
+	// AzureTableStorage - Application logs to azure table storage configuration.
+	AzureTableStorage *AzureTableStorageApplicationLogsConfig `json:"azureTableStorage,omitempty"`
+	// AzureBlobStorage - Application logs to blob storage configuration.
+	AzureBlobStorage *AzureBlobStorageApplicationLogsConfig `json:"azureBlobStorage,omitempty"`
+}
+
+// ApplicationStack application stack.
+type ApplicationStack struct {
+	// Name - Application stack name.
+	Name *string `json:"name,omitempty"`
+	// Display - Application stack display name.
+	Display *string `json:"display,omitempty"`
+	// Dependency - Application stack dependency.
+	Dependency *string `json:"dependency,omitempty"`
+	// MajorVersions - List of major versions available.
+	MajorVersions *[]StackMajorVersion `json:"majorVersions,omitempty"`
+	// Frameworks - List of frameworks associated with application stack.
+	Frameworks *[]ApplicationStack `json:"frameworks,omitempty"`
+}
+
+// ApplicationStackCollection collection of Application Stacks
+type ApplicationStackCollection struct {
+	autorest.Response `json:"-"`
+	// Value - Collection of resources.
+	Value *[]ApplicationStack `json:"value,omitempty"`
+	// NextLink - READ-ONLY; Link to next page of resources.
+	NextLink *string `json:"nextLink,omitempty"`
+}
+
+// ApplicationStackCollectionIterator provides access to a complete listing of ApplicationStack values.
+type ApplicationStackCollectionIterator struct {
+	i    int
+	page ApplicationStackCollectionPage
+}
+
+// NextWithContext advances to the next value.  If there was an error making
+// the request the iterator does not advance and the error is returned.
+func (iter *ApplicationStackCollectionIterator) NextWithContext(ctx context.Context) (err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ApplicationStackCollectionIterator.NextWithContext")
+		defer func() {
+			sc := -1
+			if iter.Response().Response.Response != nil {
+				sc = iter.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	iter.i++
+	if iter.i < len(iter.page.Values()) {
+		return nil
+	}
+	err = iter.page.NextWithContext(ctx)
+	if err != nil {
+		iter.i--
+		return err
+	}
+	iter.i = 0
+	return nil
+}
+
+// Next advances to the next value.  If there was an error making
+// the request the iterator does not advance and the error is returned.
+// Deprecated: Use NextWithContext() instead.
+func (iter *ApplicationStackCollectionIterator) Next() error {
+	return iter.NextWithContext(context.Background())
+}
+
+// NotDone returns true if the enumeration should be started or is not yet complete.
+func (iter ApplicationStackCollectionIterator) NotDone() bool {
+	return iter.page.NotDone() && iter.i < len(iter.page.Values())
+}
+
+// Response returns the raw server response from the last page request.
+func (iter ApplicationStackCollectionIterator) Response() ApplicationStackCollection {
+	return iter.page.Response()
+}
+
+// Value returns the current value or a zero-initialized value if the
+// iterator has advanced beyond the end of the collection.
+func (iter ApplicationStackCollectionIterator) Value() ApplicationStack {
+	if !iter.page.NotDone() {
+		return ApplicationStack{}
+	}
+	return iter.page.Values()[iter.i]
+}
+
+// Creates a new instance of the ApplicationStackCollectionIterator type.
+func NewApplicationStackCollectionIterator(page ApplicationStackCollectionPage) ApplicationStackCollectionIterator {
+	return ApplicationStackCollectionIterator{page: page}
+}
+
+// IsEmpty returns true if the ListResult contains no values.
+func (asc ApplicationStackCollection) IsEmpty() bool {
+	return asc.Value == nil || len(*asc.Value) == 0
+}
+
+// applicationStackCollectionPreparer prepares a request to retrieve the next set of results.
+// It returns nil if no more results exist.
+func (asc ApplicationStackCollection) applicationStackCollectionPreparer(ctx context.Context) (*http.Request, error) {
+	if asc.NextLink == nil || len(to.String(asc.NextLink)) < 1 {
+		return nil, nil
+	}
+	return autorest.Prepare((&http.Request{}).WithContext(ctx),
+		autorest.AsJSON(),
+		autorest.AsGet(),
+		autorest.WithBaseURL(to.String(asc.NextLink)))
+}
+
+// ApplicationStackCollectionPage contains a page of ApplicationStack values.
+type ApplicationStackCollectionPage struct {
+	fn  func(context.Context, ApplicationStackCollection) (ApplicationStackCollection, error)
+	asc ApplicationStackCollection
+}
+
+// NextWithContext advances to the next page of values.  If there was an error making
+// the request the page does not advance and the error is returned.
+func (page *ApplicationStackCollectionPage) NextWithContext(ctx context.Context) (err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/ApplicationStackCollectionPage.NextWithContext")
+		defer func() {
+			sc := -1
+			if page.Response().Response.Response != nil {
+				sc = page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	next, err := page.fn(ctx, page.asc)
+	if err != nil {
+		return err
+	}
+	page.asc = next
+	return nil
+}
+
+// Next advances to the next page of values.  If there was an error making
+// the request the page does not advance and the error is returned.
+// Deprecated: Use NextWithContext() instead.
+func (page *ApplicationStackCollectionPage) Next() error {
+	return page.NextWithContext(context.Background())
+}
+
+// NotDone returns true if the page enumeration should be started or is not yet complete.
+func (page ApplicationStackCollectionPage) NotDone() bool {
+	return !page.asc.IsEmpty()
+}
+
+// Response returns the raw server response from the last page request.
+func (page ApplicationStackCollectionPage) Response() ApplicationStackCollection {
+	return page.asc
+}
+
+// Values returns the slice of values for the current page or nil if there are no values.
+func (page ApplicationStackCollectionPage) Values() []ApplicationStack {
+	if page.asc.IsEmpty() {
+		return nil
+	}
+	return *page.asc.Value
+}
+
+// Creates a new instance of the ApplicationStackCollectionPage type.
+func NewApplicationStackCollectionPage(getNextPage func(context.Context, ApplicationStackCollection) (ApplicationStackCollection, error)) ApplicationStackCollectionPage {
+	return ApplicationStackCollectionPage{fn: getNextPage}
+}
+
+// AppsCreateFunctionFuture an abstraction for monitoring and retrieving the results of a long-running
+// operation.
+type AppsCreateFunctionFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateFunctionFuture) Result(client AppsClient) (fe FunctionEnvelope, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateFunctionFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateFunctionFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if fe.Response.Response, err = future.GetResult(sender); err == nil && fe.Response.Response.StatusCode != http.StatusNoContent {
+		fe, err = client.CreateFunctionResponder(fe.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateFunctionFuture", "Result", fe.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateInstanceFunctionSlotFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateInstanceFunctionSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateInstanceFunctionSlotFuture) Result(client AppsClient) (fe FunctionEnvelope, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceFunctionSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceFunctionSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if fe.Response.Response, err = future.GetResult(sender); err == nil && fe.Response.Response.StatusCode != http.StatusNoContent {
+		fe, err = client.CreateInstanceFunctionSlotResponder(fe.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceFunctionSlotFuture", "Result", fe.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateInstanceMSDeployOperationFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateInstanceMSDeployOperationFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateInstanceMSDeployOperationFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceMSDeployOperationFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
+		mds, err = client.CreateInstanceMSDeployOperationResponder(mds.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationFuture", "Result", mds.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateInstanceMSDeployOperationSlotFuture an abstraction for monitoring and retrieving the results
+// of a long-running operation.
+type AppsCreateInstanceMSDeployOperationSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateInstanceMSDeployOperationSlotFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateInstanceMSDeployOperationSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
+		mds, err = client.CreateInstanceMSDeployOperationSlotResponder(mds.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateInstanceMSDeployOperationSlotFuture", "Result", mds.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateMSDeployOperationFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateMSDeployOperationFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateMSDeployOperationFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateMSDeployOperationFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
+		mds, err = client.CreateMSDeployOperationResponder(mds.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationFuture", "Result", mds.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateMSDeployOperationSlotFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateMSDeployOperationSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateMSDeployOperationSlotFuture) Result(client AppsClient) (mds MSDeployStatus, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateMSDeployOperationSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if mds.Response.Response, err = future.GetResult(sender); err == nil && mds.Response.Response.StatusCode != http.StatusNoContent {
+		mds, err = client.CreateMSDeployOperationSlotResponder(mds.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateMSDeployOperationSlotFuture", "Result", mds.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateOrUpdateFuture an abstraction for monitoring and retrieving the results of a long-running
+// operation.
+type AppsCreateOrUpdateFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateOrUpdateFuture) Result(client AppsClient) (s Site, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
+		s, err = client.CreateOrUpdateResponder(s.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateFuture", "Result", s.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateOrUpdateSlotFuture an abstraction for monitoring and retrieving the results of a long-running
+// operation.
+type AppsCreateOrUpdateSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateOrUpdateSlotFuture) Result(client AppsClient) (s Site, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if s.Response.Response, err = future.GetResult(sender); err == nil && s.Response.Response.StatusCode != http.StatusNoContent {
+		s, err = client.CreateOrUpdateSlotResponder(s.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSlotFuture", "Result", s.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateOrUpdateSourceControlFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateOrUpdateSourceControlFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateOrUpdateSourceControlFuture) Result(client AppsClient) (ssc SiteSourceControl, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSourceControlFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if ssc.Response.Response, err = future.GetResult(sender); err == nil && ssc.Response.Response.StatusCode != http.StatusNoContent {
+		ssc, err = client.CreateOrUpdateSourceControlResponder(ssc.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlFuture", "Result", ssc.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
+// AppsCreateOrUpdateSourceControlSlotFuture an abstraction for monitoring and retrieving the results of a
+// long-running operation.
+type AppsCreateOrUpdateSourceControlSlotFuture struct {
+	azure.Future
+}
+
+// Result returns the result of the asynchronous operation.
+// If the operation has not completed it will return an error.
+func (future *AppsCreateOrUpdateSourceControlSlotFuture) Result(client AppsClient) (ssc SiteSourceControl, err error) {
+	var done bool
+	done, err = future.DoneWithContext(context.Background(), client)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlSlotFuture", "Result", future.Response(), "Polling failure")
+		return
+	}
+	if !done {
+		err = azure.NewAsyncOpIncompleteError("web.AppsCreateOrUpdateSourceControlSlotFuture")
+		return
+	}
+	sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	if ssc.Response.Response, err = future.GetResult(sender); err == nil && ssc.Response.Response.StatusCode != http.StatusNoContent {
+		ssc, err = client.CreateOrUpdateSourceControlSlotResponder(ssc.Response.Response)
+		if err != nil {
+			err = autorest.NewErrorWithError(err, "web.AppsCreateOrUpdateSourceControlSlotFuture", "Result", ssc.Response.Response, "Failure responding to request")
+		}
+	}
+	return
+}
+
 // AppsInstallSiteExtensionFuture an abstraction for monitoring and retrieving the results of a
 // long-running operation.
 type AppsInstallSiteExtensionFuture struct {
@@ -5903,6 +5903,24 @@ func (ci CloningInfo) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
+// ConnStringInfo database connection string information.
+type ConnStringInfo struct {
+	// Name - Name of connection string.
+	Name *string `json:"name,omitempty"`
+	// ConnectionString - Connection string value.
+	ConnectionString *string `json:"connectionString,omitempty"`
+	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus', 'EventHub', 'APIHub', 'DocDb', 'RedisCache', 'PostgreSQL'
+	Type ConnectionStringType `json:"type,omitempty"`
+}
+
+// ConnStringValueTypePair database connection string value to type pair.
+type ConnStringValueTypePair struct {
+	// Value - Value of pair.
+	Value *string `json:"value,omitempty"`
+	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus', 'EventHub', 'APIHub', 'DocDb', 'RedisCache', 'PostgreSQL'
+	Type ConnectionStringType `json:"type,omitempty"`
+}
+
 // ConnectionStringDictionary string dictionary resource.
 type ConnectionStringDictionary struct {
 	autorest.Response `json:"-"`
@@ -5928,24 +5946,6 @@ func (csd ConnectionStringDictionary) MarshalJSON() ([]byte, error) {
 		objectMap["kind"] = csd.Kind
 	}
 	return json.Marshal(objectMap)
-}
-
-// ConnStringInfo database connection string information.
-type ConnStringInfo struct {
-	// Name - Name of connection string.
-	Name *string `json:"name,omitempty"`
-	// ConnectionString - Connection string value.
-	ConnectionString *string `json:"connectionString,omitempty"`
-	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus', 'EventHub', 'APIHub', 'DocDb', 'RedisCache', 'PostgreSQL'
-	Type ConnectionStringType `json:"type,omitempty"`
-}
-
-// ConnStringValueTypePair database connection string value to type pair.
-type ConnStringValueTypePair struct {
-	// Value - Value of pair.
-	Value *string `json:"value,omitempty"`
-	// Type - Type of database. Possible values include: 'MySQL', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus', 'EventHub', 'APIHub', 'DocDb', 'RedisCache', 'PostgreSQL'
-	Type ConnectionStringType `json:"type,omitempty"`
 }
 
 // Contact contact information for domain registration. If 'Domain Privacy' option is not selected then the
@@ -6738,18 +6738,6 @@ type CustomHostnameAnalysisResultProperties struct {
 	AlternateTxtRecords *[]string `json:"alternateTxtRecords,omitempty"`
 }
 
-// DatabaseBackupSetting database backup settings.
-type DatabaseBackupSetting struct {
-	// DatabaseType - Database type (e.g. SqlAzure / MySql). Possible values include: 'DatabaseTypeSQLAzure', 'DatabaseTypeMySQL', 'DatabaseTypeLocalMySQL', 'DatabaseTypePostgreSQL'
-	DatabaseType DatabaseType `json:"databaseType,omitempty"`
-	Name         *string      `json:"name,omitempty"`
-	// ConnectionStringName - Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
-	// This is used during restore with overwrite connection strings options.
-	ConnectionStringName *string `json:"connectionStringName,omitempty"`
-	// ConnectionString - Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
-	ConnectionString *string `json:"connectionString,omitempty"`
-}
-
 // DataSource class representing data source used by the detectors
 type DataSource struct {
 	// Instructions - Instructions if any for the data source
@@ -6776,6 +6764,18 @@ type DataTableResponseObject struct {
 	Columns *[]DataTableResponseColumn `json:"columns,omitempty"`
 	// Rows - Raw row values
 	Rows *[][]string `json:"rows,omitempty"`
+}
+
+// DatabaseBackupSetting database backup settings.
+type DatabaseBackupSetting struct {
+	// DatabaseType - Database type (e.g. SqlAzure / MySql). Possible values include: 'DatabaseTypeSQLAzure', 'DatabaseTypeMySQL', 'DatabaseTypeLocalMySQL', 'DatabaseTypePostgreSQL'
+	DatabaseType DatabaseType `json:"databaseType,omitempty"`
+	Name         *string      `json:"name,omitempty"`
+	// ConnectionStringName - Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
+	// This is used during restore with overwrite connection strings options.
+	ConnectionStringName *string `json:"connectionStringName,omitempty"`
+	// ConnectionString - Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+	ConnectionString *string `json:"connectionString,omitempty"`
 }
 
 // DefaultErrorResponse app Service error response.
@@ -9843,6 +9843,14 @@ type GlobalCsmSkuDescription struct {
 	Capabilities *[]Capability `json:"capabilities,omitempty"`
 }
 
+// HTTPLogsConfig http logs configuration.
+type HTTPLogsConfig struct {
+	// FileSystem - Http logs to file system configuration.
+	FileSystem *FileSystemHTTPLogsConfig `json:"fileSystem,omitempty"`
+	// AzureBlobStorage - Http logs to azure blob storage configuration.
+	AzureBlobStorage *AzureBlobStorageHTTPLogsConfig `json:"azureBlobStorage,omitempty"`
+}
+
 // HandlerMapping the IIS handler mappings used to define which handler processes HTTP requests with
 // certain extension.
 // For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php
@@ -9854,33 +9862,6 @@ type HandlerMapping struct {
 	ScriptProcessor *string `json:"scriptProcessor,omitempty"`
 	// Arguments - Command-line arguments to be passed to the script processor.
 	Arguments *string `json:"arguments,omitempty"`
-}
-
-// HostingEnvironmentDeploymentInfo information needed to create resources on an App Service Environment.
-type HostingEnvironmentDeploymentInfo struct {
-	// Name - Name of the App Service Environment.
-	Name *string `json:"name,omitempty"`
-	// Location - Location of the App Service Environment.
-	Location *string `json:"location,omitempty"`
-}
-
-// HostingEnvironmentDiagnostics diagnostics for an App Service Environment.
-type HostingEnvironmentDiagnostics struct {
-	autorest.Response `json:"-"`
-	// Name - Name/identifier of the diagnostics.
-	Name *string `json:"name,omitempty"`
-	// DiagnosicsOutput - Diagnostics output.
-	DiagnosicsOutput *string `json:"diagnosicsOutput,omitempty"`
-}
-
-// HostingEnvironmentProfile specification for an App Service Environment to use for this resource.
-type HostingEnvironmentProfile struct {
-	// ID - Resource ID of the App Service Environment.
-	ID *string `json:"id,omitempty"`
-	// Name - READ-ONLY; Name of the App Service Environment.
-	Name *string `json:"name,omitempty"`
-	// Type - READ-ONLY; Resource type of the App Service Environment.
-	Type *string `json:"type,omitempty"`
 }
 
 // HostName details of a hostname derived from a domain.
@@ -10170,12 +10151,31 @@ type HostNameSslState struct {
 	HostType HostType `json:"hostType,omitempty"`
 }
 
-// HTTPLogsConfig http logs configuration.
-type HTTPLogsConfig struct {
-	// FileSystem - Http logs to file system configuration.
-	FileSystem *FileSystemHTTPLogsConfig `json:"fileSystem,omitempty"`
-	// AzureBlobStorage - Http logs to azure blob storage configuration.
-	AzureBlobStorage *AzureBlobStorageHTTPLogsConfig `json:"azureBlobStorage,omitempty"`
+// HostingEnvironmentDeploymentInfo information needed to create resources on an App Service Environment.
+type HostingEnvironmentDeploymentInfo struct {
+	// Name - Name of the App Service Environment.
+	Name *string `json:"name,omitempty"`
+	// Location - Location of the App Service Environment.
+	Location *string `json:"location,omitempty"`
+}
+
+// HostingEnvironmentDiagnostics diagnostics for an App Service Environment.
+type HostingEnvironmentDiagnostics struct {
+	autorest.Response `json:"-"`
+	// Name - Name/identifier of the diagnostics.
+	Name *string `json:"name,omitempty"`
+	// DiagnosicsOutput - Diagnostics output.
+	DiagnosicsOutput *string `json:"diagnosicsOutput,omitempty"`
+}
+
+// HostingEnvironmentProfile specification for an App Service Environment to use for this resource.
+type HostingEnvironmentProfile struct {
+	// ID - Resource ID of the App Service Environment.
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Name of the App Service Environment.
+	Name *string `json:"name,omitempty"`
+	// Type - READ-ONLY; Resource type of the App Service Environment.
+	Type *string `json:"type,omitempty"`
 }
 
 // HybridConnection hybrid Connection contract. This is used to configure a Hybrid Connection.
@@ -10624,6 +10624,14 @@ type HybridConnectionProperties struct {
 	ServiceBusSuffix *string `json:"serviceBusSuffix,omitempty"`
 }
 
+// IPSecurityRestriction IP security restriction on an app.
+type IPSecurityRestriction struct {
+	// IPAddress - IP address the security restriction is valid for.
+	IPAddress *string `json:"ipAddress,omitempty"`
+	// SubnetMask - Subnet mask for the range of IP addresses the restriction is valid for.
+	SubnetMask *string `json:"subnetMask,omitempty"`
+}
+
 // Identifier a domain specific resource identifier.
 type Identifier struct {
 	autorest.Response `json:"-"`
@@ -10861,14 +10869,6 @@ func NewIdentifierCollectionPage(getNextPage func(context.Context, IdentifierCol
 type IdentifierProperties struct {
 	// ID - String representation of the identity.
 	ID *string `json:"id,omitempty"`
-}
-
-// IPSecurityRestriction IP security restriction on an app.
-type IPSecurityRestriction struct {
-	// IPAddress - IP address the security restriction is valid for.
-	IPAddress *string `json:"ipAddress,omitempty"`
-	// SubnetMask - Subnet mask for the range of IP addresses the restriction is valid for.
-	SubnetMask *string `json:"subnetMask,omitempty"`
 }
 
 // Job web Job Information.
@@ -11199,341 +11199,6 @@ type LocalizableString struct {
 	Value *string `json:"value,omitempty"`
 	// LocalizedValue - Localized name.
 	LocalizedValue *string `json:"localizedValue,omitempty"`
-}
-
-// ManagedServiceIdentity managed service identity.
-type ManagedServiceIdentity struct {
-	// Type - Type of managed service identity. Possible values include: 'SystemAssigned'
-	Type ManagedServiceIdentityType `json:"type,omitempty"`
-	// TenantID - READ-ONLY; Tenant of managed service identity.
-	TenantID *string `json:"tenantId,omitempty"`
-	// PrincipalID - READ-ONLY; Principal Id of managed service identity.
-	PrincipalID *string `json:"principalId,omitempty"`
-}
-
-// MetricAvailabilily metric availability and retention.
-type MetricAvailabilily struct {
-	// TimeGrain - Time grain.
-	TimeGrain *string `json:"timeGrain,omitempty"`
-	// Retention - Retention period for the current time grain.
-	Retention *string `json:"retention,omitempty"`
-}
-
-// MetricAvailability retention policy of a resource metric.
-type MetricAvailability struct {
-	TimeGrain    *string `json:"timeGrain,omitempty"`
-	BlobDuration *string `json:"blobDuration,omitempty"`
-}
-
-// MetricDefinition metadata for a metric.
-type MetricDefinition struct {
-	autorest.Response `json:"-"`
-	// MetricDefinitionProperties - MetricDefinition resource specific properties
-	*MetricDefinitionProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Resource Id.
-	ID *string `json:"id,omitempty"`
-	// Name - READ-ONLY; Resource Name.
-	Name *string `json:"name,omitempty"`
-	// Kind - Kind of resource.
-	Kind *string `json:"kind,omitempty"`
-	// Type - READ-ONLY; Resource type.
-	Type *string `json:"type,omitempty"`
-}
-
-// MarshalJSON is the custom marshaler for MetricDefinition.
-func (md MetricDefinition) MarshalJSON() ([]byte, error) {
-	objectMap := make(map[string]interface{})
-	if md.MetricDefinitionProperties != nil {
-		objectMap["properties"] = md.MetricDefinitionProperties
-	}
-	if md.Kind != nil {
-		objectMap["kind"] = md.Kind
-	}
-	return json.Marshal(objectMap)
-}
-
-// UnmarshalJSON is the custom unmarshaler for MetricDefinition struct.
-func (md *MetricDefinition) UnmarshalJSON(body []byte) error {
-	var m map[string]*json.RawMessage
-	err := json.Unmarshal(body, &m)
-	if err != nil {
-		return err
-	}
-	for k, v := range m {
-		switch k {
-		case "properties":
-			if v != nil {
-				var metricDefinitionProperties MetricDefinitionProperties
-				err = json.Unmarshal(*v, &metricDefinitionProperties)
-				if err != nil {
-					return err
-				}
-				md.MetricDefinitionProperties = &metricDefinitionProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				md.ID = &ID
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				md.Name = &name
-			}
-		case "kind":
-			if v != nil {
-				var kind string
-				err = json.Unmarshal(*v, &kind)
-				if err != nil {
-					return err
-				}
-				md.Kind = &kind
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				md.Type = &typeVar
-			}
-		}
-	}
-
-	return nil
-}
-
-// MetricDefinitionProperties metricDefinition resource specific properties
-type MetricDefinitionProperties struct {
-	// Name - READ-ONLY; Name of the metric.
-	Name *string `json:"name,omitempty"`
-	// Unit - READ-ONLY; Unit of the metric.
-	Unit *string `json:"unit,omitempty"`
-	// PrimaryAggregationType - READ-ONLY; Primary aggregation type.
-	PrimaryAggregationType *string `json:"primaryAggregationType,omitempty"`
-	// MetricAvailabilities - READ-ONLY; List of time grains supported for the metric together with retention period.
-	MetricAvailabilities *[]MetricAvailabilily `json:"metricAvailabilities,omitempty"`
-	// DisplayName - READ-ONLY; Friendly name shown in the UI.
-	DisplayName *string `json:"displayName,omitempty"`
-}
-
-// MetricSpecification definition of a single resource metric.
-type MetricSpecification struct {
-	Name                             *string               `json:"name,omitempty"`
-	DisplayName                      *string               `json:"displayName,omitempty"`
-	DisplayDescription               *string               `json:"displayDescription,omitempty"`
-	Unit                             *string               `json:"unit,omitempty"`
-	AggregationType                  *string               `json:"aggregationType,omitempty"`
-	SupportsInstanceLevelAggregation *bool                 `json:"supportsInstanceLevelAggregation,omitempty"`
-	EnableRegionalMdmAccount         *bool                 `json:"enableRegionalMdmAccount,omitempty"`
-	SourceMdmAccount                 *string               `json:"sourceMdmAccount,omitempty"`
-	SourceMdmNamespace               *string               `json:"sourceMdmNamespace,omitempty"`
-	MetricFilterPattern              *string               `json:"metricFilterPattern,omitempty"`
-	FillGapWithZero                  *bool                 `json:"fillGapWithZero,omitempty"`
-	IsInternal                       *bool                 `json:"isInternal,omitempty"`
-	Dimensions                       *[]Dimension          `json:"dimensions,omitempty"`
-	Category                         *string               `json:"category,omitempty"`
-	Availabilities                   *[]MetricAvailability `json:"availabilities,omitempty"`
-}
-
-// MigrateMySQLRequest mySQL migration request.
-type MigrateMySQLRequest struct {
-	// MigrateMySQLRequestProperties - MigrateMySqlRequest resource specific properties
-	*MigrateMySQLRequestProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Resource Id.
-	ID *string `json:"id,omitempty"`
-	// Name - READ-ONLY; Resource Name.
-	Name *string `json:"name,omitempty"`
-	// Kind - Kind of resource.
-	Kind *string `json:"kind,omitempty"`
-	// Type - READ-ONLY; Resource type.
-	Type *string `json:"type,omitempty"`
-}
-
-// MarshalJSON is the custom marshaler for MigrateMySQLRequest.
-func (mmsr MigrateMySQLRequest) MarshalJSON() ([]byte, error) {
-	objectMap := make(map[string]interface{})
-	if mmsr.MigrateMySQLRequestProperties != nil {
-		objectMap["properties"] = mmsr.MigrateMySQLRequestProperties
-	}
-	if mmsr.Kind != nil {
-		objectMap["kind"] = mmsr.Kind
-	}
-	return json.Marshal(objectMap)
-}
-
-// UnmarshalJSON is the custom unmarshaler for MigrateMySQLRequest struct.
-func (mmsr *MigrateMySQLRequest) UnmarshalJSON(body []byte) error {
-	var m map[string]*json.RawMessage
-	err := json.Unmarshal(body, &m)
-	if err != nil {
-		return err
-	}
-	for k, v := range m {
-		switch k {
-		case "properties":
-			if v != nil {
-				var migrateMySQLRequestProperties MigrateMySQLRequestProperties
-				err = json.Unmarshal(*v, &migrateMySQLRequestProperties)
-				if err != nil {
-					return err
-				}
-				mmsr.MigrateMySQLRequestProperties = &migrateMySQLRequestProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				mmsr.ID = &ID
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				mmsr.Name = &name
-			}
-		case "kind":
-			if v != nil {
-				var kind string
-				err = json.Unmarshal(*v, &kind)
-				if err != nil {
-					return err
-				}
-				mmsr.Kind = &kind
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				mmsr.Type = &typeVar
-			}
-		}
-	}
-
-	return nil
-}
-
-// MigrateMySQLRequestProperties migrateMySqlRequest resource specific properties
-type MigrateMySQLRequestProperties struct {
-	// ConnectionString - Connection string to the remote MySQL database.
-	ConnectionString *string `json:"connectionString,omitempty"`
-	// MigrationType - The type of migration operation to be done. Possible values include: 'LocalToRemote', 'RemoteToLocal'
-	MigrationType MySQLMigrationType `json:"migrationType,omitempty"`
-}
-
-// MigrateMySQLStatus mySQL migration status.
-type MigrateMySQLStatus struct {
-	autorest.Response `json:"-"`
-	// MigrateMySQLStatusProperties - MigrateMySqlStatus resource specific properties
-	*MigrateMySQLStatusProperties `json:"properties,omitempty"`
-	// ID - READ-ONLY; Resource Id.
-	ID *string `json:"id,omitempty"`
-	// Name - READ-ONLY; Resource Name.
-	Name *string `json:"name,omitempty"`
-	// Kind - Kind of resource.
-	Kind *string `json:"kind,omitempty"`
-	// Type - READ-ONLY; Resource type.
-	Type *string `json:"type,omitempty"`
-}
-
-// MarshalJSON is the custom marshaler for MigrateMySQLStatus.
-func (mmss MigrateMySQLStatus) MarshalJSON() ([]byte, error) {
-	objectMap := make(map[string]interface{})
-	if mmss.MigrateMySQLStatusProperties != nil {
-		objectMap["properties"] = mmss.MigrateMySQLStatusProperties
-	}
-	if mmss.Kind != nil {
-		objectMap["kind"] = mmss.Kind
-	}
-	return json.Marshal(objectMap)
-}
-
-// UnmarshalJSON is the custom unmarshaler for MigrateMySQLStatus struct.
-func (mmss *MigrateMySQLStatus) UnmarshalJSON(body []byte) error {
-	var m map[string]*json.RawMessage
-	err := json.Unmarshal(body, &m)
-	if err != nil {
-		return err
-	}
-	for k, v := range m {
-		switch k {
-		case "properties":
-			if v != nil {
-				var migrateMySQLStatusProperties MigrateMySQLStatusProperties
-				err = json.Unmarshal(*v, &migrateMySQLStatusProperties)
-				if err != nil {
-					return err
-				}
-				mmss.MigrateMySQLStatusProperties = &migrateMySQLStatusProperties
-			}
-		case "id":
-			if v != nil {
-				var ID string
-				err = json.Unmarshal(*v, &ID)
-				if err != nil {
-					return err
-				}
-				mmss.ID = &ID
-			}
-		case "name":
-			if v != nil {
-				var name string
-				err = json.Unmarshal(*v, &name)
-				if err != nil {
-					return err
-				}
-				mmss.Name = &name
-			}
-		case "kind":
-			if v != nil {
-				var kind string
-				err = json.Unmarshal(*v, &kind)
-				if err != nil {
-					return err
-				}
-				mmss.Kind = &kind
-			}
-		case "type":
-			if v != nil {
-				var typeVar string
-				err = json.Unmarshal(*v, &typeVar)
-				if err != nil {
-					return err
-				}
-				mmss.Type = &typeVar
-			}
-		}
-	}
-
-	return nil
-}
-
-// MigrateMySQLStatusProperties migrateMySqlStatus resource specific properties
-type MigrateMySQLStatusProperties struct {
-	// MigrationOperationStatus - READ-ONLY; Status of the migration task. Possible values include: 'OperationStatusInProgress', 'OperationStatusFailed', 'OperationStatusSucceeded', 'OperationStatusTimedOut', 'OperationStatusCreated'
-	MigrationOperationStatus OperationStatus `json:"migrationOperationStatus,omitempty"`
-	// OperationID - READ-ONLY; Operation ID for the migration task.
-	OperationID *string `json:"operationId,omitempty"`
-	// LocalMySQLEnabled - READ-ONLY; True if the web app has in app MySql enabled
-	LocalMySQLEnabled *bool `json:"localMySqlEnabled,omitempty"`
 }
 
 // MSDeploy mSDeploy ARM PUT information
@@ -11873,6 +11538,341 @@ type MSDeployStatusProperties struct {
 	EndTime *date.Time `json:"endTime,omitempty"`
 	// Complete - READ-ONLY; Whether the deployment operation has completed
 	Complete *bool `json:"complete,omitempty"`
+}
+
+// ManagedServiceIdentity managed service identity.
+type ManagedServiceIdentity struct {
+	// Type - Type of managed service identity. Possible values include: 'SystemAssigned'
+	Type ManagedServiceIdentityType `json:"type,omitempty"`
+	// TenantID - READ-ONLY; Tenant of managed service identity.
+	TenantID *string `json:"tenantId,omitempty"`
+	// PrincipalID - READ-ONLY; Principal Id of managed service identity.
+	PrincipalID *string `json:"principalId,omitempty"`
+}
+
+// MetricAvailabilily metric availability and retention.
+type MetricAvailabilily struct {
+	// TimeGrain - Time grain.
+	TimeGrain *string `json:"timeGrain,omitempty"`
+	// Retention - Retention period for the current time grain.
+	Retention *string `json:"retention,omitempty"`
+}
+
+// MetricAvailability retention policy of a resource metric.
+type MetricAvailability struct {
+	TimeGrain    *string `json:"timeGrain,omitempty"`
+	BlobDuration *string `json:"blobDuration,omitempty"`
+}
+
+// MetricDefinition metadata for a metric.
+type MetricDefinition struct {
+	autorest.Response `json:"-"`
+	// MetricDefinitionProperties - MetricDefinition resource specific properties
+	*MetricDefinitionProperties `json:"properties,omitempty"`
+	// ID - READ-ONLY; Resource Id.
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Resource Name.
+	Name *string `json:"name,omitempty"`
+	// Kind - Kind of resource.
+	Kind *string `json:"kind,omitempty"`
+	// Type - READ-ONLY; Resource type.
+	Type *string `json:"type,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for MetricDefinition.
+func (md MetricDefinition) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if md.MetricDefinitionProperties != nil {
+		objectMap["properties"] = md.MetricDefinitionProperties
+	}
+	if md.Kind != nil {
+		objectMap["kind"] = md.Kind
+	}
+	return json.Marshal(objectMap)
+}
+
+// UnmarshalJSON is the custom unmarshaler for MetricDefinition struct.
+func (md *MetricDefinition) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var metricDefinitionProperties MetricDefinitionProperties
+				err = json.Unmarshal(*v, &metricDefinitionProperties)
+				if err != nil {
+					return err
+				}
+				md.MetricDefinitionProperties = &metricDefinitionProperties
+			}
+		case "id":
+			if v != nil {
+				var ID string
+				err = json.Unmarshal(*v, &ID)
+				if err != nil {
+					return err
+				}
+				md.ID = &ID
+			}
+		case "name":
+			if v != nil {
+				var name string
+				err = json.Unmarshal(*v, &name)
+				if err != nil {
+					return err
+				}
+				md.Name = &name
+			}
+		case "kind":
+			if v != nil {
+				var kind string
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				md.Kind = &kind
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				md.Type = &typeVar
+			}
+		}
+	}
+
+	return nil
+}
+
+// MetricDefinitionProperties metricDefinition resource specific properties
+type MetricDefinitionProperties struct {
+	// Name - READ-ONLY; Name of the metric.
+	Name *string `json:"name,omitempty"`
+	// Unit - READ-ONLY; Unit of the metric.
+	Unit *string `json:"unit,omitempty"`
+	// PrimaryAggregationType - READ-ONLY; Primary aggregation type.
+	PrimaryAggregationType *string `json:"primaryAggregationType,omitempty"`
+	// MetricAvailabilities - READ-ONLY; List of time grains supported for the metric together with retention period.
+	MetricAvailabilities *[]MetricAvailabilily `json:"metricAvailabilities,omitempty"`
+	// DisplayName - READ-ONLY; Friendly name shown in the UI.
+	DisplayName *string `json:"displayName,omitempty"`
+}
+
+// MetricSpecification definition of a single resource metric.
+type MetricSpecification struct {
+	Name                             *string               `json:"name,omitempty"`
+	DisplayName                      *string               `json:"displayName,omitempty"`
+	DisplayDescription               *string               `json:"displayDescription,omitempty"`
+	Unit                             *string               `json:"unit,omitempty"`
+	AggregationType                  *string               `json:"aggregationType,omitempty"`
+	SupportsInstanceLevelAggregation *bool                 `json:"supportsInstanceLevelAggregation,omitempty"`
+	EnableRegionalMdmAccount         *bool                 `json:"enableRegionalMdmAccount,omitempty"`
+	SourceMdmAccount                 *string               `json:"sourceMdmAccount,omitempty"`
+	SourceMdmNamespace               *string               `json:"sourceMdmNamespace,omitempty"`
+	MetricFilterPattern              *string               `json:"metricFilterPattern,omitempty"`
+	FillGapWithZero                  *bool                 `json:"fillGapWithZero,omitempty"`
+	IsInternal                       *bool                 `json:"isInternal,omitempty"`
+	Dimensions                       *[]Dimension          `json:"dimensions,omitempty"`
+	Category                         *string               `json:"category,omitempty"`
+	Availabilities                   *[]MetricAvailability `json:"availabilities,omitempty"`
+}
+
+// MigrateMySQLRequest mySQL migration request.
+type MigrateMySQLRequest struct {
+	// MigrateMySQLRequestProperties - MigrateMySqlRequest resource specific properties
+	*MigrateMySQLRequestProperties `json:"properties,omitempty"`
+	// ID - READ-ONLY; Resource Id.
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Resource Name.
+	Name *string `json:"name,omitempty"`
+	// Kind - Kind of resource.
+	Kind *string `json:"kind,omitempty"`
+	// Type - READ-ONLY; Resource type.
+	Type *string `json:"type,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for MigrateMySQLRequest.
+func (mmsr MigrateMySQLRequest) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if mmsr.MigrateMySQLRequestProperties != nil {
+		objectMap["properties"] = mmsr.MigrateMySQLRequestProperties
+	}
+	if mmsr.Kind != nil {
+		objectMap["kind"] = mmsr.Kind
+	}
+	return json.Marshal(objectMap)
+}
+
+// UnmarshalJSON is the custom unmarshaler for MigrateMySQLRequest struct.
+func (mmsr *MigrateMySQLRequest) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var migrateMySQLRequestProperties MigrateMySQLRequestProperties
+				err = json.Unmarshal(*v, &migrateMySQLRequestProperties)
+				if err != nil {
+					return err
+				}
+				mmsr.MigrateMySQLRequestProperties = &migrateMySQLRequestProperties
+			}
+		case "id":
+			if v != nil {
+				var ID string
+				err = json.Unmarshal(*v, &ID)
+				if err != nil {
+					return err
+				}
+				mmsr.ID = &ID
+			}
+		case "name":
+			if v != nil {
+				var name string
+				err = json.Unmarshal(*v, &name)
+				if err != nil {
+					return err
+				}
+				mmsr.Name = &name
+			}
+		case "kind":
+			if v != nil {
+				var kind string
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				mmsr.Kind = &kind
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				mmsr.Type = &typeVar
+			}
+		}
+	}
+
+	return nil
+}
+
+// MigrateMySQLRequestProperties migrateMySqlRequest resource specific properties
+type MigrateMySQLRequestProperties struct {
+	// ConnectionString - Connection string to the remote MySQL database.
+	ConnectionString *string `json:"connectionString,omitempty"`
+	// MigrationType - The type of migration operation to be done. Possible values include: 'LocalToRemote', 'RemoteToLocal'
+	MigrationType MySQLMigrationType `json:"migrationType,omitempty"`
+}
+
+// MigrateMySQLStatus mySQL migration status.
+type MigrateMySQLStatus struct {
+	autorest.Response `json:"-"`
+	// MigrateMySQLStatusProperties - MigrateMySqlStatus resource specific properties
+	*MigrateMySQLStatusProperties `json:"properties,omitempty"`
+	// ID - READ-ONLY; Resource Id.
+	ID *string `json:"id,omitempty"`
+	// Name - READ-ONLY; Resource Name.
+	Name *string `json:"name,omitempty"`
+	// Kind - Kind of resource.
+	Kind *string `json:"kind,omitempty"`
+	// Type - READ-ONLY; Resource type.
+	Type *string `json:"type,omitempty"`
+}
+
+// MarshalJSON is the custom marshaler for MigrateMySQLStatus.
+func (mmss MigrateMySQLStatus) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]interface{})
+	if mmss.MigrateMySQLStatusProperties != nil {
+		objectMap["properties"] = mmss.MigrateMySQLStatusProperties
+	}
+	if mmss.Kind != nil {
+		objectMap["kind"] = mmss.Kind
+	}
+	return json.Marshal(objectMap)
+}
+
+// UnmarshalJSON is the custom unmarshaler for MigrateMySQLStatus struct.
+func (mmss *MigrateMySQLStatus) UnmarshalJSON(body []byte) error {
+	var m map[string]*json.RawMessage
+	err := json.Unmarshal(body, &m)
+	if err != nil {
+		return err
+	}
+	for k, v := range m {
+		switch k {
+		case "properties":
+			if v != nil {
+				var migrateMySQLStatusProperties MigrateMySQLStatusProperties
+				err = json.Unmarshal(*v, &migrateMySQLStatusProperties)
+				if err != nil {
+					return err
+				}
+				mmss.MigrateMySQLStatusProperties = &migrateMySQLStatusProperties
+			}
+		case "id":
+			if v != nil {
+				var ID string
+				err = json.Unmarshal(*v, &ID)
+				if err != nil {
+					return err
+				}
+				mmss.ID = &ID
+			}
+		case "name":
+			if v != nil {
+				var name string
+				err = json.Unmarshal(*v, &name)
+				if err != nil {
+					return err
+				}
+				mmss.Name = &name
+			}
+		case "kind":
+			if v != nil {
+				var kind string
+				err = json.Unmarshal(*v, &kind)
+				if err != nil {
+					return err
+				}
+				mmss.Kind = &kind
+			}
+		case "type":
+			if v != nil {
+				var typeVar string
+				err = json.Unmarshal(*v, &typeVar)
+				if err != nil {
+					return err
+				}
+				mmss.Type = &typeVar
+			}
+		}
+	}
+
+	return nil
+}
+
+// MigrateMySQLStatusProperties migrateMySqlStatus resource specific properties
+type MigrateMySQLStatusProperties struct {
+	// MigrationOperationStatus - READ-ONLY; Status of the migration task. Possible values include: 'OperationStatusInProgress', 'OperationStatusFailed', 'OperationStatusSucceeded', 'OperationStatusTimedOut', 'OperationStatusCreated'
+	MigrationOperationStatus OperationStatus `json:"migrationOperationStatus,omitempty"`
+	// OperationID - READ-ONLY; Operation ID for the migration task.
+	OperationID *string `json:"operationId,omitempty"`
+	// LocalMySQLEnabled - READ-ONLY; True if the web app has in app MySql enabled
+	LocalMySQLEnabled *bool `json:"localMySqlEnabled,omitempty"`
 }
 
 // NameIdentifier identifies an object.

@@ -10410,180 +10410,6 @@ func (client AppsClient) GetInstanceProcessThreadSlotResponder(resp *http.Respon
 	return
 }
 
-// GetMigrateMySQLStatus returns the status of MySql in app migration, if one is active, and whether or not MySql in
-// app is enabled
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - name of web app.
-func (client AppsClient) GetMigrateMySQLStatus(ctx context.Context, resourceGroupName string, name string) (result MigrateMySQLStatus, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.GetMigrateMySQLStatus")
-		defer func() {
-			sc := -1
-			if result.Response.Response != nil {
-				sc = result.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "GetMigrateMySQLStatus", err.Error())
-	}
-
-	req, err := client.GetMigrateMySQLStatusPreparer(ctx, resourceGroupName, name)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.GetMigrateMySQLStatusSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", resp, "Failure sending request")
-		return
-	}
-
-	result, err = client.GetMigrateMySQLStatusResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// GetMigrateMySQLStatusPreparer prepares the GetMigrateMySQLStatus request.
-func (client AppsClient) GetMigrateMySQLStatusPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// GetMigrateMySQLStatusSender sends the GetMigrateMySQLStatus request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) GetMigrateMySQLStatusSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// GetMigrateMySQLStatusResponder handles the response to the GetMigrateMySQLStatus request. The method always
-// closes the http.Response Body.
-func (client AppsClient) GetMigrateMySQLStatusResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// GetMigrateMySQLStatusSlot returns the status of MySql in app migration, if one is active, and whether or not MySql
-// in app is enabled
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - name of web app.
-// slot - name of the deployment slot.
-func (client AppsClient) GetMigrateMySQLStatusSlot(ctx context.Context, resourceGroupName string, name string, slot string) (result MigrateMySQLStatus, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.GetMigrateMySQLStatusSlot")
-		defer func() {
-			sc := -1
-			if result.Response.Response != nil {
-				sc = result.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "GetMigrateMySQLStatusSlot", err.Error())
-	}
-
-	req, err := client.GetMigrateMySQLStatusSlotPreparer(ctx, resourceGroupName, name, slot)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.GetMigrateMySQLStatusSlotSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", resp, "Failure sending request")
-		return
-	}
-
-	result, err = client.GetMigrateMySQLStatusSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// GetMigrateMySQLStatusSlotPreparer prepares the GetMigrateMySQLStatusSlot request.
-func (client AppsClient) GetMigrateMySQLStatusSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"slot":              autorest.Encode("path", slot),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// GetMigrateMySQLStatusSlotSender sends the GetMigrateMySQLStatusSlot request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) GetMigrateMySQLStatusSlotSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// GetMigrateMySQLStatusSlotResponder handles the response to the GetMigrateMySQLStatusSlot request. The method always
-// closes the http.Response Body.
-func (client AppsClient) GetMigrateMySQLStatusSlotResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
 // GetMSDeployLog get the MSDeploy Log for the last MSDeploy operation.
 // Parameters:
 // resourceGroupName - name of the resource group to which the resource belongs.
@@ -10918,6 +10744,180 @@ func (client AppsClient) GetMSDeployStatusSlotSender(req *http.Request) (*http.R
 // GetMSDeployStatusSlotResponder handles the response to the GetMSDeployStatusSlot request. The method always
 // closes the http.Response Body.
 func (client AppsClient) GetMSDeployStatusSlotResponder(resp *http.Response) (result MSDeployStatus, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// GetMigrateMySQLStatus returns the status of MySql in app migration, if one is active, and whether or not MySql in
+// app is enabled
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - name of web app.
+func (client AppsClient) GetMigrateMySQLStatus(ctx context.Context, resourceGroupName string, name string) (result MigrateMySQLStatus, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.GetMigrateMySQLStatus")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "GetMigrateMySQLStatus", err.Error())
+	}
+
+	req, err := client.GetMigrateMySQLStatusPreparer(ctx, resourceGroupName, name)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.GetMigrateMySQLStatusSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.GetMigrateMySQLStatusResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatus", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// GetMigrateMySQLStatusPreparer prepares the GetMigrateMySQLStatus request.
+func (client AppsClient) GetMigrateMySQLStatusPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// GetMigrateMySQLStatusSender sends the GetMigrateMySQLStatus request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) GetMigrateMySQLStatusSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// GetMigrateMySQLStatusResponder handles the response to the GetMigrateMySQLStatus request. The method always
+// closes the http.Response Body.
+func (client AppsClient) GetMigrateMySQLStatusResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// GetMigrateMySQLStatusSlot returns the status of MySql in app migration, if one is active, and whether or not MySql
+// in app is enabled
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - name of web app.
+// slot - name of the deployment slot.
+func (client AppsClient) GetMigrateMySQLStatusSlot(ctx context.Context, resourceGroupName string, name string, slot string) (result MigrateMySQLStatus, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.GetMigrateMySQLStatusSlot")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "GetMigrateMySQLStatusSlot", err.Error())
+	}
+
+	req, err := client.GetMigrateMySQLStatusSlotPreparer(ctx, resourceGroupName, name, slot)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.GetMigrateMySQLStatusSlotSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.GetMigrateMySQLStatusSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "GetMigrateMySQLStatusSlot", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// GetMigrateMySQLStatusSlotPreparer prepares the GetMigrateMySQLStatusSlot request.
+func (client AppsClient) GetMigrateMySQLStatusSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"slot":              autorest.Encode("path", slot),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// GetMigrateMySQLStatusSlotSender sends the GetMigrateMySQLStatusSlot request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) GetMigrateMySQLStatusSlotSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// GetMigrateMySQLStatusSlotResponder handles the response to the GetMigrateMySQLStatusSlot request. The method always
+// closes the http.Response Body.
+func (client AppsClient) GetMigrateMySQLStatusSlotResponder(resp *http.Response) (result MigrateMySQLStatus, err error) {
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),
@@ -14649,6 +14649,212 @@ func (client AppsClient) ListApplicationSettingsSlotResponder(resp *http.Respons
 	return
 }
 
+// ListBackupStatusSecrets gets status of a web app backup that may be in progress, including secrets associated with
+// the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is
+// passed in the request body.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - name of web app.
+// backupID - ID of backup.
+// request - information on backup request.
+func (client AppsClient) ListBackupStatusSecrets(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest) (result BackupItem, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListBackupStatusSecrets")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}},
+		{TargetValue: request,
+			Constraints: []validation.Constraint{{Target: "request.BackupRequestProperties", Name: validation.Null, Rule: false,
+				Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupRequestName", Name: validation.Null, Rule: true, Chain: nil},
+					{Target: "request.BackupRequestProperties.StorageAccountURL", Name: validation.Null, Rule: true, Chain: nil},
+					{Target: "request.BackupRequestProperties.BackupSchedule", Name: validation.Null, Rule: false,
+						Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupSchedule.FrequencyInterval", Name: validation.Null, Rule: true, Chain: nil},
+							{Target: "request.BackupRequestProperties.BackupSchedule.KeepAtLeastOneBackup", Name: validation.Null, Rule: true, Chain: nil},
+							{Target: "request.BackupRequestProperties.BackupSchedule.RetentionPeriodInDays", Name: validation.Null, Rule: true, Chain: nil},
+						}},
+				}}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListBackupStatusSecrets", err.Error())
+	}
+
+	req, err := client.ListBackupStatusSecretsPreparer(ctx, resourceGroupName, name, backupID, request)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListBackupStatusSecretsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.ListBackupStatusSecretsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListBackupStatusSecretsPreparer prepares the ListBackupStatusSecrets request.
+func (client AppsClient) ListBackupStatusSecretsPreparer(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"backupId":          autorest.Encode("path", backupID),
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsContentType("application/json; charset=utf-8"),
+		autorest.AsPost(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list", pathParameters),
+		autorest.WithJSON(request),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListBackupStatusSecretsSender sends the ListBackupStatusSecrets request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListBackupStatusSecretsSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListBackupStatusSecretsResponder handles the response to the ListBackupStatusSecrets request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListBackupStatusSecretsResponder(resp *http.Response) (result BackupItem, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// ListBackupStatusSecretsSlot gets status of a web app backup that may be in progress, including secrets associated
+// with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new
+// URL is passed in the request body.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - name of web app.
+// backupID - ID of backup.
+// request - information on backup request.
+// slot - name of web app slot. If not specified then will default to production slot.
+func (client AppsClient) ListBackupStatusSecretsSlot(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest, slot string) (result BackupItem, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListBackupStatusSecretsSlot")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}},
+		{TargetValue: request,
+			Constraints: []validation.Constraint{{Target: "request.BackupRequestProperties", Name: validation.Null, Rule: false,
+				Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupRequestName", Name: validation.Null, Rule: true, Chain: nil},
+					{Target: "request.BackupRequestProperties.StorageAccountURL", Name: validation.Null, Rule: true, Chain: nil},
+					{Target: "request.BackupRequestProperties.BackupSchedule", Name: validation.Null, Rule: false,
+						Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupSchedule.FrequencyInterval", Name: validation.Null, Rule: true, Chain: nil},
+							{Target: "request.BackupRequestProperties.BackupSchedule.KeepAtLeastOneBackup", Name: validation.Null, Rule: true, Chain: nil},
+							{Target: "request.BackupRequestProperties.BackupSchedule.RetentionPeriodInDays", Name: validation.Null, Rule: true, Chain: nil},
+						}},
+				}}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListBackupStatusSecretsSlot", err.Error())
+	}
+
+	req, err := client.ListBackupStatusSecretsSlotPreparer(ctx, resourceGroupName, name, backupID, request, slot)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListBackupStatusSecretsSlotSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.ListBackupStatusSecretsSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListBackupStatusSecretsSlotPreparer prepares the ListBackupStatusSecretsSlot request.
+func (client AppsClient) ListBackupStatusSecretsSlotPreparer(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest, slot string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"backupId":          autorest.Encode("path", backupID),
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"slot":              autorest.Encode("path", slot),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsContentType("application/json; charset=utf-8"),
+		autorest.AsPost(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/list", pathParameters),
+		autorest.WithJSON(request),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListBackupStatusSecretsSlotSender sends the ListBackupStatusSecretsSlot request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListBackupStatusSecretsSlotSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListBackupStatusSecretsSlotResponder handles the response to the ListBackupStatusSecretsSlot request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListBackupStatusSecretsSlotResponder(resp *http.Response) (result BackupItem, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
 // ListBackups gets existing backups of an app.
 // Parameters:
 // resourceGroupName - name of the resource group to which the resource belongs.
@@ -14898,212 +15104,6 @@ func (client AppsClient) ListBackupsSlotComplete(ctx context.Context, resourceGr
 	return
 }
 
-// ListBackupStatusSecrets gets status of a web app backup that may be in progress, including secrets associated with
-// the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is
-// passed in the request body.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - name of web app.
-// backupID - ID of backup.
-// request - information on backup request.
-func (client AppsClient) ListBackupStatusSecrets(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest) (result BackupItem, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListBackupStatusSecrets")
-		defer func() {
-			sc := -1
-			if result.Response.Response != nil {
-				sc = result.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}},
-		{TargetValue: request,
-			Constraints: []validation.Constraint{{Target: "request.BackupRequestProperties", Name: validation.Null, Rule: false,
-				Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupRequestName", Name: validation.Null, Rule: true, Chain: nil},
-					{Target: "request.BackupRequestProperties.StorageAccountURL", Name: validation.Null, Rule: true, Chain: nil},
-					{Target: "request.BackupRequestProperties.BackupSchedule", Name: validation.Null, Rule: false,
-						Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupSchedule.FrequencyInterval", Name: validation.Null, Rule: true, Chain: nil},
-							{Target: "request.BackupRequestProperties.BackupSchedule.KeepAtLeastOneBackup", Name: validation.Null, Rule: true, Chain: nil},
-							{Target: "request.BackupRequestProperties.BackupSchedule.RetentionPeriodInDays", Name: validation.Null, Rule: true, Chain: nil},
-						}},
-				}}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListBackupStatusSecrets", err.Error())
-	}
-
-	req, err := client.ListBackupStatusSecretsPreparer(ctx, resourceGroupName, name, backupID, request)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListBackupStatusSecretsSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", resp, "Failure sending request")
-		return
-	}
-
-	result, err = client.ListBackupStatusSecretsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecrets", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListBackupStatusSecretsPreparer prepares the ListBackupStatusSecrets request.
-func (client AppsClient) ListBackupStatusSecretsPreparer(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"backupId":          autorest.Encode("path", backupID),
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsContentType("application/json; charset=utf-8"),
-		autorest.AsPost(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list", pathParameters),
-		autorest.WithJSON(request),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListBackupStatusSecretsSender sends the ListBackupStatusSecrets request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListBackupStatusSecretsSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListBackupStatusSecretsResponder handles the response to the ListBackupStatusSecrets request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListBackupStatusSecretsResponder(resp *http.Response) (result BackupItem, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// ListBackupStatusSecretsSlot gets status of a web app backup that may be in progress, including secrets associated
-// with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new
-// URL is passed in the request body.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - name of web app.
-// backupID - ID of backup.
-// request - information on backup request.
-// slot - name of web app slot. If not specified then will default to production slot.
-func (client AppsClient) ListBackupStatusSecretsSlot(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest, slot string) (result BackupItem, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListBackupStatusSecretsSlot")
-		defer func() {
-			sc := -1
-			if result.Response.Response != nil {
-				sc = result.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}},
-		{TargetValue: request,
-			Constraints: []validation.Constraint{{Target: "request.BackupRequestProperties", Name: validation.Null, Rule: false,
-				Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupRequestName", Name: validation.Null, Rule: true, Chain: nil},
-					{Target: "request.BackupRequestProperties.StorageAccountURL", Name: validation.Null, Rule: true, Chain: nil},
-					{Target: "request.BackupRequestProperties.BackupSchedule", Name: validation.Null, Rule: false,
-						Chain: []validation.Constraint{{Target: "request.BackupRequestProperties.BackupSchedule.FrequencyInterval", Name: validation.Null, Rule: true, Chain: nil},
-							{Target: "request.BackupRequestProperties.BackupSchedule.KeepAtLeastOneBackup", Name: validation.Null, Rule: true, Chain: nil},
-							{Target: "request.BackupRequestProperties.BackupSchedule.RetentionPeriodInDays", Name: validation.Null, Rule: true, Chain: nil},
-						}},
-				}}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListBackupStatusSecretsSlot", err.Error())
-	}
-
-	req, err := client.ListBackupStatusSecretsSlotPreparer(ctx, resourceGroupName, name, backupID, request, slot)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListBackupStatusSecretsSlotSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", resp, "Failure sending request")
-		return
-	}
-
-	result, err = client.ListBackupStatusSecretsSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListBackupStatusSecretsSlot", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListBackupStatusSecretsSlotPreparer prepares the ListBackupStatusSecretsSlot request.
-func (client AppsClient) ListBackupStatusSecretsSlotPreparer(ctx context.Context, resourceGroupName string, name string, backupID string, request BackupRequest, slot string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"backupId":          autorest.Encode("path", backupID),
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"slot":              autorest.Encode("path", slot),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsContentType("application/json; charset=utf-8"),
-		autorest.AsPost(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/list", pathParameters),
-		autorest.WithJSON(request),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListBackupStatusSecretsSlotSender sends the ListBackupStatusSecretsSlot request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListBackupStatusSecretsSlotSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListBackupStatusSecretsSlotResponder handles the response to the ListBackupStatusSecretsSlot request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListBackupStatusSecretsSlotResponder(resp *http.Response) (result BackupItem, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
 // ListByResourceGroup gets all web, mobile, and API apps in the specified resource group.
 // Parameters:
 // resourceGroupName - name of the resource group to which the resource belongs.
@@ -15227,129 +15227,6 @@ func (client AppsClient) ListByResourceGroupComplete(ctx context.Context, resour
 		}()
 	}
 	result.page, err = client.ListByResourceGroup(ctx, resourceGroupName, includeSlots)
-	return
-}
-
-// ListConfigurations list the configurations of an app
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - name of the app.
-func (client AppsClient) ListConfigurations(ctx context.Context, resourceGroupName string, name string) (result SiteConfigResourceCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListConfigurations")
-		defer func() {
-			sc := -1
-			if result.scrc.Response.Response != nil {
-				sc = result.scrc.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListConfigurations", err.Error())
-	}
-
-	result.fn = client.listConfigurationsNextResults
-	req, err := client.ListConfigurationsPreparer(ctx, resourceGroupName, name)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListConfigurationsSender(req)
-	if err != nil {
-		result.scrc.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", resp, "Failure sending request")
-		return
-	}
-
-	result.scrc, err = client.ListConfigurationsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListConfigurationsPreparer prepares the ListConfigurations request.
-func (client AppsClient) ListConfigurationsPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListConfigurationsSender sends the ListConfigurations request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListConfigurationsSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListConfigurationsResponder handles the response to the ListConfigurations request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListConfigurationsResponder(resp *http.Response) (result SiteConfigResourceCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listConfigurationsNextResults retrieves the next set of results, if any.
-func (client AppsClient) listConfigurationsNextResults(ctx context.Context, lastResults SiteConfigResourceCollection) (result SiteConfigResourceCollection, err error) {
-	req, err := lastResults.siteConfigResourceCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListConfigurationsSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListConfigurationsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListConfigurationsComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListConfigurationsComplete(ctx context.Context, resourceGroupName string, name string) (result SiteConfigResourceCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListConfigurations")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListConfigurations(ctx, resourceGroupName, name)
 	return
 }
 
@@ -15601,6 +15478,129 @@ func (client AppsClient) ListConfigurationSnapshotInfoSlotComplete(ctx context.C
 		}()
 	}
 	result.page, err = client.ListConfigurationSnapshotInfoSlot(ctx, resourceGroupName, name, slot)
+	return
+}
+
+// ListConfigurations list the configurations of an app
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - name of the app.
+func (client AppsClient) ListConfigurations(ctx context.Context, resourceGroupName string, name string) (result SiteConfigResourceCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListConfigurations")
+		defer func() {
+			sc := -1
+			if result.scrc.Response.Response != nil {
+				sc = result.scrc.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListConfigurations", err.Error())
+	}
+
+	result.fn = client.listConfigurationsNextResults
+	req, err := client.ListConfigurationsPreparer(ctx, resourceGroupName, name)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListConfigurationsSender(req)
+	if err != nil {
+		result.scrc.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", resp, "Failure sending request")
+		return
+	}
+
+	result.scrc, err = client.ListConfigurationsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListConfigurations", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListConfigurationsPreparer prepares the ListConfigurations request.
+func (client AppsClient) ListConfigurationsPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListConfigurationsSender sends the ListConfigurations request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListConfigurationsSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListConfigurationsResponder handles the response to the ListConfigurations request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListConfigurationsResponder(resp *http.Response) (result SiteConfigResourceCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listConfigurationsNextResults retrieves the next set of results, if any.
+func (client AppsClient) listConfigurationsNextResults(ctx context.Context, lastResults SiteConfigResourceCollection) (result SiteConfigResourceCollection, err error) {
+	req, err := lastResults.siteConfigResourceCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListConfigurationsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListConfigurationsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listConfigurationsNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListConfigurationsComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListConfigurationsComplete(ctx context.Context, resourceGroupName string, name string) (result SiteConfigResourceCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListConfigurations")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListConfigurations(ctx, resourceGroupName, name)
 	return
 }
 
@@ -16829,129 +16829,6 @@ func (client AppsClient) ListDomainOwnershipIdentifiersSlotComplete(ctx context.
 	return
 }
 
-// ListFunctions list the functions for a web site, or a deployment slot.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - site name.
-func (client AppsClient) ListFunctions(ctx context.Context, resourceGroupName string, name string) (result FunctionEnvelopeCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListFunctions")
-		defer func() {
-			sc := -1
-			if result.fec.Response.Response != nil {
-				sc = result.fec.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListFunctions", err.Error())
-	}
-
-	result.fn = client.listFunctionsNextResults
-	req, err := client.ListFunctionsPreparer(ctx, resourceGroupName, name)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListFunctionsSender(req)
-	if err != nil {
-		result.fec.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", resp, "Failure sending request")
-		return
-	}
-
-	result.fec, err = client.ListFunctionsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListFunctionsPreparer prepares the ListFunctions request.
-func (client AppsClient) ListFunctionsPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListFunctionsSender sends the ListFunctions request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListFunctionsSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListFunctionsResponder handles the response to the ListFunctions request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListFunctionsResponder(resp *http.Response) (result FunctionEnvelopeCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listFunctionsNextResults retrieves the next set of results, if any.
-func (client AppsClient) listFunctionsNextResults(ctx context.Context, lastResults FunctionEnvelopeCollection) (result FunctionEnvelopeCollection, err error) {
-	req, err := lastResults.functionEnvelopeCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListFunctionsSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListFunctionsResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListFunctionsComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListFunctionsComplete(ctx context.Context, resourceGroupName string, name string) (result FunctionEnvelopeCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListFunctions")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListFunctions(ctx, resourceGroupName, name)
-	return
-}
-
 // ListFunctionSecrets get function secrets for a function in a web site, or a deployment slot.
 // Parameters:
 // resourceGroupName - name of the resource group to which the resource belongs.
@@ -17126,6 +17003,129 @@ func (client AppsClient) ListFunctionSecretsSlotResponder(resp *http.Response) (
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// ListFunctions list the functions for a web site, or a deployment slot.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - site name.
+func (client AppsClient) ListFunctions(ctx context.Context, resourceGroupName string, name string) (result FunctionEnvelopeCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListFunctions")
+		defer func() {
+			sc := -1
+			if result.fec.Response.Response != nil {
+				sc = result.fec.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListFunctions", err.Error())
+	}
+
+	result.fn = client.listFunctionsNextResults
+	req, err := client.ListFunctionsPreparer(ctx, resourceGroupName, name)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListFunctionsSender(req)
+	if err != nil {
+		result.fec.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", resp, "Failure sending request")
+		return
+	}
+
+	result.fec, err = client.ListFunctionsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListFunctions", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListFunctionsPreparer prepares the ListFunctions request.
+func (client AppsClient) ListFunctionsPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListFunctionsSender sends the ListFunctions request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListFunctionsSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListFunctionsResponder handles the response to the ListFunctions request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListFunctionsResponder(resp *http.Response) (result FunctionEnvelopeCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listFunctionsNextResults retrieves the next set of results, if any.
+func (client AppsClient) listFunctionsNextResults(ctx context.Context, lastResults FunctionEnvelopeCollection) (result FunctionEnvelopeCollection, err error) {
+	req, err := lastResults.functionEnvelopeCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListFunctionsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListFunctionsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listFunctionsNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListFunctionsComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListFunctionsComplete(ctx context.Context, resourceGroupName string, name string) (result FunctionEnvelopeCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListFunctions")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListFunctions(ctx, resourceGroupName, name)
 	return
 }
 
@@ -18104,263 +18104,6 @@ func (client AppsClient) ListInstanceIdentifiersSlotComplete(ctx context.Context
 	return
 }
 
-// ListInstanceProcesses get list of processes for a web site, or a deployment slot, or for a specific scaled-out
-// instance in a web site.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - site name.
-// instanceID - ID of a specific scaled-out instance. This is the value of the name property in the JSON
-// response from "GET api/sites/{siteName}/instances".
-func (client AppsClient) ListInstanceProcesses(ctx context.Context, resourceGroupName string, name string, instanceID string) (result ProcessInfoCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcesses")
-		defer func() {
-			sc := -1
-			if result.pic.Response.Response != nil {
-				sc = result.pic.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListInstanceProcesses", err.Error())
-	}
-
-	result.fn = client.listInstanceProcessesNextResults
-	req, err := client.ListInstanceProcessesPreparer(ctx, resourceGroupName, name, instanceID)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListInstanceProcessesSender(req)
-	if err != nil {
-		result.pic.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", resp, "Failure sending request")
-		return
-	}
-
-	result.pic, err = client.ListInstanceProcessesResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListInstanceProcessesPreparer prepares the ListInstanceProcesses request.
-func (client AppsClient) ListInstanceProcessesPreparer(ctx context.Context, resourceGroupName string, name string, instanceID string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"instanceId":        autorest.Encode("path", instanceID),
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListInstanceProcessesSender sends the ListInstanceProcesses request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListInstanceProcessesSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListInstanceProcessesResponder handles the response to the ListInstanceProcesses request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListInstanceProcessesResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listInstanceProcessesNextResults retrieves the next set of results, if any.
-func (client AppsClient) listInstanceProcessesNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
-	req, err := lastResults.processInfoCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListInstanceProcessesSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListInstanceProcessesResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListInstanceProcessesComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListInstanceProcessesComplete(ctx context.Context, resourceGroupName string, name string, instanceID string) (result ProcessInfoCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcesses")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListInstanceProcesses(ctx, resourceGroupName, name, instanceID)
-	return
-}
-
-// ListInstanceProcessesSlot get list of processes for a web site, or a deployment slot, or for a specific scaled-out
-// instance in a web site.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - site name.
-// slot - name of the deployment slot. If a slot is not specified, the API returns deployments for the
-// production slot.
-// instanceID - ID of a specific scaled-out instance. This is the value of the name property in the JSON
-// response from "GET api/sites/{siteName}/instances".
-func (client AppsClient) ListInstanceProcessesSlot(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (result ProcessInfoCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcessesSlot")
-		defer func() {
-			sc := -1
-			if result.pic.Response.Response != nil {
-				sc = result.pic.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListInstanceProcessesSlot", err.Error())
-	}
-
-	result.fn = client.listInstanceProcessesSlotNextResults
-	req, err := client.ListInstanceProcessesSlotPreparer(ctx, resourceGroupName, name, slot, instanceID)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListInstanceProcessesSlotSender(req)
-	if err != nil {
-		result.pic.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", resp, "Failure sending request")
-		return
-	}
-
-	result.pic, err = client.ListInstanceProcessesSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListInstanceProcessesSlotPreparer prepares the ListInstanceProcessesSlot request.
-func (client AppsClient) ListInstanceProcessesSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"instanceId":        autorest.Encode("path", instanceID),
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"slot":              autorest.Encode("path", slot),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListInstanceProcessesSlotSender sends the ListInstanceProcessesSlot request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListInstanceProcessesSlotSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListInstanceProcessesSlotResponder handles the response to the ListInstanceProcessesSlot request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListInstanceProcessesSlotResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listInstanceProcessesSlotNextResults retrieves the next set of results, if any.
-func (client AppsClient) listInstanceProcessesSlotNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
-	req, err := lastResults.processInfoCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListInstanceProcessesSlotSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListInstanceProcessesSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListInstanceProcessesSlotComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListInstanceProcessesSlotComplete(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (result ProcessInfoCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcessesSlot")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListInstanceProcessesSlot(ctx, resourceGroupName, name, slot, instanceID)
-	return
-}
-
 // ListInstanceProcessModules list module information for a process by its ID for a specific scaled-out instance in a
 // web site.
 // Parameters:
@@ -18879,6 +18622,263 @@ func (client AppsClient) ListInstanceProcessThreadsSlotComplete(ctx context.Cont
 		}()
 	}
 	result.page, err = client.ListInstanceProcessThreadsSlot(ctx, resourceGroupName, name, processID, slot, instanceID)
+	return
+}
+
+// ListInstanceProcesses get list of processes for a web site, or a deployment slot, or for a specific scaled-out
+// instance in a web site.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - site name.
+// instanceID - ID of a specific scaled-out instance. This is the value of the name property in the JSON
+// response from "GET api/sites/{siteName}/instances".
+func (client AppsClient) ListInstanceProcesses(ctx context.Context, resourceGroupName string, name string, instanceID string) (result ProcessInfoCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcesses")
+		defer func() {
+			sc := -1
+			if result.pic.Response.Response != nil {
+				sc = result.pic.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListInstanceProcesses", err.Error())
+	}
+
+	result.fn = client.listInstanceProcessesNextResults
+	req, err := client.ListInstanceProcessesPreparer(ctx, resourceGroupName, name, instanceID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListInstanceProcessesSender(req)
+	if err != nil {
+		result.pic.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", resp, "Failure sending request")
+		return
+	}
+
+	result.pic, err = client.ListInstanceProcessesResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcesses", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListInstanceProcessesPreparer prepares the ListInstanceProcesses request.
+func (client AppsClient) ListInstanceProcessesPreparer(ctx context.Context, resourceGroupName string, name string, instanceID string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"instanceId":        autorest.Encode("path", instanceID),
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListInstanceProcessesSender sends the ListInstanceProcesses request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListInstanceProcessesSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListInstanceProcessesResponder handles the response to the ListInstanceProcesses request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListInstanceProcessesResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listInstanceProcessesNextResults retrieves the next set of results, if any.
+func (client AppsClient) listInstanceProcessesNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
+	req, err := lastResults.processInfoCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListInstanceProcessesSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListInstanceProcessesResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListInstanceProcessesComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListInstanceProcessesComplete(ctx context.Context, resourceGroupName string, name string, instanceID string) (result ProcessInfoCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcesses")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListInstanceProcesses(ctx, resourceGroupName, name, instanceID)
+	return
+}
+
+// ListInstanceProcessesSlot get list of processes for a web site, or a deployment slot, or for a specific scaled-out
+// instance in a web site.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - site name.
+// slot - name of the deployment slot. If a slot is not specified, the API returns deployments for the
+// production slot.
+// instanceID - ID of a specific scaled-out instance. This is the value of the name property in the JSON
+// response from "GET api/sites/{siteName}/instances".
+func (client AppsClient) ListInstanceProcessesSlot(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (result ProcessInfoCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcessesSlot")
+		defer func() {
+			sc := -1
+			if result.pic.Response.Response != nil {
+				sc = result.pic.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListInstanceProcessesSlot", err.Error())
+	}
+
+	result.fn = client.listInstanceProcessesSlotNextResults
+	req, err := client.ListInstanceProcessesSlotPreparer(ctx, resourceGroupName, name, slot, instanceID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListInstanceProcessesSlotSender(req)
+	if err != nil {
+		result.pic.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", resp, "Failure sending request")
+		return
+	}
+
+	result.pic, err = client.ListInstanceProcessesSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListInstanceProcessesSlot", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListInstanceProcessesSlotPreparer prepares the ListInstanceProcessesSlot request.
+func (client AppsClient) ListInstanceProcessesSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"instanceId":        autorest.Encode("path", instanceID),
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"slot":              autorest.Encode("path", slot),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListInstanceProcessesSlotSender sends the ListInstanceProcessesSlot request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListInstanceProcessesSlotSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListInstanceProcessesSlotResponder handles the response to the ListInstanceProcessesSlot request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListInstanceProcessesSlotResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listInstanceProcessesSlotNextResults retrieves the next set of results, if any.
+func (client AppsClient) listInstanceProcessesSlotNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
+	req, err := lastResults.processInfoCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListInstanceProcessesSlotSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListInstanceProcessesSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listInstanceProcessesSlotNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListInstanceProcessesSlotComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListInstanceProcessesSlotComplete(ctx context.Context, resourceGroupName string, name string, slot string, instanceID string) (result ProcessInfoCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListInstanceProcessesSlot")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListInstanceProcessesSlot(ctx, resourceGroupName, name, slot, instanceID)
 	return
 }
 
@@ -20183,257 +20183,6 @@ func (client AppsClient) ListPremierAddOnsSlotResponder(resp *http.Response) (re
 	return
 }
 
-// ListProcesses get list of processes for a web site, or a deployment slot, or for a specific scaled-out instance in a
-// web site.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - site name.
-func (client AppsClient) ListProcesses(ctx context.Context, resourceGroupName string, name string) (result ProcessInfoCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcesses")
-		defer func() {
-			sc := -1
-			if result.pic.Response.Response != nil {
-				sc = result.pic.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListProcesses", err.Error())
-	}
-
-	result.fn = client.listProcessesNextResults
-	req, err := client.ListProcessesPreparer(ctx, resourceGroupName, name)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListProcessesSender(req)
-	if err != nil {
-		result.pic.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", resp, "Failure sending request")
-		return
-	}
-
-	result.pic, err = client.ListProcessesResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListProcessesPreparer prepares the ListProcesses request.
-func (client AppsClient) ListProcessesPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListProcessesSender sends the ListProcesses request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListProcessesSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListProcessesResponder handles the response to the ListProcesses request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListProcessesResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listProcessesNextResults retrieves the next set of results, if any.
-func (client AppsClient) listProcessesNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
-	req, err := lastResults.processInfoCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListProcessesSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListProcessesResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListProcessesComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListProcessesComplete(ctx context.Context, resourceGroupName string, name string) (result ProcessInfoCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcesses")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListProcesses(ctx, resourceGroupName, name)
-	return
-}
-
-// ListProcessesSlot get list of processes for a web site, or a deployment slot, or for a specific scaled-out instance
-// in a web site.
-// Parameters:
-// resourceGroupName - name of the resource group to which the resource belongs.
-// name - site name.
-// slot - name of the deployment slot. If a slot is not specified, the API returns deployments for the
-// production slot.
-func (client AppsClient) ListProcessesSlot(ctx context.Context, resourceGroupName string, name string, slot string) (result ProcessInfoCollectionPage, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcessesSlot")
-		defer func() {
-			sc := -1
-			if result.pic.Response.Response != nil {
-				sc = result.pic.Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	if err := validation.Validate([]validation.Validation{
-		{TargetValue: resourceGroupName,
-			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
-				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
-		return result, validation.NewError("web.AppsClient", "ListProcessesSlot", err.Error())
-	}
-
-	result.fn = client.listProcessesSlotNextResults
-	req, err := client.ListProcessesSlotPreparer(ctx, resourceGroupName, name, slot)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", nil, "Failure preparing request")
-		return
-	}
-
-	resp, err := client.ListProcessesSlotSender(req)
-	if err != nil {
-		result.pic.Response = autorest.Response{Response: resp}
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", resp, "Failure sending request")
-		return
-	}
-
-	result.pic, err = client.ListProcessesSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", resp, "Failure responding to request")
-	}
-
-	return
-}
-
-// ListProcessesSlotPreparer prepares the ListProcessesSlot request.
-func (client AppsClient) ListProcessesSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string) (*http.Request, error) {
-	pathParameters := map[string]interface{}{
-		"name":              autorest.Encode("path", name),
-		"resourceGroupName": autorest.Encode("path", resourceGroupName),
-		"slot":              autorest.Encode("path", slot),
-		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
-	}
-
-	const APIVersion = "2016-08-01"
-	queryParameters := map[string]interface{}{
-		"api-version": APIVersion,
-	}
-
-	preparer := autorest.CreatePreparer(
-		autorest.AsGet(),
-		autorest.WithBaseURL(client.BaseURI),
-		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes", pathParameters),
-		autorest.WithQueryParameters(queryParameters))
-	return preparer.Prepare((&http.Request{}).WithContext(ctx))
-}
-
-// ListProcessesSlotSender sends the ListProcessesSlot request. The method will close the
-// http.Response Body if it receives an error.
-func (client AppsClient) ListProcessesSlotSender(req *http.Request) (*http.Response, error) {
-	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
-	return autorest.SendWithSender(client, req, sd...)
-}
-
-// ListProcessesSlotResponder handles the response to the ListProcessesSlot request. The method always
-// closes the http.Response Body.
-func (client AppsClient) ListProcessesSlotResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
-	err = autorest.Respond(
-		resp,
-		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
-		autorest.ByUnmarshallingJSON(&result),
-		autorest.ByClosing())
-	result.Response = autorest.Response{Response: resp}
-	return
-}
-
-// listProcessesSlotNextResults retrieves the next set of results, if any.
-func (client AppsClient) listProcessesSlotNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
-	req, err := lastResults.processInfoCollectionPreparer(ctx)
-	if err != nil {
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", nil, "Failure preparing next results request")
-	}
-	if req == nil {
-		return
-	}
-	resp, err := client.ListProcessesSlotSender(req)
-	if err != nil {
-		result.Response = autorest.Response{Response: resp}
-		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", resp, "Failure sending next results request")
-	}
-	result, err = client.ListProcessesSlotResponder(resp)
-	if err != nil {
-		err = autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", resp, "Failure responding to next results request")
-	}
-	return
-}
-
-// ListProcessesSlotComplete enumerates all values, automatically crossing page boundaries as required.
-func (client AppsClient) ListProcessesSlotComplete(ctx context.Context, resourceGroupName string, name string, slot string) (result ProcessInfoCollectionIterator, err error) {
-	if tracing.IsEnabled() {
-		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcessesSlot")
-		defer func() {
-			sc := -1
-			if result.Response().Response.Response != nil {
-				sc = result.page.Response().Response.Response.StatusCode
-			}
-			tracing.EndSpan(ctx, sc, err)
-		}()
-	}
-	result.page, err = client.ListProcessesSlot(ctx, resourceGroupName, name, slot)
-	return
-}
-
 // ListProcessModules list module information for a process by its ID for a specific scaled-out instance in a web site.
 // Parameters:
 // resourceGroupName - name of the resource group to which the resource belongs.
@@ -20938,6 +20687,257 @@ func (client AppsClient) ListProcessThreadsSlotComplete(ctx context.Context, res
 		}()
 	}
 	result.page, err = client.ListProcessThreadsSlot(ctx, resourceGroupName, name, processID, slot)
+	return
+}
+
+// ListProcesses get list of processes for a web site, or a deployment slot, or for a specific scaled-out instance in a
+// web site.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - site name.
+func (client AppsClient) ListProcesses(ctx context.Context, resourceGroupName string, name string) (result ProcessInfoCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcesses")
+		defer func() {
+			sc := -1
+			if result.pic.Response.Response != nil {
+				sc = result.pic.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListProcesses", err.Error())
+	}
+
+	result.fn = client.listProcessesNextResults
+	req, err := client.ListProcessesPreparer(ctx, resourceGroupName, name)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListProcessesSender(req)
+	if err != nil {
+		result.pic.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", resp, "Failure sending request")
+		return
+	}
+
+	result.pic, err = client.ListProcessesResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcesses", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListProcessesPreparer prepares the ListProcesses request.
+func (client AppsClient) ListProcessesPreparer(ctx context.Context, resourceGroupName string, name string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListProcessesSender sends the ListProcesses request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListProcessesSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListProcessesResponder handles the response to the ListProcesses request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListProcessesResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listProcessesNextResults retrieves the next set of results, if any.
+func (client AppsClient) listProcessesNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
+	req, err := lastResults.processInfoCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListProcessesSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListProcessesResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListProcessesComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListProcessesComplete(ctx context.Context, resourceGroupName string, name string) (result ProcessInfoCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcesses")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListProcesses(ctx, resourceGroupName, name)
+	return
+}
+
+// ListProcessesSlot get list of processes for a web site, or a deployment slot, or for a specific scaled-out instance
+// in a web site.
+// Parameters:
+// resourceGroupName - name of the resource group to which the resource belongs.
+// name - site name.
+// slot - name of the deployment slot. If a slot is not specified, the API returns deployments for the
+// production slot.
+func (client AppsClient) ListProcessesSlot(ctx context.Context, resourceGroupName string, name string, slot string) (result ProcessInfoCollectionPage, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcessesSlot")
+		defer func() {
+			sc := -1
+			if result.pic.Response.Response != nil {
+				sc = result.pic.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	if err := validation.Validate([]validation.Validation{
+		{TargetValue: resourceGroupName,
+			Constraints: []validation.Constraint{{Target: "resourceGroupName", Name: validation.MaxLength, Rule: 90, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.MinLength, Rule: 1, Chain: nil},
+				{Target: "resourceGroupName", Name: validation.Pattern, Rule: `^[-\w\._\(\)]+[^\.]$`, Chain: nil}}}}); err != nil {
+		return result, validation.NewError("web.AppsClient", "ListProcessesSlot", err.Error())
+	}
+
+	result.fn = client.listProcessesSlotNextResults
+	req, err := client.ListProcessesSlotPreparer(ctx, resourceGroupName, name, slot)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.ListProcessesSlotSender(req)
+	if err != nil {
+		result.pic.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", resp, "Failure sending request")
+		return
+	}
+
+	result.pic, err = client.ListProcessesSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "ListProcessesSlot", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// ListProcessesSlotPreparer prepares the ListProcessesSlot request.
+func (client AppsClient) ListProcessesSlotPreparer(ctx context.Context, resourceGroupName string, name string, slot string) (*http.Request, error) {
+	pathParameters := map[string]interface{}{
+		"name":              autorest.Encode("path", name),
+		"resourceGroupName": autorest.Encode("path", resourceGroupName),
+		"slot":              autorest.Encode("path", slot),
+		"subscriptionId":    autorest.Encode("path", client.SubscriptionID),
+	}
+
+	const APIVersion = "2016-08-01"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithBaseURL(client.BaseURI),
+		autorest.WithPathParameters("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// ListProcessesSlotSender sends the ListProcessesSlot request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) ListProcessesSlotSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// ListProcessesSlotResponder handles the response to the ListProcessesSlot request. The method always
+// closes the http.Response Body.
+func (client AppsClient) ListProcessesSlotResponder(resp *http.Response) (result ProcessInfoCollection, err error) {
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNotFound),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// listProcessesSlotNextResults retrieves the next set of results, if any.
+func (client AppsClient) listProcessesSlotNextResults(ctx context.Context, lastResults ProcessInfoCollection) (result ProcessInfoCollection, err error) {
+	req, err := lastResults.processInfoCollectionPreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListProcessesSlotSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListProcessesSlotResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "web.AppsClient", "listProcessesSlotNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
+
+// ListProcessesSlotComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AppsClient) ListProcessesSlotComplete(ctx context.Context, resourceGroupName string, name string, slot string) (result ProcessInfoCollectionIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListProcessesSlot")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.ListProcessesSlot(ctx, resourceGroupName, name, slot)
 	return
 }
 
