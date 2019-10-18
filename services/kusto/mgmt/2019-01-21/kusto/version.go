@@ -19,12 +19,12 @@ package kusto
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 kusto/2019-01-21"
+	return "Azure-SDK-For-Go/v1.0.0 kusto/2019-01-21"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/kusto/mgmt/2019-01-21/kusto/v1.0.0

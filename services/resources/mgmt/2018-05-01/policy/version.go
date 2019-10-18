@@ -19,12 +19,12 @@ package policy
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 policy/2018-05-01"
+	return "Azure-SDK-For-Go/v1.0.0 policy/2018-05-01"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/resources/mgmt/2018-05-01/policy/v1.0.0

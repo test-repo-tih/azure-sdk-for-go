@@ -19,12 +19,12 @@ package engagementfabric
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 engagementfabric/2018-09-01"
+	return "Azure-SDK-For-Go/v1.0.0 engagementfabric/2018-09-01"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/preview/engagementfabric/mgmt/2018-09-01/engagementfabric/v1.0.0

@@ -19,12 +19,12 @@ package devices
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 devices/2018-01-22"
+	return "Azure-SDK-For-Go/v1.0.0 devices/2018-01-22"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "v1.0.0"
 }
 
 // tag: services/iothub/mgmt/2018-01-22/devices/v1.0.0
