@@ -27,4 +27,4 @@ func Version() string {
 	return "1.0.0"
 }
 
-// tag: services/cognitiveservices/v3.0/luis/runtime/v1.0.0
+// tag: services/preview/cognitiveservices/v3.0/luis/runtime/v1.0.0
