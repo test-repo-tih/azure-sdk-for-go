@@ -101,6 +101,9 @@ func theUnstageCommand(args []string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to create module info: %v", err)
 	}
+	if err := writeChangelog(stage, mod); err != nil {
+		return "", fmt.Errorf("failed to write changelog: %v", err)
+	}
 	var tag string
 	if mod.BreakingChanges() {
 		tag, err = forSideBySideRelease(stage, mod)
@@ -140,10 +143,6 @@ func forSideBySideRelease(stage string, mod modinfo.Provider) (string, error) {
 	if err := updateVersion(stage, tag); err != nil {
 		return "", fmt.Errorf("failed to update version.go: %v", err)
 	}
-	// write change log
-	if err := writeChangelog(stage, mod); err != nil {
-		return "", fmt.Errorf("failed to write changelog: %v", err)
-	}
 	// move staging to new LMV directory
 	if err = os.Rename(stage, mod.DestDir()); err != nil {
 		return "", fmt.Errorf("failed to rename '%s' to '%s': %v", stage, mod.DestDir(), err)
@@ -180,14 +179,6 @@ func forInplaceUpdate(lmv, stage string, mod modinfo.Provider) (string, error) {
 	}
 	if err := updateVersion(stage, tag); err != nil {
 		return "", fmt.Errorf("failed to update version.go: %v", err)
-	}
-	// write changelog
-	if hasChange, err := mod.HasChanges(); err != nil {
-		return "", fmt.Errorf("failed to check changes: %v", err)
-	} else if hasChange {
-		if err := writeChangelog(stage, mod); err != nil {
-			return "", fmt.Errorf("failed to write changelog: %v", err)
-		}
 	}
 	// move staging directory over the LMV by first deleting LMV then renaming stage
 	if modinfo.HasVersionSuffix(lmv) {
@@ -494,13 +485,9 @@ func calculateModuleTag(tags []string, mod modinfo.Provider) (string, error) {
 		n := sv.IncMinor()
 		sv = &n
 	} else {
-		// no new exports and has changes, this is a patch update
-		if hasChange, err := mod.HasChanges(); err != nil {
-			return "", err
-		} else if hasChange {
-			n := sv.IncPatch()
-			sv = &n
-		}
+		// no new exports, this is a patch update
+		n := sv.IncPatch()
+		sv = &n
 	}
 	return strings.Replace(tag, v, "v"+sv.String(), 1), nil
 }
