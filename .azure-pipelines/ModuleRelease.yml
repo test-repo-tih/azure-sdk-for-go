@@ -5,7 +5,7 @@ jobs:
 
     variables:
       GOROOT: '/usr/local/go1.12'
-      GOPATH: '$(system.defaultWorkingDirectory)/work'
+      GOPATH: '/work'
       sdkPath: '$(GOPATH)/src/github.com/Azure/azure-sdk-for-go'
 
     steps:
