@@ -1,0 +1,1051 @@
+## Breaking Changes
+
+### Removed Constants
+
+1. CopyOptions.CopyOptionsCreateCopy
+1. CopyOptions.CopyOptionsFailOnConflict
+1. CopyOptions.CopyOptionsInvalid
+1. CopyOptions.CopyOptionsOverwrite
+1. CopyOptions.CopyOptionsSkip
+1. CreateMode.CreateModeDefault
+1. CreateMode.CreateModeInvalid
+1. CreateMode.CreateModeRecover
+1. DataSourceType.DataSourceTypeAzureFileShare
+1. DataSourceType.DataSourceTypeAzureSQLDb
+1. DataSourceType.DataSourceTypeClient
+1. DataSourceType.DataSourceTypeExchange
+1. DataSourceType.DataSourceTypeFileFolder
+1. DataSourceType.DataSourceTypeGenericDataSource
+1. DataSourceType.DataSourceTypeInvalid
+1. DataSourceType.DataSourceTypeSAPAseDatabase
+1. DataSourceType.DataSourceTypeSAPHanaDatabase
+1. DataSourceType.DataSourceTypeSQLDB
+1. DataSourceType.DataSourceTypeSQLDataBase
+1. DataSourceType.DataSourceTypeSharepoint
+1. DataSourceType.DataSourceTypeSystemState
+1. DataSourceType.DataSourceTypeVM
+1. DataSourceType.DataSourceTypeVMwareVM
+1. DayOfWeek.Friday
+1. DayOfWeek.Monday
+1. DayOfWeek.Saturday
+1. DayOfWeek.Sunday
+1. DayOfWeek.Thursday
+1. DayOfWeek.Tuesday
+1. DayOfWeek.Wednesday
+1. EnhancedSecurityState.EnhancedSecurityStateDisabled
+1. EnhancedSecurityState.EnhancedSecurityStateEnabled
+1. EnhancedSecurityState.EnhancedSecurityStateInvalid
+1. HealthStatus.HealthStatusActionRequired
+1. HealthStatus.HealthStatusActionSuggested
+1. HealthStatus.HealthStatusInvalid
+1. HealthStatus.HealthStatusPassed
+1. LastBackupStatus.LastBackupStatusHealthy
+1. LastBackupStatus.LastBackupStatusIRPending
+1. LastBackupStatus.LastBackupStatusInvalid
+1. LastBackupStatus.LastBackupStatusUnhealthy
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeAzureIaasVM
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeAzureSQL
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeAzureStorage
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeAzureWorkload
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeGenericProtectionPolicy
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeMAB
+1. ManagementTypeBasicProtectionPolicy.BackupManagementTypeProtectionPolicy
+1. MonthOfYear.MonthOfYearApril
+1. MonthOfYear.MonthOfYearAugust
+1. MonthOfYear.MonthOfYearDecember
+1. MonthOfYear.MonthOfYearFebruary
+1. MonthOfYear.MonthOfYearInvalid
+1. MonthOfYear.MonthOfYearJanuary
+1. MonthOfYear.MonthOfYearJuly
+1. MonthOfYear.MonthOfYearJune
+1. MonthOfYear.MonthOfYearMarch
+1. MonthOfYear.MonthOfYearMay
+1. MonthOfYear.MonthOfYearNovember
+1. MonthOfYear.MonthOfYearOctober
+1. MonthOfYear.MonthOfYearSeptember
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureFileShareRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadPointInTimeRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadSAPHanaPointInTimeRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadSAPHanaRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadSQLPointInTimeRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeAzureWorkloadSQLRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeGenericRecoveryPoint
+1. ObjectTypeBasicRecoveryPoint.ObjectTypeIaasVMRecoveryPoint
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureFileShareRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadPointInTimeRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadSAPHanaPointInTimeRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadSAPHanaRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadSQLPointInTimeRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeAzureWorkloadSQLRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeIaasVMRestoreRequest
+1. ObjectTypeBasicRestoreRequest.ObjectTypeRestoreRequest
+1. OverwriteOptions.OverwriteOptionsFailOnConflict
+1. OverwriteOptions.OverwriteOptionsInvalid
+1. OverwriteOptions.OverwriteOptionsOverwrite
+1. PolicyType.PolicyTypeCopyOnlyFull
+1. PolicyType.PolicyTypeDifferential
+1. PolicyType.PolicyTypeFull
+1. PolicyType.PolicyTypeInvalid
+1. PolicyType.PolicyTypeLog
+1. ProtectableItemType.ProtectableItemTypeSAPAseDatabase
+1. ProtectedItemHealthStatus.ProtectedItemHealthStatusHealthy
+1. ProtectedItemHealthStatus.ProtectedItemHealthStatusIRPending
+1. ProtectedItemHealthStatus.ProtectedItemHealthStatusInvalid
+1. ProtectedItemHealthStatus.ProtectedItemHealthStatusNotReachable
+1. ProtectedItemHealthStatus.ProtectedItemHealthStatusUnhealthy
+1. ProtectedItemState.ProtectedItemStateIRPending
+1. ProtectedItemState.ProtectedItemStateInvalid
+1. ProtectedItemState.ProtectedItemStateProtected
+1. ProtectedItemState.ProtectedItemStateProtectionError
+1. ProtectedItemState.ProtectedItemStateProtectionPaused
+1. ProtectedItemState.ProtectedItemStateProtectionStopped
+1. ProtectedItemType.ProtectedItemTypeAzureFileShareProtectedItem
+1. ProtectedItemType.ProtectedItemTypeAzureIaaSVMProtectedItem
+1. ProtectedItemType.ProtectedItemTypeAzureVMWorkloadProtectedItem
+1. ProtectedItemType.ProtectedItemTypeAzureVMWorkloadSAPAseDatabase
+1. ProtectedItemType.ProtectedItemTypeAzureVMWorkloadSAPHanaDatabase
+1. ProtectedItemType.ProtectedItemTypeAzureVMWorkloadSQLDatabase
+1. ProtectedItemType.ProtectedItemTypeDPMProtectedItem
+1. ProtectedItemType.ProtectedItemTypeGenericProtectedItem
+1. ProtectedItemType.ProtectedItemTypeMabFileFolderProtectedItem
+1. ProtectedItemType.ProtectedItemTypeMicrosoftClassicComputevirtualMachines
+1. ProtectedItemType.ProtectedItemTypeMicrosoftComputevirtualMachines
+1. ProtectedItemType.ProtectedItemTypeMicrosoftSqlserversdatabases
+1. ProtectedItemType.ProtectedItemTypeProtectedItem
+1. ProtectionState.ProtectionStateIRPending
+1. ProtectionState.ProtectionStateInvalid
+1. ProtectionState.ProtectionStateProtected
+1. ProtectionState.ProtectionStateProtectionError
+1. ProtectionState.ProtectionStateProtectionPaused
+1. ProtectionState.ProtectionStateProtectionStopped
+1. RecoveryPointTierStatus.RecoveryPointTierStatusDeleted
+1. RecoveryPointTierStatus.RecoveryPointTierStatusDisabled
+1. RecoveryPointTierStatus.RecoveryPointTierStatusInvalid
+1. RecoveryPointTierStatus.RecoveryPointTierStatusValid
+1. RecoveryPointTierType.RecoveryPointTierTypeHardenedRP
+1. RecoveryPointTierType.RecoveryPointTierTypeInstantRP
+1. RecoveryPointTierType.RecoveryPointTierTypeInvalid
+1. RecoveryType.RecoveryTypeAlternateLocation
+1. RecoveryType.RecoveryTypeInvalid
+1. RecoveryType.RecoveryTypeOriginalLocation
+1. RecoveryType.RecoveryTypeRestoreDisks
+1. RestorePointQueryType.RestorePointQueryTypeAll
+1. RestorePointQueryType.RestorePointQueryTypeDifferential
+1. RestorePointQueryType.RestorePointQueryTypeFull
+1. RestorePointQueryType.RestorePointQueryTypeFullAndDifferential
+1. RestorePointQueryType.RestorePointQueryTypeInvalid
+1. RestorePointQueryType.RestorePointQueryTypeLog
+1. RestorePointType.RestorePointTypeDifferential
+1. RestorePointType.RestorePointTypeFull
+1. RestorePointType.RestorePointTypeInvalid
+1. RestorePointType.RestorePointTypeLog
+1. RestoreRequestType.RestoreRequestTypeFullShareRestore
+1. RestoreRequestType.RestoreRequestTypeInvalid
+1. RestoreRequestType.RestoreRequestTypeItemLevelRestore
+1. RetentionDurationType.RetentionDurationTypeDays
+1. RetentionDurationType.RetentionDurationTypeInvalid
+1. RetentionDurationType.RetentionDurationTypeMonths
+1. RetentionDurationType.RetentionDurationTypeWeeks
+1. RetentionDurationType.RetentionDurationTypeYears
+1. RetentionPolicyType.RetentionPolicyTypeLongTermRetentionPolicy
+1. RetentionPolicyType.RetentionPolicyTypeRetentionPolicy
+1. RetentionPolicyType.RetentionPolicyTypeSimpleRetentionPolicy
+1. RetentionScheduleFormat.RetentionScheduleFormatDaily
+1. RetentionScheduleFormat.RetentionScheduleFormatInvalid
+1. RetentionScheduleFormat.RetentionScheduleFormatWeekly
+1. SchedulePolicyType.SchedulePolicyTypeLogSchedulePolicy
+1. SchedulePolicyType.SchedulePolicyTypeLongTermSchedulePolicy
+1. SchedulePolicyType.SchedulePolicyTypeSchedulePolicy
+1. SchedulePolicyType.SchedulePolicyTypeSimpleSchedulePolicy
+1. ScheduleRunType.ScheduleRunTypeDaily
+1. ScheduleRunType.ScheduleRunTypeInvalid
+1. ScheduleRunType.ScheduleRunTypeWeekly
+1. WeekOfMonth.WeekOfMonthFirst
+1. WeekOfMonth.WeekOfMonthFourth
+1. WeekOfMonth.WeekOfMonthInvalid
+1. WeekOfMonth.WeekOfMonthLast
+1. WeekOfMonth.WeekOfMonthSecond
+1. WeekOfMonth.WeekOfMonthThird
+
+### Removed Funcs
+
+1. *AzureFileShareProtectionPolicy.UnmarshalJSON([]byte) error
+1. *AzureIaaSVMProtectionPolicy.UnmarshalJSON([]byte) error
+1. *AzureSQLProtectionPolicy.UnmarshalJSON([]byte) error
+1. *MabProtectionPolicy.UnmarshalJSON([]byte) error
+1. *ProtectedItemResource.UnmarshalJSON([]byte) error
+1. *ProtectionPolicyResource.UnmarshalJSON([]byte) error
+1. *RecoveryPointResource.UnmarshalJSON([]byte) error
+1. *RecoveryPointResourceListIterator.Next() error
+1. *RecoveryPointResourceListIterator.NextWithContext(context.Context) error
+1. *RecoveryPointResourceListPage.Next() error
+1. *RecoveryPointResourceListPage.NextWithContext(context.Context) error
+1. *RestoreRequestResource.UnmarshalJSON([]byte) error
+1. *SubProtectionPolicy.UnmarshalJSON([]byte) error
+1. AzureFileShareProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureFileShareProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. AzureFileShareProtectionPolicy.MarshalJSON() ([]byte,error)
+1. AzureFileShareRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureFileShareRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureFileShareRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureFileShareRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureFileShareRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureFileshareProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureFileshareProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureFileshareProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureIaaSClassicComputeVMProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureIaaSClassicComputeVMProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureIaaSComputeVMProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureIaaSComputeVMProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureIaaSVMProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureIaaSVMProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureIaaSVMProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. AzureIaaSVMProtectionPolicy.MarshalJSON() ([]byte,error)
+1. AzureSQLProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureSQLProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureSQLProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureSQLProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureSQLProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureSQLProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureSQLProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureSQLProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureSQLProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureSQLProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureSQLProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. AzureSQLProtectionPolicy.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureVMWorkloadProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. AzureVMWorkloadProtectionPolicy.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureFileShareProtectableItem() (*AzureFileShareProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureIaaSClassicComputeVMProtectableItem() (*AzureIaaSClassicComputeVMProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureIaaSComputeVMProtectableItem() (*AzureIaaSComputeVMProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadProtectableItem() (*AzureVMWorkloadProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSAPAseSystemProtectableItem() (*AzureVMWorkloadSAPAseSystemProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSAPHanaDatabaseProtectableItem() (*AzureVMWorkloadSAPHanaDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSAPHanaSystemProtectableItem() (*AzureVMWorkloadSAPHanaSystemProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSQLAvailabilityGroupProtectableItem() (*AzureVMWorkloadSQLAvailabilityGroupProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSQLDatabaseProtectableItem() (*AzureVMWorkloadSQLDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsAzureVMWorkloadSQLInstanceProtectableItem() (*AzureVMWorkloadSQLInstanceProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsBasicAzureVMWorkloadProtectableItem() (BasicAzureVMWorkloadProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsBasicIaaSVMProtectableItem() (BasicIaaSVMProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsBasicWorkloadProtectableItem() (BasicWorkloadProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsIaaSVMProtectableItem() (*IaaSVMProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.AsWorkloadProtectableItem() (*WorkloadProtectableItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadSAPAseSystemProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadSAPHanaSystemProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSQLAvailabilityGroupProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. AzureVMWorkloadSQLDatabaseProtectedItem.MarshalJSON() ([]byte,error)
+1. AzureVMWorkloadSQLInstanceProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadPointInTimeRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadPointInTimeRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureWorkloadRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadSAPHanaRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadSAPHanaRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadSQLPointInTimeRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadSQLPointInTimeRestoreRequest.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. AzureWorkloadSQLRecoveryPoint.MarshalJSON() ([]byte,error)
+1. AzureWorkloadSQLRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. AzureWorkloadSQLRestoreRequest.MarshalJSON() ([]byte,error)
+1. DPMProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. DPMProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. DPMProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. DPMProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. DPMProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. DPMProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. DPMProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. DPMProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. DPMProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. DPMProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. DPMProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. DPMProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. DPMProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. DPMProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. DPMProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. DPMProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. DPMProtectedItem.MarshalJSON() ([]byte,error)
+1. DPMProtectedItemExtendedInfo.MarshalJSON() ([]byte,error)
+1. GenericProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. GenericProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. GenericProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. GenericProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. GenericProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. GenericProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. GenericProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. GenericProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. GenericProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. GenericProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. GenericProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. GenericProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. GenericProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. GenericProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. GenericProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. GenericProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. GenericProtectedItem.MarshalJSON() ([]byte,error)
+1. GenericProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. GenericProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. GenericProtectionPolicy.MarshalJSON() ([]byte,error)
+1. GenericRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. GenericRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. GenericRecoveryPoint.MarshalJSON() ([]byte,error)
+1. IaaSVMProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+1. IaasVMRecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsBasicRecoveryPoint() (BasicRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. IaasVMRecoveryPoint.AsRecoveryPoint() (*RecoveryPoint,bool)
+1. IaasVMRecoveryPoint.MarshalJSON() ([]byte,error)
+1. IaasVMRestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. IaasVMRestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. IaasVMRestoreRequest.MarshalJSON() ([]byte,error)
+1. JobCancellationsClient.Trigger(context.Context,string,string,string) (autorest.Response,error)
+1. JobCancellationsClient.TriggerPreparer(context.Context,string,string,string) (*http.Request,error)
+1. JobCancellationsClient.TriggerResponder(*http.Response) (autorest.Response,error)
+1. JobCancellationsClient.TriggerSender(*http.Request) (*http.Response,error)
+1. JobOperationResultsClient.Get(context.Context,string,string,string,string) (autorest.Response,error)
+1. JobOperationResultsClient.GetPreparer(context.Context,string,string,string,string) (*http.Request,error)
+1. JobOperationResultsClient.GetResponder(*http.Response) (autorest.Response,error)
+1. JobOperationResultsClient.GetSender(*http.Request) (*http.Response,error)
+1. LogSchedulePolicy.AsBasicSchedulePolicy() (BasicSchedulePolicy,bool)
+1. LogSchedulePolicy.AsLogSchedulePolicy() (*LogSchedulePolicy,bool)
+1. LogSchedulePolicy.AsLongTermSchedulePolicy() (*LongTermSchedulePolicy,bool)
+1. LogSchedulePolicy.AsSchedulePolicy() (*SchedulePolicy,bool)
+1. LogSchedulePolicy.AsSimpleSchedulePolicy() (*SimpleSchedulePolicy,bool)
+1. LogSchedulePolicy.MarshalJSON() ([]byte,error)
+1. LongTermRetentionPolicy.AsBasicRetentionPolicy() (BasicRetentionPolicy,bool)
+1. LongTermRetentionPolicy.AsLongTermRetentionPolicy() (*LongTermRetentionPolicy,bool)
+1. LongTermRetentionPolicy.AsRetentionPolicy() (*RetentionPolicy,bool)
+1. LongTermRetentionPolicy.AsSimpleRetentionPolicy() (*SimpleRetentionPolicy,bool)
+1. LongTermRetentionPolicy.MarshalJSON() ([]byte,error)
+1. LongTermSchedulePolicy.AsBasicSchedulePolicy() (BasicSchedulePolicy,bool)
+1. LongTermSchedulePolicy.AsLogSchedulePolicy() (*LogSchedulePolicy,bool)
+1. LongTermSchedulePolicy.AsLongTermSchedulePolicy() (*LongTermSchedulePolicy,bool)
+1. LongTermSchedulePolicy.AsSchedulePolicy() (*SchedulePolicy,bool)
+1. LongTermSchedulePolicy.AsSimpleSchedulePolicy() (*SimpleSchedulePolicy,bool)
+1. LongTermSchedulePolicy.MarshalJSON() ([]byte,error)
+1. MabFileFolderProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. MabFileFolderProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. MabFileFolderProtectedItem.MarshalJSON() ([]byte,error)
+1. MabProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. MabProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. MabProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. MabProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. MabProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. MabProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. MabProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. MabProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. MabProtectionPolicy.MarshalJSON() ([]byte,error)
+1. NewJobCancellationsClient(string) JobCancellationsClient
+1. NewJobCancellationsClientWithBaseURI(string,string) JobCancellationsClient
+1. NewJobOperationResultsClient(string) JobOperationResultsClient
+1. NewJobOperationResultsClientWithBaseURI(string,string) JobOperationResultsClient
+1. NewProtectedItemOperationResultsClient(string) ProtectedItemOperationResultsClient
+1. NewProtectedItemOperationResultsClientWithBaseURI(string,string) ProtectedItemOperationResultsClient
+1. NewProtectedItemsClient(string) ProtectedItemsClient
+1. NewProtectedItemsClientWithBaseURI(string,string) ProtectedItemsClient
+1. NewProtectionPolicyOperationResultsClient(string) ProtectionPolicyOperationResultsClient
+1. NewProtectionPolicyOperationResultsClientWithBaseURI(string,string) ProtectionPolicyOperationResultsClient
+1. NewRecoveryPointResourceListIterator(RecoveryPointResourceListPage) RecoveryPointResourceListIterator
+1. NewRecoveryPointResourceListPage(func(context.Context, RecoveryPointResourceList) (RecoveryPointResourceList, error)) RecoveryPointResourceListPage
+1. NewRecoveryPointsClient(string) RecoveryPointsClient
+1. NewRecoveryPointsClientWithBaseURI(string,string) RecoveryPointsClient
+1. NewResourceVaultConfigsClient(string) ResourceVaultConfigsClient
+1. NewResourceVaultConfigsClientWithBaseURI(string,string) ResourceVaultConfigsClient
+1. NewRestoresClient(string) RestoresClient
+1. NewRestoresClientWithBaseURI(string,string) RestoresClient
+1. PossibleCopyOptionsValues() []CopyOptions
+1. PossibleCreateModeValues() []CreateMode
+1. PossibleDataSourceTypeValues() []DataSourceType
+1. PossibleDayOfWeekValues() []DayOfWeek
+1. PossibleEnhancedSecurityStateValues() []EnhancedSecurityState
+1. PossibleHealthStatusValues() []HealthStatus
+1. PossibleLastBackupStatusValues() []LastBackupStatus
+1. PossibleManagementTypeBasicProtectionPolicyValues() []ManagementTypeBasicProtectionPolicy
+1. PossibleMonthOfYearValues() []MonthOfYear
+1. PossibleObjectTypeBasicRestoreRequestValues() []ObjectTypeBasicRestoreRequest
+1. PossibleOverwriteOptionsValues() []OverwriteOptions
+1. PossiblePolicyTypeValues() []PolicyType
+1. PossibleProtectedItemHealthStatusValues() []ProtectedItemHealthStatus
+1. PossibleProtectedItemStateValues() []ProtectedItemState
+1. PossibleProtectedItemTypeValues() []ProtectedItemType
+1. PossibleProtectionStateValues() []ProtectionState
+1. PossibleRecoveryPointTierStatusValues() []RecoveryPointTierStatus
+1. PossibleRecoveryPointTierTypeValues() []RecoveryPointTierType
+1. PossibleRecoveryTypeValues() []RecoveryType
+1. PossibleRestorePointQueryTypeValues() []RestorePointQueryType
+1. PossibleRestorePointTypeValues() []RestorePointType
+1. PossibleRestoreRequestTypeValues() []RestoreRequestType
+1. PossibleRetentionDurationTypeValues() []RetentionDurationType
+1. PossibleRetentionPolicyTypeValues() []RetentionPolicyType
+1. PossibleRetentionScheduleFormatValues() []RetentionScheduleFormat
+1. PossibleSchedulePolicyTypeValues() []SchedulePolicyType
+1. PossibleScheduleRunTypeValues() []ScheduleRunType
+1. PossibleWeekOfMonthValues() []WeekOfMonth
+1. ProtectedItem.AsAzureFileshareProtectedItem() (*AzureFileshareProtectedItem,bool)
+1. ProtectedItem.AsAzureIaaSClassicComputeVMProtectedItem() (*AzureIaaSClassicComputeVMProtectedItem,bool)
+1. ProtectedItem.AsAzureIaaSComputeVMProtectedItem() (*AzureIaaSComputeVMProtectedItem,bool)
+1. ProtectedItem.AsAzureIaaSVMProtectedItem() (*AzureIaaSVMProtectedItem,bool)
+1. ProtectedItem.AsAzureSQLProtectedItem() (*AzureSQLProtectedItem,bool)
+1. ProtectedItem.AsAzureVMWorkloadProtectedItem() (*AzureVMWorkloadProtectedItem,bool)
+1. ProtectedItem.AsAzureVMWorkloadSAPAseDatabaseProtectedItem() (*AzureVMWorkloadSAPAseDatabaseProtectedItem,bool)
+1. ProtectedItem.AsAzureVMWorkloadSAPHanaDatabaseProtectedItem() (*AzureVMWorkloadSAPHanaDatabaseProtectedItem,bool)
+1. ProtectedItem.AsAzureVMWorkloadSQLDatabaseProtectedItem() (*AzureVMWorkloadSQLDatabaseProtectedItem,bool)
+1. ProtectedItem.AsBasicAzureIaaSVMProtectedItem() (BasicAzureIaaSVMProtectedItem,bool)
+1. ProtectedItem.AsBasicAzureVMWorkloadProtectedItem() (BasicAzureVMWorkloadProtectedItem,bool)
+1. ProtectedItem.AsBasicProtectedItem() (BasicProtectedItem,bool)
+1. ProtectedItem.AsDPMProtectedItem() (*DPMProtectedItem,bool)
+1. ProtectedItem.AsGenericProtectedItem() (*GenericProtectedItem,bool)
+1. ProtectedItem.AsMabFileFolderProtectedItem() (*MabFileFolderProtectedItem,bool)
+1. ProtectedItem.AsProtectedItem() (*ProtectedItem,bool)
+1. ProtectedItem.MarshalJSON() ([]byte,error)
+1. ProtectedItemOperationResultsClient.Get(context.Context,string,string,string,string,string,string) (ProtectedItemResource,error)
+1. ProtectedItemOperationResultsClient.GetPreparer(context.Context,string,string,string,string,string,string) (*http.Request,error)
+1. ProtectedItemOperationResultsClient.GetResponder(*http.Response) (ProtectedItemResource,error)
+1. ProtectedItemOperationResultsClient.GetSender(*http.Request) (*http.Response,error)
+1. ProtectedItemResource.MarshalJSON() ([]byte,error)
+1. ProtectedItemsClient.CreateOrUpdate(context.Context,string,string,string,string,string,ProtectedItemResource) (ProtectedItemResource,error)
+1. ProtectedItemsClient.CreateOrUpdatePreparer(context.Context,string,string,string,string,string,ProtectedItemResource) (*http.Request,error)
+1. ProtectedItemsClient.CreateOrUpdateResponder(*http.Response) (ProtectedItemResource,error)
+1. ProtectedItemsClient.CreateOrUpdateSender(*http.Request) (*http.Response,error)
+1. ProtectedItemsClient.Delete(context.Context,string,string,string,string,string) (autorest.Response,error)
+1. ProtectedItemsClient.DeletePreparer(context.Context,string,string,string,string,string) (*http.Request,error)
+1. ProtectedItemsClient.DeleteResponder(*http.Response) (autorest.Response,error)
+1. ProtectedItemsClient.DeleteSender(*http.Request) (*http.Response,error)
+1. ProtectedItemsClient.Get(context.Context,string,string,string,string,string,string) (ProtectedItemResource,error)
+1. ProtectedItemsClient.GetPreparer(context.Context,string,string,string,string,string,string) (*http.Request,error)
+1. ProtectedItemsClient.GetResponder(*http.Response) (ProtectedItemResource,error)
+1. ProtectedItemsClient.GetSender(*http.Request) (*http.Response,error)
+1. ProtectionPoliciesClient.CreateOrUpdate(context.Context,string,string,string,ProtectionPolicyResource) (ProtectionPolicyResource,error)
+1. ProtectionPoliciesClient.CreateOrUpdatePreparer(context.Context,string,string,string,ProtectionPolicyResource) (*http.Request,error)
+1. ProtectionPoliciesClient.CreateOrUpdateResponder(*http.Response) (ProtectionPolicyResource,error)
+1. ProtectionPoliciesClient.CreateOrUpdateSender(*http.Request) (*http.Response,error)
+1. ProtectionPoliciesClient.Get(context.Context,string,string,string) (ProtectionPolicyResource,error)
+1. ProtectionPoliciesClient.GetPreparer(context.Context,string,string,string) (*http.Request,error)
+1. ProtectionPoliciesClient.GetResponder(*http.Response) (ProtectionPolicyResource,error)
+1. ProtectionPoliciesClient.GetSender(*http.Request) (*http.Response,error)
+1. ProtectionPolicy.AsAzureFileShareProtectionPolicy() (*AzureFileShareProtectionPolicy,bool)
+1. ProtectionPolicy.AsAzureIaaSVMProtectionPolicy() (*AzureIaaSVMProtectionPolicy,bool)
+1. ProtectionPolicy.AsAzureSQLProtectionPolicy() (*AzureSQLProtectionPolicy,bool)
+1. ProtectionPolicy.AsAzureVMWorkloadProtectionPolicy() (*AzureVMWorkloadProtectionPolicy,bool)
+1. ProtectionPolicy.AsBasicProtectionPolicy() (BasicProtectionPolicy,bool)
+1. ProtectionPolicy.AsGenericProtectionPolicy() (*GenericProtectionPolicy,bool)
+1. ProtectionPolicy.AsMabProtectionPolicy() (*MabProtectionPolicy,bool)
+1. ProtectionPolicy.AsProtectionPolicy() (*ProtectionPolicy,bool)
+1. ProtectionPolicy.MarshalJSON() ([]byte,error)
+1. ProtectionPolicyOperationResultsClient.Get(context.Context,string,string,string,string) (ProtectionPolicyResource,error)
+1. ProtectionPolicyOperationResultsClient.GetPreparer(context.Context,string,string,string,string) (*http.Request,error)
+1. ProtectionPolicyOperationResultsClient.GetResponder(*http.Response) (ProtectionPolicyResource,error)
+1. ProtectionPolicyOperationResultsClient.GetSender(*http.Request) (*http.Response,error)
+1. ProtectionPolicyResource.MarshalJSON() ([]byte,error)
+1. RecoveryPoint.AsAzureFileShareRecoveryPoint() (*AzureFileShareRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadPointInTimeRecoveryPoint() (*AzureWorkloadPointInTimeRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadRecoveryPoint() (*AzureWorkloadRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadSAPHanaPointInTimeRecoveryPoint() (*AzureWorkloadSAPHanaPointInTimeRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadSAPHanaRecoveryPoint() (*AzureWorkloadSAPHanaRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadSQLPointInTimeRecoveryPoint() (*AzureWorkloadSQLPointInTimeRecoveryPoint,bool)
+1. RecoveryPoint.AsAzureWorkloadSQLRecoveryPoint() (*AzureWorkloadSQLRecoveryPoint,bool)
+1. RecoveryPoint.AsBasicAzureWorkloadPointInTimeRecoveryPoint() (BasicAzureWorkloadPointInTimeRecoveryPoint,bool)
+1. RecoveryPoint.AsBasicAzureWorkloadRecoveryPoint() (BasicAzureWorkloadRecoveryPoint,bool)
+1. RecoveryPoint.AsBasicAzureWorkloadSQLRecoveryPoint() (BasicAzureWorkloadSQLRecoveryPoint,bool)
+1. RecoveryPoint.AsGenericRecoveryPoint() (*GenericRecoveryPoint,bool)
+1. RecoveryPoint.AsIaasVMRecoveryPoint() (*IaasVMRecoveryPoint,bool)
+1. RecoveryPointResource.MarshalJSON() ([]byte,error)
+1. RecoveryPointResourceList.IsEmpty() bool
+1. RecoveryPointResourceListIterator.NotDone() bool
+1. RecoveryPointResourceListIterator.Response() RecoveryPointResourceList
+1. RecoveryPointResourceListIterator.Value() RecoveryPointResource
+1. RecoveryPointResourceListPage.NotDone() bool
+1. RecoveryPointResourceListPage.Response() RecoveryPointResourceList
+1. RecoveryPointResourceListPage.Values() []RecoveryPointResource
+1. RecoveryPointsClient.Get(context.Context,string,string,string,string,string,string) (RecoveryPointResource,error)
+1. RecoveryPointsClient.GetPreparer(context.Context,string,string,string,string,string,string) (*http.Request,error)
+1. RecoveryPointsClient.GetResponder(*http.Response) (RecoveryPointResource,error)
+1. RecoveryPointsClient.GetSender(*http.Request) (*http.Response,error)
+1. RecoveryPointsClient.List(context.Context,string,string,string,string,string,string) (RecoveryPointResourceListPage,error)
+1. RecoveryPointsClient.ListComplete(context.Context,string,string,string,string,string,string) (RecoveryPointResourceListIterator,error)
+1. RecoveryPointsClient.ListPreparer(context.Context,string,string,string,string,string,string) (*http.Request,error)
+1. RecoveryPointsClient.ListResponder(*http.Response) (RecoveryPointResourceList,error)
+1. RecoveryPointsClient.ListSender(*http.Request) (*http.Response,error)
+1. ResourceVaultConfigResource.MarshalJSON() ([]byte,error)
+1. ResourceVaultConfigsClient.Get(context.Context,string,string) (ResourceVaultConfigResource,error)
+1. ResourceVaultConfigsClient.GetPreparer(context.Context,string,string) (*http.Request,error)
+1. ResourceVaultConfigsClient.GetResponder(*http.Response) (ResourceVaultConfigResource,error)
+1. ResourceVaultConfigsClient.GetSender(*http.Request) (*http.Response,error)
+1. ResourceVaultConfigsClient.Update(context.Context,string,string,ResourceVaultConfigResource) (ResourceVaultConfigResource,error)
+1. ResourceVaultConfigsClient.UpdatePreparer(context.Context,string,string,ResourceVaultConfigResource) (*http.Request,error)
+1. ResourceVaultConfigsClient.UpdateResponder(*http.Response) (ResourceVaultConfigResource,error)
+1. ResourceVaultConfigsClient.UpdateSender(*http.Request) (*http.Response,error)
+1. RestoreRequest.AsAzureFileShareRestoreRequest() (*AzureFileShareRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadPointInTimeRestoreRequest() (*AzureWorkloadPointInTimeRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadRestoreRequest() (*AzureWorkloadRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadSAPHanaPointInTimeRestoreRequest() (*AzureWorkloadSAPHanaPointInTimeRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadSAPHanaRestoreRequest() (*AzureWorkloadSAPHanaRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadSQLPointInTimeRestoreRequest() (*AzureWorkloadSQLPointInTimeRestoreRequest,bool)
+1. RestoreRequest.AsAzureWorkloadSQLRestoreRequest() (*AzureWorkloadSQLRestoreRequest,bool)
+1. RestoreRequest.AsBasicAzureWorkloadRestoreRequest() (BasicAzureWorkloadRestoreRequest,bool)
+1. RestoreRequest.AsBasicAzureWorkloadSAPHanaRestoreRequest() (BasicAzureWorkloadSAPHanaRestoreRequest,bool)
+1. RestoreRequest.AsBasicAzureWorkloadSQLRestoreRequest() (BasicAzureWorkloadSQLRestoreRequest,bool)
+1. RestoreRequest.AsBasicRestoreRequest() (BasicRestoreRequest,bool)
+1. RestoreRequest.AsIaasVMRestoreRequest() (*IaasVMRestoreRequest,bool)
+1. RestoreRequest.AsRestoreRequest() (*RestoreRequest,bool)
+1. RestoreRequest.MarshalJSON() ([]byte,error)
+1. RestoreRequestResource.MarshalJSON() ([]byte,error)
+1. RestoresClient.Trigger(context.Context,string,string,string,string,string,string,RestoreRequestResource) (autorest.Response,error)
+1. RestoresClient.TriggerPreparer(context.Context,string,string,string,string,string,string,RestoreRequestResource) (*http.Request,error)
+1. RestoresClient.TriggerResponder(*http.Response) (autorest.Response,error)
+1. RestoresClient.TriggerSender(*http.Request) (*http.Response,error)
+1. RetentionPolicy.AsBasicRetentionPolicy() (BasicRetentionPolicy,bool)
+1. RetentionPolicy.AsLongTermRetentionPolicy() (*LongTermRetentionPolicy,bool)
+1. RetentionPolicy.AsRetentionPolicy() (*RetentionPolicy,bool)
+1. RetentionPolicy.AsSimpleRetentionPolicy() (*SimpleRetentionPolicy,bool)
+1. RetentionPolicy.MarshalJSON() ([]byte,error)
+1. SchedulePolicy.AsBasicSchedulePolicy() (BasicSchedulePolicy,bool)
+1. SchedulePolicy.AsLogSchedulePolicy() (*LogSchedulePolicy,bool)
+1. SchedulePolicy.AsLongTermSchedulePolicy() (*LongTermSchedulePolicy,bool)
+1. SchedulePolicy.AsSchedulePolicy() (*SchedulePolicy,bool)
+1. SchedulePolicy.AsSimpleSchedulePolicy() (*SimpleSchedulePolicy,bool)
+1. SchedulePolicy.MarshalJSON() ([]byte,error)
+1. SimpleRetentionPolicy.AsBasicRetentionPolicy() (BasicRetentionPolicy,bool)
+1. SimpleRetentionPolicy.AsLongTermRetentionPolicy() (*LongTermRetentionPolicy,bool)
+1. SimpleRetentionPolicy.AsRetentionPolicy() (*RetentionPolicy,bool)
+1. SimpleRetentionPolicy.AsSimpleRetentionPolicy() (*SimpleRetentionPolicy,bool)
+1. SimpleRetentionPolicy.MarshalJSON() ([]byte,error)
+1. SimpleSchedulePolicy.AsBasicSchedulePolicy() (BasicSchedulePolicy,bool)
+1. SimpleSchedulePolicy.AsLogSchedulePolicy() (*LogSchedulePolicy,bool)
+1. SimpleSchedulePolicy.AsLongTermSchedulePolicy() (*LongTermSchedulePolicy,bool)
+1. SimpleSchedulePolicy.AsSchedulePolicy() (*SchedulePolicy,bool)
+1. SimpleSchedulePolicy.AsSimpleSchedulePolicy() (*SimpleSchedulePolicy,bool)
+1. SimpleSchedulePolicy.MarshalJSON() ([]byte,error)
+1. WorkloadProtectableItem.AsAzureVMWorkloadSAPAseDatabaseProtectableItem() (*AzureVMWorkloadSAPAseDatabaseProtectableItem,bool)
+
+## Struct Changes
+
+### Removed Structs
+
+1. AzureFileShareProtectionPolicy
+1. AzureFileShareRecoveryPoint
+1. AzureFileShareRestoreRequest
+1. AzureFileshareProtectedItem
+1. AzureFileshareProtectedItemExtendedInfo
+1. AzureIaaSClassicComputeVMProtectedItem
+1. AzureIaaSComputeVMProtectedItem
+1. AzureIaaSVMHealthDetails
+1. AzureIaaSVMProtectedItem
+1. AzureIaaSVMProtectedItemExtendedInfo
+1. AzureIaaSVMProtectionPolicy
+1. AzureSQLProtectedItem
+1. AzureSQLProtectedItemExtendedInfo
+1. AzureSQLProtectionPolicy
+1. AzureVMWorkloadProtectedItem
+1. AzureVMWorkloadProtectedItemExtendedInfo
+1. AzureVMWorkloadProtectionPolicy
+1. AzureVMWorkloadSAPAseDatabaseProtectableItem
+1. AzureVMWorkloadSAPAseDatabaseProtectedItem
+1. AzureVMWorkloadSAPHanaDatabaseProtectedItem
+1. AzureVMWorkloadSQLDatabaseProtectedItem
+1. AzureWorkloadPointInTimeRecoveryPoint
+1. AzureWorkloadPointInTimeRestoreRequest
+1. AzureWorkloadRecoveryPoint
+1. AzureWorkloadRestoreRequest
+1. AzureWorkloadSAPHanaPointInTimeRecoveryPoint
+1. AzureWorkloadSAPHanaPointInTimeRestoreRequest
+1. AzureWorkloadSAPHanaRecoveryPoint
+1. AzureWorkloadSAPHanaRestoreRequest
+1. AzureWorkloadSQLPointInTimeRecoveryPoint
+1. AzureWorkloadSQLPointInTimeRestoreRequest
+1. AzureWorkloadSQLRecoveryPoint
+1. AzureWorkloadSQLRecoveryPointExtendedInfo
+1. AzureWorkloadSQLRestoreRequest
+1. BEKDetails
+1. BMSRPQueryObject
+1. DPMProtectedItem
+1. DPMProtectedItemExtendedInfo
+1. DailyRetentionFormat
+1. DailyRetentionSchedule
+1. Day
+1. EncryptionDetails
+1. GenericProtectedItem
+1. GenericProtectionPolicy
+1. GenericRecoveryPoint
+1. GetProtectedItemQueryObject
+1. IaasVMRecoveryPoint
+1. IaasVMRestoreRequest
+1. JobCancellationsClient
+1. JobOperationResultsClient
+1. KEKDetails
+1. KeyAndSecretDetails
+1. LogSchedulePolicy
+1. LongTermRetentionPolicy
+1. LongTermSchedulePolicy
+1. MabFileFolderProtectedItem
+1. MabFileFolderProtectedItemExtendedInfo
+1. MabProtectionPolicy
+1. MonthlyRetentionSchedule
+1. PointInTimeRange
+1. ProtectedItem
+1. ProtectedItemOperationResultsClient
+1. ProtectedItemResource
+1. ProtectedItemsClient
+1. ProtectionPolicy
+1. ProtectionPolicyOperationResultsClient
+1. ProtectionPolicyResource
+1. RecoveryPointResource
+1. RecoveryPointResourceList
+1. RecoveryPointResourceListIterator
+1. RecoveryPointResourceListPage
+1. RecoveryPointTierInformation
+1. RecoveryPointsClient
+1. ResourceVaultConfig
+1. ResourceVaultConfigResource
+1. ResourceVaultConfigsClient
+1. RestoreFileSpecs
+1. RestoreRequest
+1. RestoreRequestResource
+1. RestoresClient
+1. RetentionDuration
+1. RetentionPolicy
+1. SQLDataDirectoryMapping
+1. SchedulePolicy
+1. Settings
+1. SimpleRetentionPolicy
+1. SimpleSchedulePolicy
+1. SubProtectionPolicy
+1. TargetAFSRestoreInfo
+1. TargetRestoreInfo
+1. WeeklyRetentionFormat
+1. WeeklyRetentionSchedule
+1. YearlyRetentionSchedule
+
+## New Content
+
+### New Constants
+
+1. ObjectTypeBasicILRRequest.ObjectTypeAzureFileShareProvisionILRRequest
+
+### New Funcs
+
+1. AzureFileShareProvisionILRRequest.AsAzureFileShareProvisionILRRequest() (*AzureFileShareProvisionILRRequest,bool)
+1. AzureFileShareProvisionILRRequest.AsBasicILRRequest() (BasicILRRequest,bool)
+1. AzureFileShareProvisionILRRequest.AsILRRequest() (*ILRRequest,bool)
+1. AzureFileShareProvisionILRRequest.AsIaasVMILRRegistrationRequest() (*IaasVMILRRegistrationRequest,bool)
+1. AzureFileShareProvisionILRRequest.MarshalJSON() ([]byte,error)
+1. ILRRequest.AsAzureFileShareProvisionILRRequest() (*AzureFileShareProvisionILRRequest,bool)
+1. IaasVMILRRegistrationRequest.AsAzureFileShareProvisionILRRequest() (*AzureFileShareProvisionILRRequest,bool)
+
+## Struct Changes
+
+### New Structs
+
+1. AzureFileShareProvisionILRRequest
+
+### New Struct Fields
+
+1. InquiryValidation.AdditionalDetail
