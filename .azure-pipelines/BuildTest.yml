@@ -20,8 +20,8 @@ jobs:
 
     steps:
       - script: |
-          set -x
-          printenv
+          set -e
+          echo $(readlink -m $(System.DefaultWorkingDirectory))
           mkdir -p '$(GOPATH)/bin'
           mkdir -p '$(sdkPath)'
           shopt -s dotglob extglob
