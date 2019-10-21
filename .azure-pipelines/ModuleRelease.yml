@@ -12,6 +12,7 @@ jobs:
       - script: |
           # Enable bash verbose logging
           set -x
+          echo $(readlink -m $(System.DefaultWorkingDirectory))
           mkdir -p '$(GOPATH)/bin'
           mkdir -p '$(sdkPath)'
           shopt -s dotglob extglob
