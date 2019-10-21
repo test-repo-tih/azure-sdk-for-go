@@ -3,16 +3,12 @@ trigger:
     include:
       - master
 
-variables:
-  GOPATH: '$(System.DefaultWorkingDirectory)/work'
-  sdkPath: '$(GOPATH)/src/github.com/Azure/azure-sdk-for-go'
-
 stages:
   - stage: Build_Test
     jobs:
     - template: .azure-pipelines/BuildTest.yml
 
   - stage: Module_Release
-    condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI'))
+    condition: in(variables['Build.Reason'], 'IndividualCI')
     jobs:
     - template: .azure-pipelines/ModuleRelease.yml
