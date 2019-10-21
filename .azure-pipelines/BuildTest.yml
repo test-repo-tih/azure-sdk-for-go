@@ -15,12 +15,13 @@ jobs:
       vmImage: $(vm.image)
 
     variables:
-      GOPATH: '$(system.defaultWorkingDirectory)/work'
+      GOPATH: '$(System.DefaultWorkingDirectory)/work'
       sdkPath: '$(GOPATH)/src/github.com/Azure/azure-sdk-for-go'
 
     steps:
       - script: |
           set -e
+          echo $(readlink -m $(System.DefaultWorkingDirectory))
           mkdir -p '$(GOPATH)/bin'
           mkdir -p '$(sdkPath)'
           shopt -s dotglob extglob
