@@ -9,6 +9,6 @@ stages:
     - template: .azure-pipelines/BuildTest.yml
 
   - stage: Module_Release
-    condition: in(variables['Build.Reason'], 'IndividualCI')
+    condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI'))
     jobs:
     - template: .azure-pipelines/ModuleRelease.yml
