@@ -19,12 +19,12 @@ package eventgrid
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 eventgrid/2017-09-15-preview"
+	return "Azure-SDK-For-Go/1.0.1 eventgrid/2017-09-15-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.0.1"
 }
 
-// tag: services/preview/eventgrid/mgmt/2017-09-15-preview/eventgrid/v1.0.0
+// tag: services/preview/eventgrid/mgmt/2017-09-15-preview/eventgrid/v1.0.1
