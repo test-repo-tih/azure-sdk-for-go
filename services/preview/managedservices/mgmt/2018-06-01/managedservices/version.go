@@ -19,12 +19,12 @@ package managedservices
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 managedservices/2018-06-01"
+	return "Azure-SDK-For-Go/1.0.1 managedservices/2018-06-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.0.1"
 }
 
-// tag: services/preview/managedservices/mgmt/2018-06-01/managedservices/v1.0.0
+// tag: services/preview/managedservices/mgmt/2018-06-01/managedservices/v1.0.1
