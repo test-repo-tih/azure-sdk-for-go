@@ -3,11 +3,11 @@ jobs:
     strategy:
       matrix:
         Linux_Go112:
-          vm.image: 'ubuntu-18.04'
+          vm.image: 'Ubuntu 16.04'
           go.version: '1.12'
           GOROOT: '/usr/local/go$(go.version)'
         Linux_Go113:
-          vm.image: 'ubuntu-18.04'
+          vm.image: 'Ubuntu 16.04'
           go.version: '1.13'
           GOROOT: '/usr/local/go$(go.version)'
 
@@ -15,12 +15,13 @@ jobs:
       vmImage: $(vm.image)
 
     variables:
-      GOPATH: '$(system.defaultWorkingDirectory)/work'
+      GOPATH: '$(System.DefaultWorkingDirectory)/work'
       sdkPath: '$(GOPATH)/src/github.com/Azure/azure-sdk-for-go'
 
     steps:
       - script: |
-          set -e
+          set -x
+          printenv
           mkdir -p '$(GOPATH)/bin'
           mkdir -p '$(sdkPath)'
           shopt -s dotglob extglob
