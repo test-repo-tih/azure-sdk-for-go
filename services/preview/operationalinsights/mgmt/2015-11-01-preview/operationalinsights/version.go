@@ -19,12 +19,12 @@ package operationalinsights
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 operationalinsights/2015-11-01-preview"
+	return "Azure-SDK-For-Go/1.0.1 operationalinsights/2015-11-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.0.1"
 }
 
-// tag: services/preview/operationalinsights/mgmt/2015-11-01-preview/operationalinsights/v1.0.0
+// tag: services/preview/operationalinsights/mgmt/2015-11-01-preview/operationalinsights/v1.0.1
