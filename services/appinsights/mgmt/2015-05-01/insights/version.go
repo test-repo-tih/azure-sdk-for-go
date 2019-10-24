@@ -19,12 +19,12 @@ package insights
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 insights/2015-05-01"
+	return "Azure-SDK-For-Go/1.1.0 insights/2015-05-01"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.1.0"
 }
 
-// tag: services/appinsights/mgmt/2015-05-01/insights/v1.0.0
+// tag: services/appinsights/mgmt/2015-05-01/insights/v1.1.0
