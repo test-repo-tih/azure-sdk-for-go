@@ -1,0 +1,34 @@
+jobs:
+  - job:
+    pool:
+      vmImage: 'Ubuntu 18.04'
+
+    variables:
+      GOROOT: '/usr/local/go1.12'
+
+    steps:
+      - template: steps/InitWorkspace.yml
+      - template: steps/SetGithub.yml
+      - template: steps/GenerateProfiles.yml
+      - template: steps/Vet.yml
+        parameters:
+          folder: './profiles'
+      - template: steps/CheckFormat.yml
+        parameters:
+          folder: './profiles'
+      - template: steps/CheckCopyrightHeader.yml
+        parameters:
+          folder: './profiles'
+      - script: |
+          # test if there are new profiles
+          if [ -z "$(git status --porcelain)" ]; then
+            echo no new profiles generated.
+          else
+            git commit -a -m "regenerated profiles"
+            git push origin $(Build.SourceBranchName)
+          fi
+        workingDirectory: '$(sdkPath)'
+        displayName: 'Push Profiles'
+      - script: go run ./tools/moduler/main.go ./services -v
+        displayName: 'Run Moduler'
+        workingDirectory: '$(sdkPath)'

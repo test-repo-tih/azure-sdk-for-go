@@ -1,0 +1,37 @@
+jobs:
+  - job:
+    strategy:
+      matrix:
+        Linux_Go112:
+          vm.image: 'Ubuntu 18.04'
+          go.version: '1.12'
+          GOROOT: '/usr/local/go$(go.version)'
+        Linux_Go113:
+          vm.image: 'Ubuntu 18.04'
+          go.version: '1.13'
+          GOROOT: '/usr/local/go$(go.version)'
+
+    pool:
+      vmImage: $(vm.image)
+
+    steps:
+      - template: steps/InitWorkspace.yml
+      - template: steps/Vet.yml
+        parameters:
+          folder: '.'
+      - template: steps/Build.yml
+        parameters:
+          folder: '.'
+      - script: go test $(dirname $(find . -path ./vendor -prune -o -name '*_test.go' -print) | sort -u)
+        workingDirectory: '$(sdkPath)'
+        displayName: 'Run Tests'
+      - script: go run ./tools/pkgchk/main.go ./services --exceptions ./tools/pkgchk/exceptions.txt
+        workingDirectory: '$(sdkPath)'
+        displayName: 'Verify Package Directory'
+      - template: steps/CheckCopyrightHeader.yml
+        parameters:
+          folder: '.'
+      - template: steps/CheckFormat.yml
+        parameters:
+          folder: '.'
+      - template: steps/LinterCheck.yml
