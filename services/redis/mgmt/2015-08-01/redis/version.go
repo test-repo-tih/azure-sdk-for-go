@@ -19,12 +19,12 @@ package redis
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 redis/2015-08-01"
+	return "Azure-SDK-For-Go/1.0.1 redis/2015-08-01"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.0.1"
 }
 
-// tag: services/redis/mgmt/2015-08-01/redis/v1.0.0
+// tag: services/redis/mgmt/2015-08-01/redis/v1.0.1
