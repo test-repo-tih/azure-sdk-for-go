@@ -19,7 +19,7 @@ package formrecognizer
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 formrecognizer/v1.0"
+	return "Azure-SDK-For-Go/1.0.0 formrecognizer/1.0-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
