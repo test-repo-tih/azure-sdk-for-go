@@ -19,7 +19,7 @@ package servicefabric
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 servicefabric/6.4"
+	return "Azure-SDK-For-Go/1.0.0 servicefabric/1.0.0.36"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
