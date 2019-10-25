@@ -19,7 +19,7 @@ package qnamaker
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 qnamaker/v4.0"
+	return "Azure-SDK-For-Go/1.0.0 qnamaker/4.0"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
@@ -27,4 +27,4 @@ func Version() string {
 	return "1.0.0"
 }
 
-// tag: services/cognitiveservices/v4.0/qnamaker/v1.0.0
+// tag: services/cognitiveservices/v4.0/qnamakerruntime/v1.0.0
