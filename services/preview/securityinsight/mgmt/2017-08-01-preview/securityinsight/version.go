@@ -19,12 +19,12 @@ package securityinsight
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 securityinsight/2017-08-01-preview"
+	return "Azure-SDK-For-Go/1.1.0 securityinsight/2019-01-01-preview"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.1.0"
 }
 
-// tag: services/preview/securityinsight/mgmt/2017-08-01-preview/securityinsight/v1.0.0
+// tag: services/preview/securityinsight/mgmt/2017-08-01-preview/securityinsight/v1.1.0
