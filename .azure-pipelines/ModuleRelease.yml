@@ -19,6 +19,9 @@ jobs:
       - template: steps/CheckCopyrightHeader.yml
         parameters:
           folder: './profiles'
+      - script: go run ./tools/moduler/main.go ./services -v
+        displayName: 'Run Moduler'
+        workingDirectory: '$(sdkPath)'
       - script: |
           # test if there are new profiles
           if [ -z "$(git status --porcelain)" ]; then
@@ -29,6 +32,3 @@ jobs:
           fi
         workingDirectory: '$(sdkPath)'
         displayName: 'Push Profiles'
-      - script: go run ./tools/moduler/main.go ./services -v
-        displayName: 'Run Moduler'
-        workingDirectory: '$(sdkPath)'
