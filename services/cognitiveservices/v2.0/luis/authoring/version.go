@@ -19,7 +19,7 @@ package authoring
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 authoring/v2.0"
+	return "Azure-SDK-For-Go/1.0.0 authoring/2.0"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
