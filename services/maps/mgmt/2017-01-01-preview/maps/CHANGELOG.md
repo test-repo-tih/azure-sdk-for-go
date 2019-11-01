@@ -1,1 +1,11 @@
-No changes to exported content compared to the previous release.
+## New Content
+
+## Struct Changes
+
+### New Structs
+
+1. AccountProperties
+
+### New Struct Fields
+
+1. Account.Properties
