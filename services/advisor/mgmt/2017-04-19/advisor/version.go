@@ -19,12 +19,12 @@ package advisor
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 advisor/2017-04-19"
+	return "Azure-SDK-For-Go/1.1.0 advisor/2017-04-19"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.1.0"
 }
 
-// tag: services/advisor/mgmt/2017-04-19/advisor/v1.0.0
+// tag: services/advisor/mgmt/2017-04-19/advisor/v1.1.0
