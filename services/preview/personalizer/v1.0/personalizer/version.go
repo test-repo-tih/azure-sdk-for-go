@@ -19,12 +19,12 @@ package personalizer
 
 // UserAgent returns the UserAgent string to use when sending http.Requests.
 func UserAgent() string {
-	return "Azure-SDK-For-Go/1.0.0 personalizer/v1.0"
+	return "Azure-SDK-For-Go/1.1.0 personalizer/v1.0"
 }
 
 // Version returns the semantic version (see http://semver.org) of the client.
 func Version() string {
-	return "1.0.0"
+	return "1.1.0"
 }
 
-// tag: services/preview/personalizer/v1.0/personalizer/v1.0.0
+// tag: services/preview/personalizer/v1.0/personalizer/v1.1.0
