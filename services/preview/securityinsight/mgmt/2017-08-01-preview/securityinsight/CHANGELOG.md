@@ -1,1 +1,5 @@
-No changes to exported content compared to the previous release.
+## New Content
+
+### New Constants
+
+1. MicrosoftSecurityProductName.AzureSecurityCenterforIoT
